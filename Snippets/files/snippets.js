@@ -28,7 +28,7 @@ $(document).ready(function() {
 					}
 
 					select.change(function() {
-							textarea.text(textarea.text() + $(this).val());
+							textarea.val(textarea.val() + $(this).val());
 							$(this).val("");
 						});
 					label.append(select);
