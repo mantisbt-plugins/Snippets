@@ -1,0 +1,12 @@
+<?php
+
+# Copyright 2010 (c) John Reese
+# Licensed under the MIT license
+
+$s_plugin_SavedText_ = "";
+$s_plugin_SavedText_name = "Saved Text";
+$s_plugin_SavedText_description = "Allow users to save blocks of text";
+
+$s_plugin_SavedText_select_label = "Saved Text: ";
+$s_plugin_SavedText_select_default = "--";
+
