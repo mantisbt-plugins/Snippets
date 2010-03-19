@@ -6,21 +6,27 @@
 function xmlhttprequest_plugin_snippets() {
 	plugin_push_current("Snippets");
 
+	# load snippets available to the user
 	$user_id = auth_get_current_user_id();
 	$snippets = Snippet::load_by_user_id($user_id);
 
-	$bugnote_array = array();
-	foreach($snippets as $snippet) {
-		$bugnote_array[string_attribute($snippet->name)] = string_attribute($snippet->value);
-	}
-
-	echo json_encode(array(
+	$data_array = array(
 		"lang" => array(
 			"label" => plugin_lang_get("select_label"),
 			"default" => plugin_lang_get("select_default"),
 		),
-		"bugnote_text" => $bugnote_array,
-	));
+		"bugnote_text" => array(),
+	);
+
+	# arrange the available snippets into the data array
+	foreach($snippets as $snippet) {
+		$snippet = Snippet::clean($snippet);
+		$data_array["bugnote_text"][$snippet->id] = $snippet;
+	}
+
+	$json = json_encode($data_array);
+	file_put_contents("/tmp/snippets", print_r($json, true));
+	echo $json;
 
 	plugin_pop_current();
 }
@@ -101,7 +107,22 @@ class Snippet {
 		}
 	}
 
+	/**
+	 * Create a copy of the given object with strings cleaned for output.
+	 *
+	 * @param object Snippet object
+	 * @return object Cleaned snippet object
+	 */
 	public static function clean($snippet) {
+		$cleaned = new Snippet(
+			$snippet->type,
+			string_display_line($snippet->name),
+			string_attribute($snippet->value),
+			$snippet->user_id
+		);
+		$cleaned->id = $snippet->id;
+
+		return $cleaned;
 	}
 
 	/**

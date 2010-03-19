@@ -20,8 +20,10 @@ $(document).ready(function() {
 					select = $("<select></select>");
 					select.append($("<option title=''>" + textarrays["lang"]["default"] + "</option>"));
 
-					for (name in snippets) {
-						option = $("<option value='" + snippets[name] + "' title='" + snippets[name] + "'>" + name + "</option>");
+					for (snippetid in snippets) {
+						snippet = snippets[snippetid];
+
+						option = $("<option value='" + snippet.value + "' title='" + snippet.value + "'>" + snippet.name + "</option>");
 						select.append(option);
 					}
 
