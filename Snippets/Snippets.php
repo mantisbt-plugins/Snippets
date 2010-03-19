@@ -28,12 +28,21 @@ class SnippetsPlugin extends MantisPlugin {
 
 	public function hooks() {
 		return array(
+			"EVENT_MENU_ACCOUNT" => "menu_account",
+
 			"EVENT_BUGNOTE_ADD_FORM" => "bugnote_add_form",
 		);
 	}
 
 	public function init() {
 		require_once("Snippets.API.php");
+	}
+
+	public function menu_account($event, $user_id) {
+		$page = plugin_page("account_snippets");
+		$label = plugin_lang_get("name");
+
+		return "<a href=\"{$page}\">{$label}</a>";
 	}
 
 	public function bugnote_add_form($event, $bug_id) {

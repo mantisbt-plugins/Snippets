@@ -6,14 +6,20 @@
 function xmlhttprequest_plugin_snippets() {
 	plugin_push_current("Snippets");
 
+	$user_id = auth_get_current_user_id();
+	$snippets = Snippet::load_by_user_id($user_id);
+
+	$bugnote_array = array();
+	foreach($snippets as $snippet) {
+		$bugnote_array[string_attribute($snippet->name)] = string_attribute($snippet->value);
+	}
+
 	echo json_encode(array(
 		"lang" => array(
 			"label" => plugin_lang_get("select_label"),
 			"default" => plugin_lang_get("select_default"),
 		),
-		"bugnote_text" => array(
-			"foo" => "foobar",
-		),
+		"bugnote_text" => $bugnote_array,
 	));
 
 	plugin_pop_current();
@@ -93,6 +99,9 @@ class Snippet {
 				$this->id
 			));
 		}
+	}
+
+	public static function clean($snippet) {
 	}
 
 	/**
