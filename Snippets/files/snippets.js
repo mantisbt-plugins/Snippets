@@ -18,7 +18,7 @@ $(document).ready(function() {
 					label = $("<label>" + textarrays["lang"]["label"] + " </label>");
 
 					select = $("<select></select>");
-					select.append($("<option title=''>" + textarrays["lang"]["default"] + "</option>"));
+					select.append($("<option title='' value=''>" + textarrays["lang"]["default"] + "</option>"));
 
 					for (snippetid in snippets) {
 						snippet = snippets[snippetid];
@@ -28,7 +28,8 @@ $(document).ready(function() {
 					}
 
 					select.change(function() {
-							textarea.html($(this).val());
+							textarea.text(textarea.text() + $(this).val());
+							$(this).val("");
 						});
 					label.append(select);
 
