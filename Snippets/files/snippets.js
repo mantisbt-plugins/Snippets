@@ -21,12 +21,12 @@ $(document).ready(function() {
 					select.append($("<option title=''>" + textarrays["lang"]["default"] + "</option>"));
 
 					for (name in snippets) {
-						option = $("<option title='" + snippets[name] + "'>" + name + "</option>");
+						option = $("<option value='" + snippets[name] + "' title='" + snippets[name] + "'>" + name + "</option>");
 						select.append(option);
 					}
 
 					select.change(function() {
-							textarea.html($(this).attr("title"));
+							textarea.html($(this).val());
 						});
 					label.append(select);
 

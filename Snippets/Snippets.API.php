@@ -3,8 +3,8 @@
 # Copyright 2010 (c) John Reese
 # Licensed under the MIT license
 
-function xmlhttprequest_plugin_savedtext() {
-	plugin_push_current("SavedText");
+function xmlhttprequest_plugin_snippets() {
+	plugin_push_current("Snippets");
 
 	echo json_encode(array(
 		"lang" => array(
@@ -22,7 +22,7 @@ function xmlhttprequest_plugin_savedtext() {
 /**
  * Object representing a saved block of text.
  */
-class Snippets {
+class Snippet {
 	public $id;
 	public $user_id;
 	public $type;
@@ -164,10 +164,10 @@ class Snippets {
 	private static function from_db_result($result) {
 		$snippets = array();
 		while ($row = db_fetch_array($result)) {
-			$snippet = new SavedText($row["type"], $row["name"], $row["value"], $row["user_id"]);
+			$snippet = new Snippet($row["type"], $row["name"], $row["value"], $row["user_id"]);
 			$snippet->id = $row["id"];
 
-			$snippets[$row["id"]] = $item;
+			$snippets[$row["id"]] = $snippet;
 		}
 
 		return $snippets;
