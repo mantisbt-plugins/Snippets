@@ -3,7 +3,7 @@
 # Copyright 2010 (c) John Reese
 # Licensed under the MIT license
 
-class SavedTextPlugin extends MantisPlugin {
+class SnippetsPlugin extends MantisPlugin {
 
 	public function register() {
 		$this->name = plugin_lang_get("name");
@@ -33,17 +33,17 @@ class SavedTextPlugin extends MantisPlugin {
 	}
 
 	public function init() {
-		require_once("SavedText.API.php");
+		require_once("Snippets.API.php");
 	}
 
 	public function bugnote_add_form($event, $bug_id) {
-		echo '<script src="', plugin_file("select.js"), '"></script>';
+		echo '<script src="', plugin_file("snippets.js"), '"></script>';
 	}
 
 	public function schema() {
 		return array(
 			# 2010-03-18
-			array("CreateTableSQL", array(plugin_table("item"), "
+			array("CreateTableSQL", array(plugin_table("snippet"), "
 				id			I		NOTNULL UNSIGNED AUTOINCREMENT PRIMARY,
 				user_id		I		NOTNULL UNSIGNED,
 				type		I		NOTNULL UNSIGNED,

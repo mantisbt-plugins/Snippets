@@ -1,0 +1,12 @@
+<?php
+
+# Copyright 2010 (c) John Reese
+# Licensed under the MIT license
+
+$s_plugin_Snippets_ = "";
+$s_plugin_Snippets_name = "Snippets";
+$s_plugin_Snippets_description = "Allow users to save blocks of text";
+
+$s_plugin_Snippets_select_label = "Snippets: ";
+$s_plugin_Snippets_select_default = "--";
+

@@ -22,7 +22,7 @@ function xmlhttprequest_plugin_savedtext() {
 /**
  * Object representing a saved block of text.
  */
-class SavedText {
+class Snippets {
 	public $id;
 	public $user_id;
 	public $type;
@@ -50,11 +50,11 @@ class SavedText {
 	 * @return int Text ID if created
 	 */
 	public function save() {
-		$item_table = plugin_table("item");
+		$snippet_table = plugin_table("snippet");
 
 		# create
 		if ($this->id === null) {
-			$query = "INSERT INTO {$item_table}
+			$query = "INSERT INTO {$snippet_table}
 				(
 					type,
 					name,
@@ -74,11 +74,11 @@ class SavedText {
 				$this->user_id
 			));
 
-			$this->id = db_insert_id($item_table);
+			$this->id = db_insert_id($snippet_table);
 
 		# update
 		} else {
-			$query = "UPDATE {$item_table} SET
+			$query = "UPDATE {$snippet_table} SET
 				type=".db_param().",
 				name=".db_param().",
 				value=".db_param().",
@@ -110,9 +110,9 @@ class SavedText {
 		}
 		$user_ids = implode(",", $user_ids);
 
-		$item_table = plugin_table("item");
+		$snippet_table = plugin_table("snippet");
 
-		$query = "SELECT * FROM {$item_table} WHERE type=".db_param()." AND user_id IN ($user_ids) ORDER BY name";
+		$query = "SELECT * FROM {$snippet_table} WHERE type=".db_param()." AND user_id IN ({$user_ids}) ORDER BY name";
 		$result = db_query_bound($query, array($type));
 
 		return self::from_db_result($result);
@@ -125,9 +125,9 @@ class SavedText {
 	 * @return array Text objects
 	 */
 	public static function load_by_user_id($user_id) {
-		$item_table = plugin_table("item");
+		$snippet_table = plugin_table("snippet");
 
-		$query = "SELECT * FROM {$item_table} WHERE user_id=".db_param()." ORDER BY name";
+		$query = "SELECT * FROM {$snippet_table} WHERE user_id=".db_param()." ORDER BY name";
 		$result = db_query_bound($query, array($user_id));
 
 		return self::from_db_result($result);
@@ -139,8 +139,8 @@ class SavedText {
 	 * @param int Text ID
 	 */
 	public static function delete_by_id($id) {
-		$item_table = plugin_table("item");
-		$query = "DELETE FROM {$item_table} WHERE id=".db_param();
+		$snippet_table = plugin_table("snippet");
+		$query = "DELETE FROM {$snippet_table} WHERE id=".db_param();
 		db_query_bound($query, array($id));
 	}
 
@@ -150,8 +150,8 @@ class SavedText {
 	 * @param int User ID
 	 */
 	public static function delete_by_user_id($user_id) {
-		$item_table = plugin_table("item");
-		$query = "DELETE FROM {$item_table} WHERE user_id=".db_param();
+		$snippet_table = plugin_table("snippet");
+		$query = "DELETE FROM {$snippet_table} WHERE user_id=".db_param();
 		db_query_bound($query, array($user_id));
 	}
 
@@ -162,15 +162,15 @@ class SavedText {
 	 * @return array Text objects
 	 */
 	private static function from_db_result($result) {
-		$items = array();
+		$snippets = array();
 		while ($row = db_fetch_array($result)) {
-			$item = new SavedText($row["type"], $row["name"], $row["value"], $row["user_id"]);
-			$item->id = $row["id"];
+			$snippet = new SavedText($row["type"], $row["name"], $row["value"], $row["user_id"]);
+			$snippet->id = $row["id"];
 
-			$items[$row["id"]] = $item;
+			$snippets[$row["id"]] = $item;
 		}
 
-		return $items;
+		return $snippets;
 	}
 }
 
