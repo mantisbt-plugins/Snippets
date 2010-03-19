@@ -8,7 +8,7 @@ function xmlhttprequest_plugin_snippets() {
 
 	# load snippets available to the user
 	$user_id = auth_get_current_user_id();
-	$snippets = Snippet::load_by_user_id($user_id);
+	$snippets = Snippet::load_by_type_user(0, $user_id);
 
 	$data_array = array(
 		"lang" => array(
@@ -113,14 +113,19 @@ class Snippet {
 	 * @param object Snippet object
 	 * @return object Cleaned snippet object
 	 */
-	public static function clean($snippet) {
-		$cleaned = new Snippet(
-			$snippet->type,
-			string_display_line($snippet->name),
-			string_attribute($snippet->value),
-			$snippet->user_id
-		);
-		$cleaned->id = $snippet->id;
+	public static function clean($dirty) {
+		if (is_array($dirty)) {
+			$cleaned = array_map(array("Snippet", "clean"), $dirty);
+
+		} else {
+			$cleaned = new Snippet(
+				$dirty->type,
+				string_display_line($dirty->name),
+				string_attribute($dirty->value),
+				$dirty->user_id
+			);
+			$cleaned->id = $dirty->id;
+		}
 
 		return $cleaned;
 	}
