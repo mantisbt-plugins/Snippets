@@ -22,15 +22,16 @@ class SnippetsPlugin extends MantisPlugin {
 
 	public function config() {
 		return array(
-			"global_text_threshold" => ADMINISTRATOR,
+			"edit_global_threshold" => ADMINISTRATOR,
 		);
 	}
 
 	public function hooks() {
 		return array(
 			"EVENT_MENU_ACCOUNT" => "menu_account",
+			"EVENT_MENU_MANAGE" => "menu_manage",
 
-			"EVENT_BUGNOTE_ADD_FORM" => "bugnote_add_form",
+			"EVENT_LAYOUT_RESOURCES" => "resources",
 		);
 	}
 
@@ -39,14 +40,21 @@ class SnippetsPlugin extends MantisPlugin {
 	}
 
 	public function menu_account($event, $user_id) {
-		$page = plugin_page("account_snippets");
-		$label = plugin_lang_get("name");
+		$page = plugin_page("snippet_list");
+		$label = plugin_lang_get("list_title");
 
 		return "<a href=\"{$page}\">{$label}</a>";
 	}
 
-	public function bugnote_add_form($event, $bug_id) {
-		echo '<script src="', plugin_file("snippets.js"), '"></script>';
+	public function menu_manage($event, $user_id) {
+		$page = plugin_page("snippet_list") . "&global=true";
+		$label = plugin_lang_get("list_global_title");
+
+		return "<a href=\"{$page}\">{$label}</a>";
+	}
+
+	public function resources($event) {
+		return '<script src="' . plugin_file("snippets.js") . '"></script>';
 	}
 
 	public function schema() {

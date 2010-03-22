@@ -113,21 +113,60 @@ class Snippet {
 	 * @param object Snippet object
 	 * @return object Cleaned snippet object
 	 */
-	public static function clean($dirty) {
+	public static function clean($dirty, $target="view") {
 		if (is_array($dirty)) {
-			$cleaned = array_map(array("Snippet", "clean"), $dirty);
+			$cleaned = array();
+			foreach($dirty as $id => $snippet) {
+				$cleaned[$id] = self::clean($snippet, $target);
+			}
 
 		} else {
+			if ($target == "view") {
+				$dirty->name = string_display_line($dirty->name);
+				$dirty->value = string_display($dirty->value);
+			} elseif ($target == "form") {
+				$dirty->name = string_attribute($dirty->name);
+				$dirty->value = string_textarea($dirty->value);
+			}
+
 			$cleaned = new Snippet(
 				$dirty->type,
-				string_display_line($dirty->name),
-				string_attribute($dirty->value),
+				$dirty->name,
+				$dirty->value,
 				$dirty->user_id
 			);
 			$cleaned->id = $dirty->id;
 		}
 
 		return $cleaned;
+	}
+
+	/**
+	 * Load snippets by ID.
+	 *
+	 * @param mixed Snippet ID (int or array)
+	 * @param int User ID
+	 * @return mixed Snippet(s)
+	 */
+	public static function load_by_id($id, $user_id) {
+		$snippet_table = plugin_table("snippet");
+
+		if (is_array($id)) {
+			$ids = array_filter($id, "is_int");
+			$ids = implode(",", $ids);
+
+			$query = "SELECT * FROM {$snippet_table} WHERE id IN ({$ids}) AND user_id=".db_param();
+			$result = db_query_bound($query, array($user_id));
+
+			return self::from_db_result($result);
+
+		} else {
+			$query = "SELECT * FROM {$snippet_table} WHERE id=".db_param()." AND user_id=".db_param();
+			$result = db_query_bound($query, array($id, $user_id));
+
+			$snippets = self::from_db_result($result);
+			return $snippets[0];
+		}
 	}
 
 	/**
@@ -169,14 +208,24 @@ class Snippet {
 	}
 
 	/**
-	 * Delete a single text object with the given ID.
+	 * Delete snippets with the given ID.
 	 *
-	 * @param int Text ID
+	 * @param mixed Snippet ID (int or array)
 	 */
-	public static function delete_by_id($id) {
+	public static function delete_by_id($id, $user_id) {
 		$snippet_table = plugin_table("snippet");
-		$query = "DELETE FROM {$snippet_table} WHERE id=".db_param();
-		db_query_bound($query, array($id));
+
+		if (is_array($id)) {
+			$ids = array_filter($id, "is_int");
+			$ids = implode(",", $ids);
+
+			$query = "DELETE FROM {$snippet_table} WHERE id IN ({$ids}) AND user_id=".db_param();
+			db_query_bound($query, array($user_id));
+
+		} else {
+			$query = "DELETE FROM {$snippet_table} WHERE id=".db_param()." AND user_id=".db_param();
+			db_query_bound($query, array($id, $user_id));
+		}
 	}
 
 	/**

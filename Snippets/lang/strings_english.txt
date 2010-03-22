@@ -10,3 +10,23 @@ $s_plugin_Snippets_description = "Allow users to save blocks of text";
 $s_plugin_Snippets_select_label = "Snippets: ";
 $s_plugin_Snippets_select_default = "--";
 
+$s_plugin_Snippets_list_title = "Your Snippets";
+$s_plugin_Snippets_list_global_title = "Global Snippets";
+$s_plugin_Snippets_list_name = "Name";
+$s_plugin_Snippets_list_value = "Snippet";
+
+$s_plugin_Snippets_edit_title = "Edit Your Snippets";
+$s_plugin_Snippets_edit_global_title = "Edit Global Snippets";
+$s_plugin_Snippets_edit_name = "Name";
+$s_plugin_Snippets_edit_value = "Snippet";
+
+$s_plugin_Snippets_create_title = "Create Snippet";
+$s_plugin_Snippets_create_global_title = "Create Global Snippet";
+$s_plugin_Snippets_create_name = "Name";
+$s_plugin_Snippets_create_value = "Snippet";
+
+$s_plugin_Snippets_action_go = "Go";
+$s_plugin_Snippets_action_edit = "Edit";
+$s_plugin_Snippets_action_delete = "Delete";
+$s_plugin_Snippets_action_delete_confirm = "Do you really want to delete the following snippets?";
+

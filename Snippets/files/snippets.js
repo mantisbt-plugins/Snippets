@@ -2,9 +2,27 @@
 // Licensed under the MIT license
 
 $(document).ready(function() {
+		try {
+			SnippetsInit();
+		} catch(e) {
+			alert(e);
+		}
+
+		// Snippet list behaviors
+		$("input.snippets_select_all").change(function(){
+				$("input[name='snippet_list[]']").attr("checked", $(this).attr("checked"));
+			});
+	});
+
+/**
+ * Primary Snippets functionality.
+ * Use an AJAX request to retrieve the user's available snippets, and
+ * then insert select boxes into the DOM for each supported textarea.
+ */
+function SnippetsInit() {
 	var textareas = $("textarea[name='bugnote_text']");
 
-	function SnippetsInit(data) {
+	function SnippetsUI(data) {
 		var textarrays = data;
 
 		textareas.each(function(index) {
@@ -44,8 +62,7 @@ $(document).ready(function() {
 	}
 
 	if (textareas.length > 0) {
-		xhr = $.getJSON("xmlhttprequest.php?entrypoint=plugin_snippets", SnippetsInit);
+		xhr = $.getJSON("xmlhttprequest.php?entrypoint=plugin_snippets", SnippetsUI);
 	}
-
-});
+}
 
