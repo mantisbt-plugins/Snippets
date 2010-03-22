@@ -16,7 +16,13 @@ if ($global) {
 
 $action = gpc_get_string("action");
 
-$snippet_list = gpc_get_int_array("snippet_list");
+$snippet_list = gpc_get_int_array("snippet_list", array());
+
+if (count($snippet_list) < 1) {
+	form_security_purge("plugin_Snippets_list_action");
+	print_header_redirect(plugin_page("snippet_list", true) . ($global ? "&global=true" : ""));
+}
+
 $snippets = Snippet::load_by_id($snippet_list, $user_id);
 
 function array_object_properties($arr, $prop) {
@@ -43,8 +49,9 @@ if ($action == "delete") {
 ?>
 
 <br/>
-<form action="<?php echo plugin_page("snippet_list_action"), $global ? "&global=true" : "" ?>" method="post">
+<form action="<?php echo plugin_page("snippet_list_action") ?>" method="post">
 <?php echo form_security_field("plugin_Snippets_list_action") ?>
+<?php if ($global): ?><input type="hidden" name="global" value="true"/><?php endif ?>
 <input type="hidden" name="action" value="update"/>
 <table class="width75" align="center">
 
@@ -81,6 +88,23 @@ if ($action == "delete") {
 
 ### UPDATE
 } elseif ($action == "update") {
+	foreach($snippets as $snippet_id => $snippet) {
+		$new_name = gpc_get_string("name_{$snippet_id}");
+		$new_value = gpc_get_string("value_{$snippet_id}");
+
+		if ($snippet->name != $new_name
+			|| $snippet->value != $new_value)
+		{
+			$snippet->name = $new_name;
+			$snippet->value = $new_value;
+
+			$snippet->save();
+		}
+	}
+
+	form_security_purge("plugin_Snippets_list_action");
+	print_successful_redirect(plugin_page("snippet_list", true) . ($global ? "&global=true" : ""));
+
 }
 
 

@@ -20,5 +20,5 @@ $snippet = new Snippet(0, $name, $value, $user_id);
 $snippet->save();
 
 form_security_purge("plugin_snippets_create");
-print_successful_redirect(plugin_page("snippet_list", true) . $global ? "&global=true" : "");
+print_successful_redirect(plugin_page("snippet_list", true) . ($global ? "&global=true" : ""));
 
