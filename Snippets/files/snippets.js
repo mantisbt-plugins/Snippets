@@ -53,6 +53,8 @@ function SnippetsInit() {
 
 					$(this).before(label);
 					$(this).before("<br/>");
+
+					$(this).parent("td").removeClass("center");
 				}
 
 				} catch(e) {
