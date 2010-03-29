@@ -64,7 +64,21 @@ function SnippetsInit() {
 	}
 
 	if (textareas.length > 0) {
-		xhr = $.getJSON("xmlhttprequest.php?entrypoint=plugin_snippets", SnippetsUI);
+		var bug_id = 0;
+
+		$("form[name='bugnoteadd'] input[name='bug_id']").each(function() {
+				bug_id = $(this).val();
+			});
+		$("form[name='update_bug_form'] input[name='bug_id']").each(function() {
+				bug_id = $(this).val();
+			});
+
+		xhrurl = "xmlhttprequest.php?entrypoint=plugin_snippets"
+		if (bug_id > 0) {
+			xhrurl += "&bug_id=" + bug_id;
+		}
+
+		xhr = $.getJSON(xhrurl, SnippetsUI);
 	}
 }
 

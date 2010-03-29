@@ -6,9 +6,11 @@
 function xmlhttprequest_plugin_snippets() {
 	plugin_push_current("Snippets");
 
+	$bug_id = gpc_get_int("bug_id", 0);
+
 	# load snippets available to the user
 	$user_id = auth_get_current_user_id();
-	$snippets = Snippet::clean(Snippet::load_by_type_user(0, $user_id), "form");
+	$snippets = Snippet::clean(Snippet::load_by_type_user(0, $user_id), "form", $bug_id);
 
 	$data_array = array(
 		"lang" => array(
@@ -108,13 +110,18 @@ class Snippet {
 	 * Create a copy of the given object with strings cleaned for output.
 	 *
 	 * @param object Snippet object
+	 * @param string Target format
+	 * @param boolean Replacement patterns
 	 * @return object Cleaned snippet object
 	 */
-	public static function clean($dirty, $target="view") {
+	public static function clean($dirty, $target="view", $pattern=false) {
 		if (is_array($dirty)) {
 			$cleaned = array();
-			foreach($dirty as $id => $snippet) {
+			foreach ($dirty as $id => $snippet) {
 				$cleaned[$id] = self::clean($snippet, $target);
+			}
+			if (false !== $pattern) {
+				$cleaned = self::patterns($cleaned, $pattern);
 			}
 
 		} else {
@@ -136,6 +143,43 @@ class Snippet {
 		}
 
 		return $cleaned;
+	}
+
+	/**
+	 * Replace placeholder patterns in the snippet values with appropriate
+	 * strings before being sent to the client for usage.
+	 *
+	 * @param array Snippet objects
+	 * @return array Updated snippet objects
+	 */
+	public static function patterns($snippets, $bug_id) {
+		$reporter = '%r';
+		$handler = '%h';
+
+		$current_user = auth_get_current_user_id();
+
+		if (is_int($bug_id) && $bug_id > 0) {
+			$bug = bug_get($bug_id);
+			user_cache_array_rows(array($bug->reporter_id, $bug->handler_id, $current_user));
+
+			$reporter = user_get_name($bug->reporter_id);
+			$handler = user_get_name($bug->handler_id);
+			$project = project_get_name($bug->project_id);
+
+		} else {
+			$project = project_get_name(helper_get_current_project());
+		}
+
+		$username = user_get_name($current_user);
+
+		foreach ($snippets as $snippet) {
+			$snippet->value = str_replace(
+				array('%u', '%r', '%h', '%p'),
+				array($username, $reporter, $handler, $project),
+				$snippet->value);
+		}
+
+		return $snippets;
 	}
 
 	/**
