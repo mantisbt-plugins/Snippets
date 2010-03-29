@@ -8,7 +8,7 @@ function xmlhttprequest_plugin_snippets() {
 
 	# load snippets available to the user
 	$user_id = auth_get_current_user_id();
-	$snippets = Snippet::load_by_type_user(0, $user_id);
+	$snippets = Snippet::clean(Snippet::load_by_type_user(0, $user_id), "form");
 
 	$data_array = array(
 		"lang" => array(
@@ -19,12 +19,10 @@ function xmlhttprequest_plugin_snippets() {
 
 	# arrange the available snippets into the data array
 	foreach($snippets as $snippet) {
-		$snippet = Snippet::clean($snippet);
 		$data_array["bugnote_text"][$snippet->id] = $snippet;
 	}
 
 	$json = json_encode($data_array);
-	file_put_contents("/tmp/snippets", print_r($json, true));
 	echo $json;
 
 	plugin_pop_current();
