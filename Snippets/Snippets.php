@@ -9,7 +9,7 @@ class SnippetsPlugin extends MantisPlugin {
 		$this->name = plugin_lang_get("name");
 		$this->description = plugin_lang_get("description");
 
-		$this->version = "0.1";
+		$this->version = plugin_lang_get("version");
 		$this->requires = array(
 			"MantisCore" => "1.2.0",
 			"jQuery" => "1.3",
