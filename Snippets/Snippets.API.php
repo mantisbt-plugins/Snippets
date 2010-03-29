@@ -15,7 +15,6 @@ function xmlhttprequest_plugin_snippets() {
 			"label" => plugin_lang_get("select_label"),
 			"default" => plugin_lang_get("select_default"),
 		),
-		"bugnote_text" => array(),
 	);
 
 	# arrange the available snippets into the data array
