@@ -3,6 +3,20 @@
 # Copyright 2010 (c) John Reese
 # Licensed under the MIT license
 
+function xmlhttprequest_plugin_snippets_text() {
+	plugin_push_current("Snippets");
+
+	$data = array(
+		"label" => plugin_lang_get("select_label"),
+		"default" => plugin_lang_get("select_default"),
+		"pattern_help" => plugin_lang_get("pattern_help"),
+	);
+
+	echo json_encode($data);
+
+	plugin_pop_current();
+}
+
 function xmlhttprequest_plugin_snippets() {
 	plugin_push_current("Snippets");
 
@@ -12,19 +26,16 @@ function xmlhttprequest_plugin_snippets() {
 	$user_id = auth_get_current_user_id();
 	$snippets = Snippet::clean(Snippet::load_by_type_user(0, $user_id), "form", $bug_id);
 
-	$data_array = array(
-		"lang" => array(
-			"label" => plugin_lang_get("select_label"),
-			"default" => plugin_lang_get("select_default"),
-		),
+	$data = array(
+		"snippets" => plugin_lang_get("version"),
 	);
 
 	# arrange the available snippets into the data array
 	foreach($snippets as $snippet) {
-		$data_array["bugnote_text"][$snippet->id] = $snippet;
+		$data["bugnote_text"][$snippet->id] = $snippet;
 	}
 
-	$json = json_encode($data_array);
+	$json = json_encode($data);
 	echo $json;
 
 	plugin_pop_current();

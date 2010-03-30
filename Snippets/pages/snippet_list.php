@@ -69,14 +69,14 @@ if ($global) print_manage_menu();
 <td class="form-title" colspan="2"><?php echo plugin_lang_get($global ? "create_global_title" : "create_title") ?></td>
 </tr>
 
-<tr <?php echo helper_alternate_class() ?>>
+<tr class="row-1">
 <td class="category"><?php echo plugin_lang_get("create_name") ?></td>
 <td><input name="name"/></td>
 </tr>
 
-<tr <?php echo helper_alternate_class() ?>>
+<tr class="row-2">
 <td class="category"><?php echo plugin_lang_get("create_value") ?></td>
-<td><textarea name="value" cols="80" rows="6"></textarea></td>
+<td class="snippetspatternhelp"><textarea name="value" cols="80" rows="6"></textarea></td>
 </tr>
 
 <tr>

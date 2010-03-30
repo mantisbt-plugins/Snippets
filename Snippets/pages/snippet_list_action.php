@@ -62,15 +62,15 @@ if ($action == "delete") {
 <?php $first = true; foreach ($snippets as $snippet): ?>
 <?php if (!$first): ?><tr class="spacer"><td></td></tr><?php endif ?>
 
-<tr <?php echo helper_alternate_class() ?>>
+<tr class="row-1">
 <td class="center" rowspan="2"><input type="checkbox" name="snippet_list[]" value="<?php echo $snippet->id ?>" checked="checked"/></td>
 <td class="category"><?php echo plugin_lang_get("edit_name") ?></td>
 <td><input name="name_<?php echo $snippet->id ?>" value="<?php echo $snippet->name ?>"/></td>
 </tr>
 
-<tr <?php echo helper_alternate_class() ?>>
+<tr class="row-2">
 <td class="category"><?php echo plugin_lang_get("edit_value") ?></td>
-<td><textarea name="value_<?php echo $snippet->id ?>" cols="80" rows="6"><?php echo $snippet->value ?></textarea></td>
+<td class="snippetspatternhelp"><textarea name="value_<?php echo $snippet->id ?>" cols="80" rows="6"><?php echo $snippet->value ?></textarea></td>
 </tr>
 
 <?php $first = false; endforeach ?>
