@@ -90,7 +90,7 @@ $(document).ready(function() {
 				$("form[name='bugnoteadd'] input[name='bug_id']").each(function() {
 						bug_id = $(this).val();
 					});
-				$("form[name='update_bug_form'] input[name='bug_id']").each(function() {
+				$("form[action='bug_update.php'] input[name='bug_id']").each(function() {
 						bug_id = $(this).val();
 					});
 
