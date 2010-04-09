@@ -1,7 +1,7 @@
 // Copyright 2010 (c) John Reese
 // Licensed under the MIT license
 
-$(document).ready(function() {
+jQuery(document).ready(function($) {
 		var SnippetsLangArray = null;
 
 		/**
