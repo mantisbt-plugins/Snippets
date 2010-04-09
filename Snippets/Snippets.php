@@ -26,6 +26,13 @@ class SnippetsPlugin extends MantisPlugin {
 		);
 	}
 
+	public function errors() {
+		return array(
+			"name_empty" => plugin_lang_get("error_name_empty"),
+			"value_empty" => plugin_lang_get("error_value_empty"),
+		);
+	}
+
 	public function hooks() {
 		return array(
 			"EVENT_MENU_ACCOUNT" => "menu_account",

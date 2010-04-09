@@ -95,8 +95,12 @@ if ($action == "delete") {
 		if ($snippet->name != $new_name
 			|| $snippet->value != $new_value)
 		{
-			$snippet->name = $new_name;
-			$snippet->value = $new_value;
+			if (!is_blank($new_name)) {
+				$snippet->name = $new_name;
+			}
+			if (!is_blank($new_value)) {
+				$snippet->value = $new_value;
+			}
 
 			$snippet->save();
 		}

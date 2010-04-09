@@ -16,6 +16,13 @@ if ($global) {
 $name = gpc_get_string("name");
 $value = gpc_get_string("value");
 
+if (is_blank($name)) {
+	plugin_error("name_empty");
+}
+if (is_blank($value)) {
+	plugin_error("value_empty");
+}
+
 $snippet = new Snippet(0, $name, $value, $user_id);
 $snippet->save();
 
