@@ -205,6 +205,11 @@ class Snippet {
 
 		if (is_array($id)) {
 			$ids = array_filter($id, "is_int");
+
+			if (count($ids) < 1) {
+				return array();
+			}
+
 			$ids = implode(",", $ids);
 
 			$query = "SELECT * FROM {$snippet_table} WHERE id IN ({$ids}) AND user_id=".db_param();
@@ -269,6 +274,11 @@ class Snippet {
 
 		if (is_array($id)) {
 			$ids = array_filter($id, "is_int");
+
+			if (count($ids) < 1) {
+				return;
+			}
+
 			$ids = implode(",", $ids);
 
 			$query = "DELETE FROM {$snippet_table} WHERE id IN ({$ids}) AND user_id=".db_param();
