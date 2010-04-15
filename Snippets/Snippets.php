@@ -8,6 +8,7 @@ class SnippetsPlugin extends MantisPlugin {
 	public function register() {
 		$this->name = plugin_lang_get("name");
 		$this->description = plugin_lang_get("description");
+		$this->page = "config_page";
 
 		$this->version = plugin_lang_get("version");
 		$this->requires = array(
@@ -23,6 +24,8 @@ class SnippetsPlugin extends MantisPlugin {
 	public function config() {
 		return array(
 			"edit_global_threshold" => ADMINISTRATOR,
+			"use_global_threshold" => REPORTER,
+			"edit_own_threshold" => REPORTER,
 		);
 	}
 
@@ -47,17 +50,21 @@ class SnippetsPlugin extends MantisPlugin {
 	}
 
 	public function menu_account($event, $user_id) {
-		$page = plugin_page("snippet_list");
-		$label = plugin_lang_get("list_title");
+		if (access_has_global_level(plugin_config_get("edit_own_threshold"))) {
+			$page = plugin_page("snippet_list");
+			$label = plugin_lang_get("list_title");
 
-		return "<a href=\"{$page}\">{$label}</a>";
+			return "<a href=\"{$page}\">{$label}</a>";
+		}
 	}
 
 	public function menu_manage($event, $user_id) {
-		$page = plugin_page("snippet_list") . "&global=true";
-		$label = plugin_lang_get("list_global_title");
+		if (access_has_global_level(plugin_config_get("edit_global_threshold"))) {
+			$page = plugin_page("snippet_list") . "&global=true";
+			$label = plugin_lang_get("list_global_title");
 
-		return "<a href=\"{$page}\">{$label}</a>";
+			return "<a href=\"{$page}\">{$label}</a>";
+		}
 	}
 
 	public function resources($event) {

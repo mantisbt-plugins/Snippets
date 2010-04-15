@@ -11,6 +11,7 @@ if ($global) {
 	access_ensure_global_level(plugin_config_get("edit_global_threshold"));
 	$user_id = 0;
 } else {
+	access_ensure_global_level(plugin_config_get("edit_own_threshold"));
 	$user_id = auth_get_current_user_id();
 }
 

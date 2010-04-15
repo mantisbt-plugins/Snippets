@@ -7,8 +7,10 @@ $global = gpc_get_bool("global", false);
 
 if ($global) {
 	access_ensure_global_level(plugin_config_get("edit_global_threshold"));
+	$admin = access_has_global_level(config_get("manage_plugin_threshold"));
 	$user_id = 0;
 } else {
+	access_ensure_global_level(plugin_config_get("edit_own_threshold"));
 	$user_id = auth_get_current_user_id();
 }
 
@@ -27,7 +29,13 @@ if ($global) print_manage_menu();
 
 <tr>
 <td class="form-title" colspan="2"><?php echo plugin_lang_get($global ? "list_global_title" : "list_title") ?></td>
-<td class="right"><?php if (!$global) print_account_menu() ?></td>
+<td class="right"><?php
+if (!$global) {
+	print_account_menu();
+} elseif ($admin) {
+	print_bracket_link(plugin_page("config_page"), plugin_lang_get("config"));
+}
+?></td>
 </tr>
 
 <tr class="row-category">

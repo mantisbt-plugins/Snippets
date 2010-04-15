@@ -23,8 +23,16 @@ function xmlhttprequest_plugin_snippets() {
 	$bug_id = gpc_get_int("bug_id", 0);
 
 	# load snippets available to the user
-	$user_id = auth_get_current_user_id();
-	$snippets = Snippet::clean(Snippet::load_by_type_user(0, $user_id), "form", $bug_id);
+	$user_id = -1;
+	$use_global = false;
+	if (access_has_global_level(plugin_config_get("use_global_threshold"))) {
+		$use_global = true;
+	}
+	if (access_has_global_level(plugin_config_get("edit_own_threshold"))) {
+		$user_id = auth_get_current_user_id();
+	}
+	$snippets = Snippet::load_by_type_user(0, $user_id, $use_global);
+	$snippets = Snippet::clean($snippets, "form", $bug_id);
 
 	$data = array(
 		"snippets" => plugin_lang_get("version"),
