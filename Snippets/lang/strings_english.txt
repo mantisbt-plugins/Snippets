@@ -6,7 +6,6 @@
 $s_plugin_Snippets_ = "";
 $s_plugin_Snippets_name = "Snippets";
 $s_plugin_Snippets_description = "Allow users to save blocks of text";
-$s_plugin_Snippets_version = "0.2";
 
 $s_plugin_Snippets_error_name_empty = "The snippet name is empty.";
 $s_plugin_Snippets_error_value_empty = "The snippet value is empty.";
