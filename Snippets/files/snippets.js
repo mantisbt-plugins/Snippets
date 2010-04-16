@@ -31,7 +31,7 @@ jQuery(document).ready(function($) {
 				baseClass: "snippetsTooltip",
 				fixed: false,
 				//position: "bottom",
-				offset: [10, 0],
+				offset: [10, 0]
 				});
 			});
 
