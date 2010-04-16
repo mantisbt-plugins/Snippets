@@ -4,13 +4,14 @@
 # Licensed under the MIT license
 
 class SnippetsPlugin extends MantisPlugin {
+	public static $_version = "0.3";
 
 	public function register() {
 		$this->name = plugin_lang_get("name");
 		$this->description = plugin_lang_get("description");
 		$this->page = "config_page";
 
-		$this->version = "0.3";
+		$this->version = self::$_version;
 		$this->requires = array(
 			"MantisCore" => "1.2.0",
 			"jQuery" => "1.3",
