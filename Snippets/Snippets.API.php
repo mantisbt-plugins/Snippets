@@ -35,7 +35,7 @@ function xmlhttprequest_plugin_snippets() {
 	$snippets = Snippet::clean($snippets, "form", $bug_id);
 
 	$data = array(
-		"snippets" => SnippetPlugin::$_version,
+		"snippets" => SnippetsPlugin::$_version,
 	);
 
 	# arrange the available snippets into the data array
