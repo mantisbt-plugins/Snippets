@@ -21,7 +21,7 @@ $snippet_list = gpc_get_int_array("snippet_list", array());
 
 if (count($snippet_list) < 1) {
 	form_security_purge("plugin_Snippets_list_action");
-	print_header_redirect(plugin_page("snippet_list", true) . ($global ? "&global=true" : ""));
+	print_header_redirect(plugin_page("snippet_list", true) . Snippet::global_url($global));
 }
 
 $snippets = Snippet::load_by_id($snippet_list, $user_id);
@@ -41,7 +41,7 @@ if ($action == "delete") {
 	Snippet::delete_by_id(array_keys($snippets), $user_id);
 
 	form_security_purge("plugin_Snippets_list_action");
-	print_successful_redirect(plugin_page("snippet_list", true) . ($global ? "&global=true" : ""));
+	print_successful_redirect(plugin_page("snippet_list", true) . Snippet::global_url($global));
 
 ### EDIT
 } elseif ($action == "edit") {
@@ -108,7 +108,7 @@ if ($action == "delete") {
 	}
 
 	form_security_purge("plugin_Snippets_list_action");
-	print_successful_redirect(plugin_page("snippet_list", true) . ($global ? "&global=true" : ""));
+	print_successful_redirect(plugin_page("snippet_list", true) . Snippet::global_url($global));
 
 }
 

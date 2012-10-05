@@ -61,7 +61,7 @@ class SnippetsPlugin extends MantisPlugin {
 
 	public function menu_manage($event, $user_id) {
 		if (access_has_global_level(plugin_config_get("edit_global_threshold"))) {
-			$page = plugin_page("snippet_list") . "&global=true";
+			$page = plugin_page("snippet_list") . Snippet::global_url();
 			$label = plugin_lang_get("list_global_title");
 
 			return "<a href=\"{$page}\">{$label}</a>";
