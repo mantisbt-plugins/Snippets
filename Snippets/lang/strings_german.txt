@@ -28,11 +28,18 @@ $s_plugin_Snippets_create_global_title = "Globalen Textbaustein erzeugen";
 $s_plugin_Snippets_create_name = "Name";
 $s_plugin_Snippets_create_value = "Textbaustein";
 
+$s_plugin_Snippets_config = "Konfiguration";
+$s_plugin_Snippets_config_title = "konfiguration Textbausteine";
+$s_plugin_Snippets_edit_global_threshold = "Globale Textbausteine erfassen";
+$s_plugin_Snippets_use_global_threshold = "Globale Textbausteine verwenden";
+$s_plugin_Snippets_edit_own_threshold = "Eigene Textbausteine erfassen";
+
 $s_plugin_Snippets_action_go = "OK";
 $s_plugin_Snippets_action_create = "Erzeugen";
 $s_plugin_Snippets_action_edit = "Ändern";
 $s_plugin_Snippets_action_delete = "Löschen";
 $s_plugin_Snippets_action_delete_confirm = "Wollen Sie wirklich die folgenden Textbausteine löschen?";
+$s_plugin_Snippets_action_update = "Konfiguration ändern";
 
 $s_plugin_Snippets_pattern_help = "
 	Textbausteine können Platzhalter enthalten, die beim Einfügen in<br/>
