@@ -64,7 +64,7 @@ class SnippetsPlugin extends MantisPlugin {
 			$page = plugin_page("snippet_list") . Snippet::global_url();
 			$label = plugin_lang_get("list_global_title");
 
-			return "<a href=\"{$page}\">{$label}</a>";
+			return '<a href="' . string_html_specialchars( $page ) . '">' . $label . '</a>';
 		}
 	}
 

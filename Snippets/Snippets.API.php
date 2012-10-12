@@ -329,7 +329,7 @@ class Snippet {
 
 	public static function global_url($p_is_global = true) {
 		if ($p_is_global) {
-			return '&amp;global=true';
+			return '&global=true';
 		}
 		return '';
 	}
