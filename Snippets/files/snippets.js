@@ -61,8 +61,10 @@ jQuery(document).ready(function($) {
 
 							for (snippetid in snippets) {
 								snippet = snippets[snippetid];
+								// Escape single quotes
+								value = snippet.value.replace(/'/g, "&#39;" );
 
-								option = $("<option value='" + snippet.value + "' title='" + snippet.value + "'>" + snippet.name + "</option>");
+								option = $("<option value='" + value + "' title='" + value + "'>" + snippet.name + "</option>");
 								select.append(option);
 							}
 
