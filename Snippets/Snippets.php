@@ -4,7 +4,7 @@
 # Licensed under the MIT license
 
 class SnippetsPlugin extends MantisPlugin {
-	public static $_version = "0.3";
+	public static $_version = "0.4";
 
 	public function register() {
 		$this->name = plugin_lang_get("name");
@@ -17,9 +17,9 @@ class SnippetsPlugin extends MantisPlugin {
 			"jQuery" => "1.3",
 		);
 
-		$this->author = "John Reese";
-		$this->contact = "jreese@leetcode.net";
-		$this->url = "http://leetcode.net";
+		$this->author = "John Reese and MantisBT Team";
+		$this->contact = "mantisbt-dev@lists.sourceforge.net";
+		$this->url = "https://github.com/mantisbt-plugins/snippets";
 	}
 
 	public function config() {
