@@ -3,53 +3,53 @@
 # Copyright 2010 (c) John Reese
 # Licensed under the MIT license
 
-$s_plugin_Snippets_ = "";
-$s_plugin_Snippets_name = "Bribes";
-$s_plugin_Snippets_description = "Permet aux utilisateurs d'enregistrer des blocs de texte";
+$s_plugin_Snippets_ = '';
+$s_plugin_Snippets_name = 'Bribes';
+$s_plugin_Snippets_description = 'Permet aux utilisateurs d\'enregistrer des blocs de texte';
 
-$s_plugin_Snippets_error_name_empty = "Le nom de la bribe est vide.";
-$s_plugin_Snippets_error_value_empty = "La valeur de la bribe est vide.";
+$s_plugin_Snippets_error_name_empty = 'Le nom de la bribe est vide.';
+$s_plugin_Snippets_error_value_empty = 'La valeur de la bribe est vide.';
 
-$s_plugin_Snippets_select_label = "Bribes: ";
-$s_plugin_Snippets_select_default = "--";
+$s_plugin_Snippets_select_label = 'Bribes: ';
+$s_plugin_Snippets_select_default = '--';
 
-$s_plugin_Snippets_list_title = "Mes Bribes";
-$s_plugin_Snippets_list_global_title = "Bribes Globales";
-$s_plugin_Snippets_list_name = "Nom";
-$s_plugin_Snippets_list_value = "Bribe";
+$s_plugin_Snippets_list_title = 'Mes Bribes';
+$s_plugin_Snippets_list_global_title = 'Bribes Globales';
+$s_plugin_Snippets_list_name = 'Nom';
+$s_plugin_Snippets_list_value = 'Bribe';
 
-$s_plugin_Snippets_edit_title = "Editer mes bribes";
-$s_plugin_Snippets_edit_global_title = "Editer les bribes globales";
-$s_plugin_Snippets_edit_name = "Nom";
-$s_plugin_Snippets_edit_value = "Bribe";
+$s_plugin_Snippets_edit_title = 'Editer mes bribes';
+$s_plugin_Snippets_edit_global_title = 'Editer les bribes globales';
+$s_plugin_Snippets_edit_name = 'Nom';
+$s_plugin_Snippets_edit_value = 'Bribe';
 
-$s_plugin_Snippets_create_title = "Créer une bribe";
-$s_plugin_Snippets_create_global_title = "Créer une bribe globale";
-$s_plugin_Snippets_create_name = "Nom";
-$s_plugin_Snippets_create_value = "Bribe";
+$s_plugin_Snippets_create_title = 'Créer une bribe';
+$s_plugin_Snippets_create_global_title = 'Créer une bribe globale';
+$s_plugin_Snippets_create_name = 'Nom';
+$s_plugin_Snippets_create_value = 'Bribe';
 
-$s_plugin_Snippets_config = "Configuration";
-$s_plugin_Snippets_config_title = "Configuration des Bribes";
-$s_plugin_Snippets_edit_global_threshold = "Editer les bribes globales";
-$s_plugin_Snippets_use_global_threshold = "Utiliser les bribes globales";
-$s_plugin_Snippets_edit_own_threshold = "Editer ses propres bribes";
+$s_plugin_Snippets_config = 'Configuration';
+$s_plugin_Snippets_config_title = 'Configuration des Bribes';
+$s_plugin_Snippets_edit_global_threshold = 'Editer les bribes globales';
+$s_plugin_Snippets_use_global_threshold = 'Utiliser les bribes globales';
+$s_plugin_Snippets_edit_own_threshold = 'Editer ses propres bribes';
 
-$s_plugin_Snippets_action_go = "Valider";
-$s_plugin_Snippets_action_create = "Créer";
-$s_plugin_Snippets_action_edit = "Editer";
-$s_plugin_Snippets_action_delete = "Supprimer";
-$s_plugin_Snippets_action_delete_confirm = "Voulez-vous vraiment supprimer les bribes suivantes ?";
-$s_plugin_Snippets_action_update = "Mettre à jour";
+$s_plugin_Snippets_action_go = 'Valider';
+$s_plugin_Snippets_action_create = 'Créer';
+$s_plugin_Snippets_action_edit = 'Editer';
+$s_plugin_Snippets_action_delete = 'Supprimer';
+$s_plugin_Snippets_action_delete_confirm = 'Voulez-vous vraiment supprimer les bribes suivantes ?';
+$s_plugin_Snippets_action_update = 'Mettre à jour';
 
-$s_plugin_Snippets_pattern_help = "
+$s_plugin_Snippets_pattern_help = '
 	Les bribes peuvent contenir des marqueurs qui seront remplacés par<br/>
 	des données contextuelles lors de leur insertion dans un champ texte.<br/>
 	Les marqueurs suivants sont pris en compte :<br/>
 	<table>
-	<tr><td><strong>%u</strong></td><td>Votre nom d'utilisateur</td></tr>
+	<tr><td><strong>%u</strong></td><td>Votre nom d\'utilisateur</td></tr>
 	<tr><td><strong>%r</strong></td><td>Le nom du rapporteur de la demande</td></tr>
 	<tr><td><strong>%h</strong></td><td>Le nom de celui à qui la demande est affectée</td></tr>
 	<tr><td><strong>%p</strong></td><td>Le nom du projet</td></tr>
 	</table>
-	";
+	';
 

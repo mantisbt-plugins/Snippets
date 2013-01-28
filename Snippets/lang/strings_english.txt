@@ -3,53 +3,53 @@
 # Copyright 2010 (c) John Reese
 # Licensed under the MIT license
 
-$s_plugin_Snippets_ = "";
-$s_plugin_Snippets_name = "Snippets";
-$s_plugin_Snippets_description = "Allow users to save blocks of text";
+$s_plugin_Snippets_ = '';
+$s_plugin_Snippets_name = 'Snippets';
+$s_plugin_Snippets_description = 'Allow users to save blocks of text';
 
-$s_plugin_Snippets_error_name_empty = "The snippet name is empty.";
-$s_plugin_Snippets_error_value_empty = "The snippet value is empty.";
+$s_plugin_Snippets_error_name_empty = 'The snippet name is empty.';
+$s_plugin_Snippets_error_value_empty = 'The snippet value is empty.';
 
-$s_plugin_Snippets_select_label = "Snippets: ";
-$s_plugin_Snippets_select_default = "--";
+$s_plugin_Snippets_select_label = 'Snippets: ';
+$s_plugin_Snippets_select_default = '--';
 
-$s_plugin_Snippets_list_title = "My Snippets";
-$s_plugin_Snippets_list_global_title = "Global Snippets";
-$s_plugin_Snippets_list_name = "Name";
-$s_plugin_Snippets_list_value = "Snippet";
+$s_plugin_Snippets_list_title = 'My Snippets';
+$s_plugin_Snippets_list_global_title = 'Global Snippets';
+$s_plugin_Snippets_list_name = 'Name';
+$s_plugin_Snippets_list_value = 'Snippet';
 
-$s_plugin_Snippets_edit_title = "Edit My Snippets";
-$s_plugin_Snippets_edit_global_title = "Edit Global Snippets";
-$s_plugin_Snippets_edit_name = "Name";
-$s_plugin_Snippets_edit_value = "Snippet";
+$s_plugin_Snippets_edit_title = 'Edit My Snippets';
+$s_plugin_Snippets_edit_global_title = 'Edit Global Snippets';
+$s_plugin_Snippets_edit_name = 'Name';
+$s_plugin_Snippets_edit_value = 'Snippet';
 
-$s_plugin_Snippets_create_title = "Create Snippet";
-$s_plugin_Snippets_create_global_title = "Create Global Snippet";
-$s_plugin_Snippets_create_name = "Name";
-$s_plugin_Snippets_create_value = "Snippet";
+$s_plugin_Snippets_create_title = 'Create Snippet';
+$s_plugin_Snippets_create_global_title = 'Create Global Snippet';
+$s_plugin_Snippets_create_name = 'Name';
+$s_plugin_Snippets_create_value = 'Snippet';
 
-$s_plugin_Snippets_config = "Configuration";
-$s_plugin_Snippets_config_title = "Snippet Configuration";
-$s_plugin_Snippets_edit_global_threshold = "Edit Global Snippets";
-$s_plugin_Snippets_use_global_threshold = "Use Global Snippets";
-$s_plugin_Snippets_edit_own_threshold = "Edit Own Snippets";
+$s_plugin_Snippets_config = 'Configuration';
+$s_plugin_Snippets_config_title = 'Snippet Configuration';
+$s_plugin_Snippets_edit_global_threshold = 'Edit Global Snippets';
+$s_plugin_Snippets_use_global_threshold = 'Use Global Snippets';
+$s_plugin_Snippets_edit_own_threshold = 'Edit Own Snippets';
 
-$s_plugin_Snippets_action_go = "Go";
-$s_plugin_Snippets_action_create = "create";
-$s_plugin_Snippets_action_edit = "Edit";
-$s_plugin_Snippets_action_delete = "Delete";
-$s_plugin_Snippets_action_delete_confirm = "Do you really want to delete the following snippets?";
-$s_plugin_Snippets_action_update = "Update";
+$s_plugin_Snippets_action_go = 'Go';
+$s_plugin_Snippets_action_create = 'create';
+$s_plugin_Snippets_action_edit = 'Edit';
+$s_plugin_Snippets_action_delete = 'Delete';
+$s_plugin_Snippets_action_delete_confirm = 'Do you really want to delete the following snippets?';
+$s_plugin_Snippets_action_update = 'Update';
 
-$s_plugin_Snippets_pattern_help = "
+$s_plugin_Snippets_pattern_help = '
 	Snippets can contain placeholder patterns that will be replaced<br/>
 	with contextual data when pasted into a text field. The following<br/>
 	placeholders are supported:<br/>
 	<table>
 	<tr><td><strong>%u</strong></td><td>Your username</td></tr>
-	<tr><td><strong>%r</strong></td><td>Bug reporter's name</td></tr>
-	<tr><td><strong>%h</strong></td><td>Bug handler's name</td></tr>
+	<tr><td><strong>%r</strong></td><td>Bug reporter\'s name</td></tr>
+	<tr><td><strong>%h</strong></td><td>Bug handler\'s name</td></tr>
 	<tr><td><strong>%p</strong></td><td>Project name</td></tr>
 	</table>
-	";
+	';
 
