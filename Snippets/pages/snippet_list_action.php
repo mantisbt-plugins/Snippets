@@ -51,16 +51,21 @@ if ($action == "delete") {
 ?>
 
 <br/>
+<div class="form-container">
 <form action="<?php echo plugin_page("snippet_list_action") ?>" method="post">
 <?php echo form_security_field("plugin_Snippets_list_action") ?>
 <?php if ($global): ?><input type="hidden" name="global" value="true"/><?php endif ?>
 <input type="hidden" name="action" value="update"/>
-<table class="width75" align="center">
 
+<table>
+
+<thead>
 <tr>
 <td class="form-title" colspan="3"><?php echo plugin_lang_get($global ? "edit_global_title" : "edit_title") ?></td>
 </tr>
+</thead>
 
+<tbody>
 <?php $first = true; foreach ($snippets as $snippet): ?>
 <?php if (!$first): ?><tr class="spacer"><td></td></tr><?php endif ?>
 
@@ -76,14 +81,18 @@ if ($action == "delete") {
 </tr>
 
 <?php $first = false; endforeach ?>
+</tbody>
 
+<tfoot>
 <tr>
-<td><input type="checkbox" class="snippets_select_all" checked="checked"/></td>
+<td class="center"><input type="checkbox" class="snippets_select_all" checked="checked"/></td>
 <td class="center" colspan="2"><input type="submit" value="<?php echo plugin_lang_get("action_edit") ?>"/></td>
 </tr>
+</tfoot>
 
 </table>
 </form>
+</div>
 
 <?php
 	html_page_bottom();
