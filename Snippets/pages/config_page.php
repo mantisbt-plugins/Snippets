@@ -1,7 +1,7 @@
 <?php
 
 # Copyright (c) 2010 - 2012  John Reese
-# Copyright (c) 2012 - 2013  MantisBT Team - mantisbt-dev@lists.sourceforge.net
+# Copyright (c) 2012 - 2014  MantisBT Team - mantisbt-dev@lists.sourceforge.net
 # Licensed under the MIT license
 
 access_ensure_global_level(config_get("manage_plugin_threshold"));
