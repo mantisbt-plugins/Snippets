@@ -70,11 +70,8 @@ jQuery(document).ready(function($) {
 							}
 
 							select.change(function() {
-									range = textarea.caret();
-									value = textarea.val(); //textarea.val() + $(this).val());
 									text = $(this).val();
-									textarea.val(value.substr(0, range.start) + text + value.substr(range.end, value.length));
-									textarea.caret(range.start + text.length);
+									textarea.textrange('replace', text);
 									$(this).val("");
 								});
 							label.append(select);
