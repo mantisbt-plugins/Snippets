@@ -15,12 +15,9 @@ class SnippetsPlugin extends MantisPlugin {
 		$this->version = self::$_version;
 
 		$this->requires = array(
-			"MantisCore" => "1.2.0",
+			"MantisCore" => "1.2.0, < 1.3",
+			"jQuery" => "1.3",
 		);
-		# MantisBT 1.3 comes bundled with jQuery so we only need this for 1.2.x
-		if( version_compare( MANTIS_VERSION, '1.3', '<' ) ) {
-			$this->requires["jQuery"] = "1.3";
-		}
 
 		$this->author = "John Reese and MantisBT Team";
 		$this->contact = "mantisbt-dev@lists.sourceforge.net";
