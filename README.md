@@ -13,11 +13,10 @@ Define snippets of text that can be easily pasted into text fields
 
 ## Requirements
 
-The plugin requires [Mantis](http://www.mantisbt.org/) version 1.2.0 or higher
-and jQuery version 1.6 or later.
+The plugin requires [Mantis](http://www.mantisbt.org/) version 1.3 or higher.
 
-Install the [jQuery plugin](https://github.com/mantisbt-plugins/jquery)
-before proceeding with the steps below.
+Note that jQuery version 1.6 or later is also required, but since a more recent
+version of the library comes bundled with MantisBT, no extra setup is necessary.
 
 
 ## Installation
