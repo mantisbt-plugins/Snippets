@@ -23,7 +23,7 @@ jQuery(document).ready(function($) {
 
 		// Snippet list behaviors
 		$("input.snippets_select_all").change(function(){
-				$("input[name='snippet_list[]']").attr("checked", $(this).attr("checked"));
+				$("input[name='snippet_list[]']").prop("checked", $(this).prop("checked"));
 			});
 
 		// Snippet pattern help
