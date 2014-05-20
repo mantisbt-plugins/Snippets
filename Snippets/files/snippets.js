@@ -31,8 +31,7 @@ jQuery(document).ready(function($) {
 				content: SnippetsLang("pattern_help"),
 				baseClass: "snippetsTooltip",
 				fixed: false,
-				//position: "bottom",
-				offset: [10, 0]
+				offset: [20, 20],
 				});
 			});
 
