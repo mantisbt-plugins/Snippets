@@ -5,7 +5,7 @@
 # Licensed under the MIT license
 
 class SnippetsPlugin extends MantisPlugin {
-	public static $_version = "0.5";
+	public static $_version = "0.6";
 
 	public function register() {
 		$this->name = plugin_lang_get("name");
@@ -29,6 +29,7 @@ class SnippetsPlugin extends MantisPlugin {
 			"edit_global_threshold" => ADMINISTRATOR,
 			"use_global_threshold" => REPORTER,
 			"edit_own_threshold" => REPORTER,
+			"textarea_names" => "bugnote_text",
 		);
 	}
 
@@ -90,4 +91,3 @@ class SnippetsPlugin extends MantisPlugin {
 		);
 	}
 }
-

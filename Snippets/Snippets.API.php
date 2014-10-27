@@ -35,13 +35,22 @@ function xmlhttprequest_plugin_snippets() {
 	$snippets = Snippet::load_by_type_user(0, $user_id, $use_global);
 	$snippets = Snippet::clean($snippets, "form", $bug_id);
 
-	$data = array(
-		"snippets" => SnippetsPlugin::$_version,
+	# split names of textareas found in "plugin_Snippets_textarea_names" option and
+	#  make an array of "textarea[name='FIELD_NAME']" strings
+	$textareaSelectors = array_map(function($name) {
+			return "textarea[name='$name']";
+		}, preg_split("/[,;\s]+/", plugin_config_get("textarea_names", "bugnote_text"))
 	);
 
-	# arrange the available snippets into the data array
+	$data = array(
+		"snippets" => SnippetsPlugin::$_version,
+		# return configured jQuery selectors for textareas in "selector" field
+		"selector" => implode(",", $textareaSelectors)
+	);
+
+	# arrange the available snippets into the data array and return it in "texts" field
 	foreach($snippets as $snippet) {
-		$data["bugnote_text"][$snippet->id] = $snippet;
+		$data["texts"][$snippet->id] = $snippet;
 	}
 
 	$json = json_encode($data);
