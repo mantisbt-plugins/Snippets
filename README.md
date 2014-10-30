@@ -60,10 +60,8 @@ current position. If text is currently selected, the Snippet will replace the
 selection.
 
 By default only the *Bug Note* field is configured to use Snippets.
-Other text fields (*Description*, *Steps To Reproduce* as well as *Additional
-Information*) can be setup to use Snippets via configuration option `plugin_Snippets_textarea_names`
-where you can list names of fields you are interested in, i.e. `bugnote_text, steps_to_reproduce, body` (`body`
-refers to text area on *Send reminder* page).
+Other *text* fields (*Description*, *Steps To Reproduce* as well as *Additional
+Information*) can be setup to use Snippets via configuration page `Manage > Global Snippets > Configuration`.
 
 ## Support
 
