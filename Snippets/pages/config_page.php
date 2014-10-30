@@ -34,6 +34,22 @@ print_manage_menu();
 <td><select name="edit_own_threshold"><?php print_enum_string_option_list( 'access_levels', plugin_config_get( 'edit_own_threshold' ) ) ?></select></td>
 </tr>
 
+<tr <?php echo helper_alternate_class() ?>>
+<td class="category"><?php echo plugin_lang_get( 'textarea_names' ) ?></td>
+<td>
+<?php
+	$configuredNames = Snippet::get_configured_field_names();
+	$availableNames = Snippet::get_available_field_names();
+
+	foreach( $availableNames as $name => $lang_get_param ) {
+		echo '<div><label><input type="checkbox" name="textarea_names[]" value="', $name, '" ';
+		check_checked( in_array($name, $configuredNames) );
+		echo '/>', lang_get( $lang_get_param ), "</label></div>\n";
+	}
+?>
+</td>
+</tr>
+
 <tr>
 <td class="center" colspan="2"><input type="submit" value="<?php echo plugin_lang_get("action_update") ?>"/></td>
 </tr>
@@ -43,4 +59,3 @@ print_manage_menu();
 
 <?php
 html_page_bottom();
-
