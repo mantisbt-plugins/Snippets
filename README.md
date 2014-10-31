@@ -59,11 +59,9 @@ Once selection is made, the Snippet's text will be inserted in the field at the
 current position. If text is currently selected, the Snippet will replace the
 selection.
 
-Note that currently only the *Bug Note* field is configured to use Snippets.
-Other text fields (*Description*, *Steps To Reproduce* as well as *Additional
-Information*) can be setup to use Snippets with minimal configuration effort
-(see [this example](https://github.com/mantisbt-plugins/snippets/issues/3)).
-
+By default only the *Bug Note* field is configured to use Snippets.
+Other *text* fields (*Description*, *Steps To Reproduce* as well as *Additional
+Information*) can be setup to use Snippets via configuration page `Manage > Global Snippets > Configuration`.
 
 ## Support
 
