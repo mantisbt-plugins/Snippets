@@ -5,7 +5,7 @@
 # Licensed under the MIT license
 
 class SnippetsPlugin extends MantisPlugin {
-	public static $_version = "0.5";
+	public static $_version = "1.3.0";
 
 	public function register() {
 		$this->name = plugin_lang_get("name");
@@ -15,8 +15,7 @@ class SnippetsPlugin extends MantisPlugin {
 		$this->version = self::$_version;
 
 		$this->requires = array(
-			"MantisCore" => "1.2.0, < 1.3",
-			"jQuery" => "1.6",
+			"MantisCore" => "1.3.0"
 		);
 
 		$this->author = "John Reese and MantisBT Team";
