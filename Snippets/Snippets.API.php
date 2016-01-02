@@ -35,13 +35,24 @@ function xmlhttprequest_plugin_snippets() {
 	$snippets = Snippet::load_by_type_user(0, $user_id, $use_global);
 	$snippets = Snippet::clean($snippets, "form", $bug_id);
 
-	$data = array(
-		"snippets" => SnippetsPlugin::$_version,
+	# split names of textareas found in "plugin_Snippets_textarea_names" option and
+	#  make an array of "textarea[name='FIELD_NAME']" strings
+	$textareaSelectors = array_map(
+		function($name) {
+			return "textarea[name='$name']";
+		},
+		Snippet::get_configured_field_names()
 	);
 
-	# arrange the available snippets into the data array
+	$data = array(
+		"snippets" => SnippetsPlugin::$_version,
+		# return configured jQuery selectors for textareas in "selector" field
+		"selector" => implode(",", $textareaSelectors)
+	);
+
+	# arrange the available snippets into the data array and return it in "texts" field
 	foreach($snippets as $snippet) {
-		$data["bugnote_text"][$snippet->id] = $snippet;
+		$data["texts"][$snippet->id] = $snippet;
 	}
 
 	$json = json_encode($data);
@@ -49,6 +60,7 @@ function xmlhttprequest_plugin_snippets() {
 
 	plugin_pop_current();
 }
+
 
 /**
  * Object representing a saved block of text.
@@ -334,5 +346,26 @@ class Snippet {
 		}
 		return '';
 	}
-}
 
+	/**
+	 * Returns an array with names of form fields (text areas) where snippets should be
+	 * available for selection.
+	 */
+	public static function get_configured_field_names() {
+		return preg_split("/[,;\s]+/", plugin_config_get("textarea_names", "bugnote_text"));
+	}
+
+	/**
+	 * Returns an array of ('text area field name' => 'language resource identifier') pairs
+	 * that describe available (supported) text areas. Values will be passed to lang_get().
+	 */
+	public static function get_available_field_names() {
+		return array(
+			'bugnote_text' => 'bugnote',
+			'description' => 'description',
+			'steps_to_reproduce' => 'steps_to_reproduce',
+			'additional_information' => 'additional_information',
+			'body' => 'reminder'
+		);
+	}
+}

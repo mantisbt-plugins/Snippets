@@ -41,18 +41,16 @@ jQuery(document).ready(function($) {
 		 * then insert select boxes into the DOM for each supported textarea.
 		 */
 		function SnippetsInit() {
-			var textareas = $("textarea[name='bugnote_text']");
-
 			function SnippetsUI(data) {
 				var textarrays = data;
 
-				textareas.each(function(index) {
+				$(data.selector).each(function(index) {
 						var textarea_name = $(this).attr("name");
 						var textarea = $(this);
 
 						try {
 
-						snippets = textarrays[textarea_name];
+						snippets = textarrays["texts"];
 						if (snippets != null) {
 							label = $("<label>" + SnippetsLang("label") + " </label>");
 
@@ -87,7 +85,8 @@ jQuery(document).ready(function($) {
 					});
 			}
 
-			if (textareas.length > 0) {
+			//if we have any textareas then fetch snippets
+			if ($("textarea").length > 0) {
 				var bug_id = 0;
 
 				$("form[name='bugnoteadd'] input[name='bug_id']").each(function() {
