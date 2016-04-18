@@ -69,13 +69,13 @@ if ($action == "delete") {
 <?php $first = true; foreach ($snippets as $snippet): ?>
 <?php if (!$first): ?><tr class="spacer"><td></td></tr><?php endif ?>
 
-<tr class="row-1">
-<td class="center" rowspan="2"><input type="checkbox" name="snippet_list[]" value="<?php echo $snippet->id ?>" checked="checked"/></td>
+<tr>
+<td class="center" rowspan="2"><input type="checkbox" class="ace"name="snippet_list[]" value="<?php echo $snippet->id ?>" checked="checked"/><span class="lbl"></span></td>
 <td class="category"><?php echo plugin_lang_get("edit_name") ?></td>
 <td><input name="name_<?php echo $snippet->id ?>" value="<?php echo $snippet->name ?>"/></td>
 </tr>
 
-<tr class="row-2">
+<tr>
 <td class="category"><?php echo plugin_lang_get("edit_value") ?></td>
 <td class="snippetspatternhelp"><textarea name="value_<?php echo $snippet->id ?>" cols="80" rows="6"><?php echo $snippet->value ?></textarea></td>
 </tr>
@@ -85,7 +85,7 @@ if ($action == "delete") {
 
 <tfoot>
 <tr>
-<td class="center"><input type="checkbox" class="snippets_select_all" checked="checked"/></td>
+<td class="center"><input type="checkbox" class="ace"checked="checked"/><span class="lbl"></span></td>
 <td class="center" colspan="2"><input type="submit" value="<?php echo plugin_lang_get("action_edit") ?>"/></td>
 </tr>
 </tfoot>

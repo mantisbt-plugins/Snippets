@@ -6,23 +6,30 @@
 
 access_ensure_global_level(config_get("manage_plugin_threshold"));
 
-html_page_top();
+layout_page_header();
+
+layout_page_begin();
 print_manage_menu();
 ?>
 
-<br/>
+<div class="col-md-12 col-xs-12">
+<div class="space-10"></div>
+
 <div class="form-container">
 <form action="<?php echo plugin_page("config") ?>" method="post">
 <?php echo form_security_field("plugin_Snippets_config") ?>
-<table>
+<div class="widget-box widget-color-blue2">
+<div class="widget-header widget-header-small">
+	<h4 class="widget-title lighter">
+		<i class="ace-icon fa fa-file-o"></i>
+		<?php echo plugin_lang_get( 'config_title' ) ?>
+	</h4>
+</div>
 
-<thead>
-	<tr>
-		<td class="form-title" colspan="2"><?php echo plugin_lang_get("config_title") ?></td>
-	</tr>
-</thead>
-
-<tbody>
+<div class="widget-body">
+	<div class="widget-main no-padding">
+		<div class="table-responsive">
+			<table class="table table-bordered table-condensed table-striped">
 	<tr>
 		<td class="category"><?php echo plugin_lang_get( 'edit_global_threshold' ) ?></td>
 		<td><select name="edit_global_threshold"><?php
@@ -53,27 +60,26 @@ print_manage_menu();
 	$availableNames = Snippet::get_available_field_names();
 
 	foreach( $availableNames as $name => $lang_get_param ) {
-		echo '<div><label><input type="checkbox" name="textarea_names[]" value="', $name, '" ';
+		echo '<div><label><input type="checkbox" class="ace"name="textarea_names[]" value="', $name, '" ';
 		check_checked( in_array( $name, $configuredNames ) );
-		echo '/>', lang_get( $lang_get_param ), "</label></div>\n";
+		echo '/><span class="lbl">', lang_get( $lang_get_param ), "</span></label></div>\n";
 	}
 ?>
 		</td>
 	</tr>
-
-</tbody>
-
-<tfoot>
-	<tr>
-		<td class="center" colspan="2">
-			<input type="submit" value="<?php echo plugin_lang_get("action_update") ?>"/>
-		</td>
-	</tr>
-</tfoot>
-
 </table>
+</div>
+</div>
+
+<div class="widget-toolbox padding-8 clearfix">
+	<input type="submit" class="btn btn-primary btn-white btn-round" value="<?php echo plugin_lang_get('action_update') ?>"/>
+</div>
+</div>
+
+</div>
 </form>
+</div>
 </div>
 
 <?php
-html_page_bottom();
+layout_page_end();
