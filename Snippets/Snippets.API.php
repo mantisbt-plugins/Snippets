@@ -110,7 +110,7 @@ class Snippet {
 					".db_param()."
 				)";
 
-			db_query_bound($query, array(
+			db_query($query, array(
 				$this->type,
 				$this->name,
 				$this->value,
@@ -128,7 +128,7 @@ class Snippet {
 				user_id=".db_param()."
 				WHERE id=".db_param();
 
-			db_query_bound($query, array(
+			db_query($query, array(
 				$this->type,
 				$this->name,
 				$this->value,
@@ -234,13 +234,13 @@ class Snippet {
 			$ids = implode(",", $ids);
 
 			$query = "SELECT * FROM {$snippet_table} WHERE id IN ({$ids}) AND user_id=".db_param();
-			$result = db_query_bound($query, array($user_id));
+			$result = db_query($query, array($user_id));
 
 			return self::from_db_result($result);
 
 		} else {
 			$query = "SELECT * FROM {$snippet_table} WHERE id=".db_param()." AND user_id=".db_param();
-			$result = db_query_bound($query, array($id, $user_id));
+			$result = db_query($query, array($id, $user_id));
 
 			$snippets = self::from_db_result($result);
 			return $snippets[0];
@@ -265,7 +265,7 @@ class Snippet {
 		$snippet_table = plugin_table("snippet");
 
 		$query = "SELECT * FROM {$snippet_table} WHERE type=".db_param()." AND user_id IN ({$user_ids}) ORDER BY name";
-		$result = db_query_bound($query, array($type));
+		$result = db_query($query, array($type));
 
 		return self::from_db_result($result);
 	}
@@ -280,7 +280,7 @@ class Snippet {
 		$snippet_table = plugin_table("snippet");
 
 		$query = "SELECT * FROM {$snippet_table} WHERE user_id=".db_param()." ORDER BY name";
-		$result = db_query_bound($query, array($user_id));
+		$result = db_query($query, array($user_id));
 
 		return self::from_db_result($result);
 	}
@@ -303,11 +303,11 @@ class Snippet {
 			$ids = implode(",", $ids);
 
 			$query = "DELETE FROM {$snippet_table} WHERE id IN ({$ids}) AND user_id=".db_param();
-			db_query_bound($query, array($user_id));
+			db_query($query, array($user_id));
 
 		} else {
 			$query = "DELETE FROM {$snippet_table} WHERE id=".db_param()." AND user_id=".db_param();
-			db_query_bound($query, array($id, $user_id));
+			db_query($query, array($id, $user_id));
 		}
 	}
 
@@ -319,7 +319,7 @@ class Snippet {
 	public static function delete_by_user_id($user_id) {
 		$snippet_table = plugin_table("snippet");
 		$query = "DELETE FROM {$snippet_table} WHERE user_id=".db_param();
-		db_query_bound($query, array($user_id));
+		db_query($query, array($user_id));
 	}
 
 	/**
