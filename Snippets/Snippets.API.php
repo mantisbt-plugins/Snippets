@@ -364,7 +364,7 @@ class Snippet {
 			'bugnote_text' => 'bugnote',
 			'description' => 'description',
 			'steps_to_reproduce' => 'steps_to_reproduce',
-			'additional_information' => 'additional_information',
+			'additional_info' => 'additional_information',
 			'body' => 'reminder'
 		);
 	}
