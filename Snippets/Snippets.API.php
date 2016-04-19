@@ -185,7 +185,6 @@ class Snippet {
 	 * @return array Updated snippet objects
 	 */
 	public static function patterns($snippets, $bug_id) {
-		$reporter = '%r';
 		$handler = '%h';
 
 		$current_user = auth_get_current_user_id();
@@ -201,12 +200,12 @@ class Snippet {
 			}
 
 			$project = project_get_name($bug->project_id);
-
+            $username = user_get_name($current_user);
 		} else {
+            $username = user_get_name($current_user);
+            $reporter = $username;
 			$project = project_get_name(helper_get_current_project());
 		}
-
-		$username = user_get_name($current_user);
 
 		foreach ($snippets as $snippet) {
 			$snippet->value = str_replace(
