@@ -1,7 +1,7 @@
 <?php
 
 # Copyright (c) 2010 - 2012  John Reese
-# Copyright (c) 2012 - 2014  MantisBT Team - mantisbt-dev@lists.sourceforge.net
+# Copyright (c) 2012 - 2016  MantisBT Team - mantisbt-dev@lists.sourceforge.net
 # Licensed under the MIT license
 
 define( 'PLACEHOLDER_USER', '{user}' );
