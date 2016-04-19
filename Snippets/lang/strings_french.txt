@@ -47,10 +47,10 @@ $s_plugin_Snippets_pattern_help = '
 	des données contextuelles lors de leur insertion dans un champ texte.<br/>
 	Les marqueurs suivants sont pris en compte :<br/>
 	<table>
-	<tr><td><strong>%u</strong></td><td>Votre nom d\'utilisateur</td></tr>
-	<tr><td><strong>%r</strong></td><td>Le nom du rapporteur de la demande</td></tr>
-	<tr><td><strong>%h</strong></td><td>Le nom de celui à qui la demande est affectée</td></tr>
-	<tr><td><strong>%p</strong></td><td>Le nom du projet</td></tr>
+	<tr><td><strong>{user}</strong></td><td>Votre nom d\'utilisateur</td></tr>
+	<tr><td><strong>{reporter}</strong></td><td>Le nom du rapporteur de la demande</td></tr>
+	<tr><td><strong>{handler}</strong></td><td>Le nom de celui à qui la demande est affectée</td></tr>
+	<tr><td><strong>{project}</strong></td><td>Le nom du projet</td></tr>
 	</table>
 	';
 

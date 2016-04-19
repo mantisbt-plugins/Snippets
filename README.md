@@ -43,10 +43,10 @@ replaced by the corresponding contents when inserted:
 
  Placeholder | Description
 :-----------:|-------------------------
-%u           | your username
-%r           | the bug reporter's name
-%h           | the bug handler's name
-%p           | the project name
+{user}       | your username
+{reporter}   | the bug reporter's name
+{handler}    | the bug handler's name
+{project}    | the project name
 
 
 ### Using Snippets

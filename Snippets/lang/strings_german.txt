@@ -47,10 +47,10 @@ $s_plugin_Snippets_pattern_help = '
 	ein Textfeld durch einen aktuellen Wert ersetzt werden<br/>
 	Die folgenden Platzhalter werden unterstützt:<br/>
 	<table>
-	<tr><td><strong>%u</strong></td><td>Ihr Benutzername</td></tr>
-	<tr><td><strong>%r</strong></td><td>Benutzername des Reporters</td></tr>
-	<tr><td><strong>%h</strong></td><td>Benutzername dem der Eintrag zugeordnet ist</td></tr>
-	<tr><td><strong>%p</strong></td><td>Projektname</td></tr>
+	<tr><td><strong>{user}</strong></td><td>Ihr Benutzername</td></tr>
+	<tr><td><strong>{reporter}</strong></td><td>Benutzername des Reporters</td></tr>
+	<tr><td><strong>{handler}</strong></td><td>Benutzername dem der Eintrag zugeordnet ist</td></tr>
+	<tr><td><strong>{project}</strong></td><td>Projektname</td></tr>
 	</table>
 	';
 
