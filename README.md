@@ -1,7 +1,7 @@
 # Snippets plugin for MantisBT
 
 Copyright (c) 2010 - 2012  John Reese - http://noswap.com  
-Copyright (c) 2012 - 2014  MantisBT Team - mantisbt-dev@lists.sourceforge.net
+Copyright (c) 2012 - 2016  MantisBT Team - mantisbt-dev@lists.sourceforge.net
 
 Released under the [MIT license](http://opensource.org/licenses/MIT)
 
@@ -75,3 +75,10 @@ We encourage you to submit Bug reports and enhancements requests on the
 [Github issues tracker](https://github.com/mantisbt-plugins/snippets/issues).
 If you would like to propose a patch, do not hesitate to submit a new
 [Pull Request](https://github.com/mantisbt-plugins/snippets/compare/).
+
+## MantisBT Versions Supported
+
+- MantisBT v1.3.x - master branch
+- MantisBT v1.3.x (modern UI) - modern-ui branch (see https://github.com/mantishub/mantisbt for modern UI)
+- MantisBT v1.2.x - master-1.2.x branch
+
