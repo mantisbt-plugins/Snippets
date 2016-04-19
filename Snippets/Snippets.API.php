@@ -1,8 +1,13 @@
 <?php
 
 # Copyright (c) 2010 - 2012  John Reese
-# Copyright (c) 2012 - 2014  MantisBT Team - mantisbt-dev@lists.sourceforge.net
+# Copyright (c) 2012 - 2016  MantisBT Team - mantisbt-dev@lists.sourceforge.net
 # Licensed under the MIT license
+
+define( 'PLACEHOLDER_USER', '{user}' );
+define( 'PLACEHOLDER_REPORTER', '{reporter}' );
+define( 'PLACEHOLDER_HANDLER', '{handler}' );
+define( 'PLACEHOLDER_PROJECT', '{project}' );
 
 function xmlhttprequest_plugin_snippets_text() {
 	plugin_push_current("Snippets");
@@ -185,8 +190,7 @@ class Snippet {
 	 * @return array Updated snippet objects
 	 */
 	public static function patterns($snippets, $bug_id) {
-		$reporter = '%r';
-		$handler = '%h';
+		$handler = PLACEHOLDER_HANDLER;
 
 		$current_user = auth_get_current_user_id();
 
@@ -195,18 +199,22 @@ class Snippet {
 			user_cache_array_rows(array($bug->reporter_id, $bug->handler_id, $current_user));
 
 			$reporter = user_get_name($bug->reporter_id);
-			$handler = user_get_name($bug->handler_id);
-			$project = project_get_name($bug->project_id);
+            
+			if($bug->handler_id != NO_USER) {
+				$handler = user_get_name($bug->handler_id);
+			}
 
+			$project = project_get_name($bug->project_id);
+            $username = user_get_name($current_user);
 		} else {
+            $username = user_get_name($current_user);
+            $reporter = $username;
 			$project = project_get_name(helper_get_current_project());
 		}
 
-		$username = user_get_name($current_user);
-
 		foreach ($snippets as $snippet) {
 			$snippet->value = str_replace(
-				array('%u', '%r', '%h', '%p'),
+				array(PLACEHOLDER_USER, PLACEHOLDER_REPORTER, PLACEHOLDER_HANDLER, PLACEHOLDER_PROJECT),
 				array($username, $reporter, $handler, $project),
 				$snippet->value);
 		}
@@ -331,13 +339,32 @@ class Snippet {
 	private static function from_db_result($result) {
 		$snippets = array();
 		while ($row = db_fetch_array($result)) {
-			$snippet = new Snippet($row["type"], $row["name"], $row["value"], $row["user_id"]);
+			$snippet = new Snippet(
+				$row['type'],
+				$row['name'],
+				Snippet::replace_legacy_placeholders($row['value']),
+				$row['user_id']);
 			$snippet->id = $row["id"];
 
 			$snippets[$row["id"]] = $snippet;
 		}
 
 		return $snippets;
+	}
+
+	/**
+	 * Replace legacy placeholders (e.g. %u) with modern ones (e.g. {user}).
+	 *
+	 * @param string $p_value The snippet to process.
+	 * @return string The processed snippet.
+	 */
+	private static function replace_legacy_placeholders($p_value) {
+		$t_value = $p_value;
+		$t_value = str_replace('%u', PLACEHOLDER_USER,     $t_value);
+		$t_value = str_replace('%r', PLACEHOLDER_REPORTER, $t_value);
+		$t_value = str_replace('%h', PLACEHOLDER_HANDLER,  $t_value);
+		$t_value = str_replace('%p', PLACEHOLDER_PROJECT,  $t_value);
+		return $t_value;        
 	}
 
 	public static function global_url($p_is_global = true) {
