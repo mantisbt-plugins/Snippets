@@ -5,7 +5,7 @@
 # Licensed under the MIT license
 
 class SnippetsPlugin extends MantisPlugin {
-	public static $_version = "1.0.0";
+	public static $_version = '1.1.0';
 
 	public function register() {
 		$this->name = plugin_lang_get("name");
