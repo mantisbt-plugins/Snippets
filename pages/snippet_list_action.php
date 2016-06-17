@@ -47,7 +47,8 @@ if ($action == "delete") {
 ### EDIT
 } elseif ($action == "edit") {
 	$snippets = Snippet::clean($snippets, "form");
-	html_page_top();
+	layout_page_header();
+	layout_page_begin();
 ?>
 
 <br/>
@@ -95,7 +96,7 @@ if ($action == "delete") {
 </div>
 
 <?php
-	html_page_bottom();
+	layout_page_end();
 
 ### UPDATE
 } elseif ($action == "update") {
