@@ -80,7 +80,7 @@ if( $global ) {
 					</div>
 				</div>
 				<div class="widget-toolbox padding-8 clearfix">
-					<input class="ace" type="checkbox"/><span class="lbl"></span>
+					<input class="ace snippets_select_all" type="checkbox"/><span class="lbl"></span>
 					<select class="snippets_select_action" name="action">
 						<option value="edit"><?php echo plugin_lang_get( "action_edit" ) ?></option>
 						<option value="delete"><?php echo plugin_lang_get( "action_delete" ) ?></option>
