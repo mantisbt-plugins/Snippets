@@ -77,6 +77,7 @@ if ($action == "delete") {
 <?php if (!$first): ?><tr class="spacer"><td></td></tr><?php endif ?>
 
 <tr>
+<td class="center" rowspan="2"><input type="checkbox" name="snippet_list[]" value="<?php echo $snippet->id ?>" checked="checked"/></td>
 <td class="category"><?php echo plugin_lang_get("edit_name") ?></td>
 <td><input name="name_<?php echo $snippet->id ?>" value="<?php echo $snippet->name ?>"/></td>
 </tr>
@@ -90,7 +91,7 @@ if ($action == "delete") {
 
 <tfoot>
 <tr>
-<td class="center" colspan="2"><input type="submit" value="<?php echo plugin_lang_get("action_edit") ?>"/></td>
+<td class="center" colspan="3"><input type="submit" value="<?php echo plugin_lang_get("action_edit") ?>"/></td>
 </tr>
 </tfoot>
 
