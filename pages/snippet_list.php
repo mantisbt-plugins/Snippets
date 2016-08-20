@@ -21,11 +21,7 @@ layout_page_header();
 
 layout_page_begin();
 
-if( $global ) {
-	print_manage_menu();
-} else {
-	print_account_menu();
-}
+print_account_menu();
 ?>
 <div class="col-md-12 col-xs-12">
 
