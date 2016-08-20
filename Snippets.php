@@ -53,12 +53,23 @@ class SnippetsPlugin extends MantisPlugin {
 	}
 
 	public function menu_account($event, $user_id) {
+		$t_return = array();
+
 		if (access_has_global_level(plugin_config_get("edit_own_threshold"))) {
 			$page = plugin_page("snippet_list");
 			$label = plugin_lang_get("list_title");
 
-			return "<a href=\"{$page}\">{$label}</a>";
+			$t_return[] = "<a href=\"{$page}\">{$label}</a>";
 		}
+
+		if (access_has_global_level(plugin_config_get("edit_global_threshold"))) {
+			$page = plugin_page("snippet_list") . Snippet::global_url();
+			$label = plugin_lang_get("list_global_title");
+
+			$t_return[] = '<a href="' . string_html_specialchars( $page ) . '">' . $label . '</a>';
+		}
+
+		return $t_return;
 	}
 
 	public function menu_manage($event, $user_id) {
