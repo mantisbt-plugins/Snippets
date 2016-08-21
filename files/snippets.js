@@ -74,7 +74,7 @@ jQuery(document).ready(function($) {
 							label.append(select);
 
 							$(this).before(label);
-							$(this).before("<br/>");
+							$(this).before('<div class="space-4"></div>');
 
 							$(this).parent("td").removeClass("center");
 						}
