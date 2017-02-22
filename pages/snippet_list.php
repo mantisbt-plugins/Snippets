@@ -43,7 +43,7 @@ print_account_menu();
 				<input type="hidden" name="global" value="true"/>
 <?php
 		if( $admin ) {
-            print_button( plugin_page( "config_page" ), plugin_lang_get( "config" ) );
+			print_form_button( plugin_page( 'config_page' ), plugin_lang_get( 'config' ) );
 		}
 	}
 ?>
