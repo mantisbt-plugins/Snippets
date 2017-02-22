@@ -78,7 +78,7 @@ If you would like to propose a patch, do not hesitate to submit a new
 
 ## MantisBT Versions Supported
 
-- MantisBT v1.3.x - master branch
-- MantisBT v1.3.x (modern UI) - modern-ui branch (see https://github.com/mantishub/mantisbt for modern UI)
-- MantisBT v1.2.x - master-1.2.x branch
+- MantisBT v2.x   - `master` branch
+- MantisBT v1.3.x - `master-1.3.x` branch
+- MantisBT v1.2.x - `master-1.2.x` branch
 
