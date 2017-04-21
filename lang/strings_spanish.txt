@@ -6,10 +6,10 @@
 
 $s_plugin_Snippets_ = '';
 $s_plugin_Snippets_name = 'Snippets';
-$s_plugin_Snippets_description = 'Allow users to save blocks of text';
+$s_plugin_Snippets_description = 'Permitir a los usuarios salvar bloques de texto';
 
-$s_plugin_Snippets_error_name_empty = 'The snippet name is empty.';
-$s_plugin_Snippets_error_value_empty = 'The snippet value is empty.';
+$s_plugin_Snippets_error_name_empty = 'El nombre del snippet esta vacío.';
+$s_plugin_Snippets_error_value_empty = 'El valor del snippet está vacío.';
 
 $s_plugin_Snippets_select_label = 'Snippets: ';
 $s_plugin_Snippets_select_default = '--';
