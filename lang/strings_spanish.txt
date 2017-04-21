@@ -1,0 +1,57 @@
+<?php
+
+# Copyright (c) 2010 - 2012  John Reese
+# Copyright (c) 2012 - 2016  MantisBT Team - mantisbt-dev@lists.sourceforge.net
+# Licensed under the MIT license
+
+$s_plugin_Snippets_ = '';
+$s_plugin_Snippets_name = 'Snippets';
+$s_plugin_Snippets_description = 'Allow users to save blocks of text';
+
+$s_plugin_Snippets_error_name_empty = 'The snippet name is empty.';
+$s_plugin_Snippets_error_value_empty = 'The snippet value is empty.';
+
+$s_plugin_Snippets_select_label = 'Snippets: ';
+$s_plugin_Snippets_select_default = '--';
+
+$s_plugin_Snippets_list_title = 'Mis Snippets';
+$s_plugin_Snippets_list_global_title = 'Snippets globales';
+$s_plugin_Snippets_list_name = 'Nombre';
+$s_plugin_Snippets_list_value = 'Snippet';
+
+$s_plugin_Snippets_edit_title = 'Editar mis Snippets';
+$s_plugin_Snippets_edit_global_title = 'Editar los Snippets globales';
+$s_plugin_Snippets_edit_name = 'Nombre';
+$s_plugin_Snippets_edit_value = 'Snippet';
+
+$s_plugin_Snippets_create_title = 'Crear Snippet';
+$s_plugin_Snippets_create_global_title = 'Crear Snippet global';
+$s_plugin_Snippets_create_name = 'Nombre';
+$s_plugin_Snippets_create_value = 'Snippet';
+
+$s_plugin_Snippets_config = 'Configuración';
+$s_plugin_Snippets_config_title = 'Configuración del Snippet';
+$s_plugin_Snippets_edit_global_threshold = 'Editar Snippets globales';
+$s_plugin_Snippets_use_global_threshold = 'Usar Snippets globales';
+$s_plugin_Snippets_edit_own_threshold = 'Editar tus Snippets';
+
+$s_plugin_Snippets_action_go = 'Enviar';
+$s_plugin_Snippets_action_create = 'Crear';
+$s_plugin_Snippets_action_edit = 'Editar';
+$s_plugin_Snippets_action_delete = 'Eliminar';
+$s_plugin_Snippets_action_delete_confirm = '¿Está seguro de querer eliminar este Snippet?';
+$s_plugin_Snippets_action_update = 'Actualizar';
+
+$s_plugin_Snippets_pattern_help = '
+	Los Snippets pueden contener patrones de marcador de posición que se reemplazarán<br/>
+	con datos contextuales cuando se use en un campo de texto. Puede usar los<br/>
+	siguientes patrones de marcador:<br/>
+	<table>
+	<tr><td><strong>{user}</strong></td><td>Tu nombre de usuario</td></tr>
+	<tr><td><strong>{reporter}</strong></td><td>Nombre del usuario que reportó la incidencia</td></tr>
+	<tr><td><strong>{handler}</strong></td><td>Nombre del usuario asignado a la incidencia</td></tr>
+	<tr><td><strong>{project}</strong></td><td>Nombre del proyecto</td></tr>
+	</table>
+	';
+
+$s_plugin_Snippets_textarea_names = 'Usar Snippets para';
