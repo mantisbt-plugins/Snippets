@@ -79,7 +79,7 @@ if ($action == "delete") {
 <tr>
 <td class="center" rowspan="2"><input type="checkbox" name="snippet_list[]" value="<?php echo $snippet->id ?>" checked="checked"/></td>
 <td class="category"><?php echo plugin_lang_get("edit_name") ?></td>
-<td><input name="name_<?php echo $snippet->id ?>" value="<?php echo $snippet->name ?>"/></td>
+<td><input type="text" name="name_<?php echo $snippet->id ?>" size="40" value="<?php echo $snippet->name ?>"/></td>
 </tr>
 
 <tr>

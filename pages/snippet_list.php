@@ -110,7 +110,7 @@ print_account_menu();
 						<table class="table table-bordered table-condensed table-striped">
 							<tr>
 								<td class="category"><?php echo plugin_lang_get( "create_name" ) ?></td>
-								<td><input name="name"/></td>
+								<td><input type="text" name="name" size="40" /></td>
 							</tr>
 
 							<tr>
