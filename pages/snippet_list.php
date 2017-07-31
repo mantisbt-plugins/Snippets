@@ -56,7 +56,7 @@ print_account_menu();
 						<table class="table table-striped table-bordered table-condensed table-hover">
 							<thead>
 								<tr>
-								<th width="5%"> </td>
+								<th width="5%"></th>
 								<th><?php echo plugin_lang_get( "list_name" ) ?></th>
 								<th><?php echo plugin_lang_get( "list_value" ) ?></th>
 								</tr>
