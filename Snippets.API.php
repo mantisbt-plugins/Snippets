@@ -50,7 +50,7 @@ function xmlhttprequest_plugin_snippets() {
 	);
 
 	$data = array(
-		"snippets" => SnippetsPlugin::$_version,
+		"snippets" => SnippetsPlugin::VERSION,
 		# return configured jQuery selectors for textareas in "selector" field
 		"selector" => implode(",", $textareaSelectors)
 	);
