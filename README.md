@@ -5,6 +5,8 @@ Copyright (c) 2012 - 2017  MantisBT Team - mantisbt-dev@lists.sourceforge.net
 
 Released under the [MIT license](http://opensource.org/licenses/MIT)
 
+See the [Changelog](https://github.com/mantisbt-plugins/snippets/blob/master/CHANGELOG.md).
+
 
 ## Description
 
