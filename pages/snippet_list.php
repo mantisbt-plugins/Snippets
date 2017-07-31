@@ -36,22 +36,29 @@ print_account_menu();
 					<?php echo plugin_lang_get( $global ? "list_global_title" : "list_title" ) ?>
 				</h4>
 				<?php echo form_security_field( "plugin_Snippets_list_action" ) ?>
-
-<?php
-	if( $global ) {
-?>
-				<input type="hidden" name="global" value="true"/>
-<?php
-		if( $admin ) {
-			print_form_button( plugin_page( 'config_page' ), plugin_lang_get( 'config' ) );
-		}
-	}
-?>
 			</div>
 
 			<div class="widget-body">
 				<div class="widget-main no-padding">
 					<div class="table-responsive">
+
+<?php
+	if( $global ) {
+?>
+						<input type="hidden" name="global" value="true"/>
+<?php
+		if( $admin ) {
+?>
+						<div class="widget-toolbox padding-8 clearfix">
+							<a class="btn btn-xs btn-primary btn-white btn-round"
+							   href="<?php echo plugin_page( 'config_page' ); ?>">
+								<?php echo plugin_lang_get( 'config' ); ?>
+							</a>
+						</div>
+<?php
+		}
+	}
+?>
 
 						<table class="table table-striped table-bordered table-condensed table-hover">
 							<thead>
