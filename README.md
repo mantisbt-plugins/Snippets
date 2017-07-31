@@ -13,13 +13,16 @@ Define snippets of text that can be easily pasted into text fields
 
 ## Requirements
 
-The plugin requires [Mantis](http://www.mantisbt.org/) version 1.3 or higher.
+The plugin requires [MantisBT](http://mantisbt.org/) version 2.0 or higher.
 
-Note that jQuery version 1.6 or later is also required, but since a more recent
-version of the library comes bundled with MantisBT, no extra setup is necessary.
+If you need compatibility with older releases of MantisBT, please use [legacy
+versions](https://github.com/mantisbt-plugins/snippets/releases) of the plugin, 
+as per table below:
 
-If you need compatibility with MantisBT 1.2, please use legacy
-[version 0.6](https://github.com/mantisbt-plugins/snippets/releases/tag/v0.6).
+MantisBT version | Plugin version
+:---:|:---:
+| 1.3 | 1.x ([master-1.3.x branch](https://github.com/mantisbt-plugins/snippets/tree/master-1.3.x))
+| 1.2 | [0.6](https://github.com/mantisbt-plugins/snippets/releases/tag/v0.6)
 
 
 ## Installation
@@ -77,10 +80,3 @@ or have questions related to use and installation:
     [#mantisbt IRC channel](https://webchat.freenode.net/?channels=%23mantisbt)
     on Freenode (irc://freenode.net/mantisbt)
     but since hardly anyone goes there nowadays, you may not get any response.
-
-
-## MantisBT Versions Supported
-
-- MantisBT v2.x   - `master` branch
-- MantisBT v1.3.x - `master-1.3.x` branch
-- MantisBT v1.2.x - `master-1.2.x` branch
