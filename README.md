@@ -18,6 +18,9 @@ The plugin requires [Mantis](http://www.mantisbt.org/) version 1.3 or higher.
 Note that jQuery version 1.6 or later is also required, but since a more recent
 version of the library comes bundled with MantisBT, no extra setup is necessary.
 
+If you need compatibility with MantisBT 1.2, please use legacy
+[version 0.6](https://github.com/mantisbt-plugins/snippets/releases/tag/v0.6).
+
 
 ## Installation
 
@@ -64,21 +67,20 @@ Information*) can be setup to use Snippets via configuration page `Manage > Glob
 
 ## Support
 
-Problems or questions dealing with use and installation should be
-directed to the [#mantisbt](irc://freenode.net/mantisbt) IRC channel
-on Freenode.
+The following support channels are available if you wish to file a
+[bug report](https://github.com/mantisbt-plugins/snippets/issues/new),
+or have questions related to use and installation:
 
-The latest source code can found on
-[Github](https://github.com/mantisbt-plugins/snippets).
+  - [GitHub issues tracker](http://github.com/mantisbt-plugins/snippets/issues)
+  - MantisBT [Gitter chat room](https://gitter.im/mantisbt/mantisbt)
+  - If you feel lucky you may also want to try the legacy
+    [#mantisbt IRC channel](https://webchat.freenode.net/?channels=%23mantisbt)
+    on Freenode (irc://freenode.net/mantisbt)
+    but since hardly anyone goes there nowadays, you may not get any response.
 
-We encourage you to submit Bug reports and enhancements requests on the
-[Github issues tracker](https://github.com/mantisbt-plugins/snippets/issues).
-If you would like to propose a patch, do not hesitate to submit a new
-[Pull Request](https://github.com/mantisbt-plugins/snippets/compare/).
 
 ## MantisBT Versions Supported
 
 - MantisBT v2.x   - `master` branch
 - MantisBT v1.3.x - `master-1.3.x` branch
 - MantisBT v1.2.x - `master-1.2.x` branch
-
