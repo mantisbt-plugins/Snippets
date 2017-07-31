@@ -65,7 +65,7 @@ print_account_menu();
 							<?php foreach( Snippet::clean( $snippets ) as $snippet ): ?>
 								<tr>
 									<td class="center">
-										<input type="checkbox" class="ace"name="snippet_list[]" value="<?php echo $snippet->id ?>"/><span class="lbl"></span>
+										<input type="checkbox" class="ace" name="snippet_list[]" value="<?php echo $snippet->id ?>"/><span class="lbl"></span>
 									</td>
 									<td><?php echo $snippet->name ?></td>
 									<td><?php echo $snippet->value ?></td>
