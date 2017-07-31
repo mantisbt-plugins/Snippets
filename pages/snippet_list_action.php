@@ -73,12 +73,38 @@ if ($action == "delete") {
 
 		<fieldset>
 
-<?php $first = true; foreach ($snippets as $snippet): ?>
-<?php if (!$first): ?><tr class="spacer"><td></td></tr><?php endif ?>
+<?php
+	$first = true;
+	$single = count( $snippets ) == 1;
+
+	foreach( $snippets as $snippet ) {
+		if ( !$first ) {
+?>
+<tr class="spacer"><td></td></tr>
+<?php
+		}
+?>
 
 <tr>
+<?php
+		# Hide checkbox when operating on a single Snippet
+		if( !$single ) {
+?>
 <td class="center" rowspan="2"><input type="checkbox" name="snippet_list[]" value="<?php echo $snippet->id ?>" checked="checked"/></td>
-<td class="category"><?php echo plugin_lang_get("edit_name") ?></td>
+<?php
+		}
+?>
+<td class="category">
+<?php
+		# Add hidden field with Snippet id
+		if( $single ) {
+?>
+<input type="hidden" name="snippet_list[]" value="<?php echo $snippet->id ?>" checked="checked"/>
+<?php
+		}
+		echo plugin_lang_get("edit_name")
+?>
+</td>
 <td><input type="text" name="name_<?php echo $snippet->id ?>" size="40" value="<?php echo $snippet->name ?>"/></td>
 </tr>
 
@@ -87,7 +113,10 @@ if ($action == "delete") {
 <td class="snippetspatternhelp"><textarea name="value_<?php echo $snippet->id ?>" cols="80" rows="6"><?php echo $snippet->value ?></textarea></td>
 </tr>
 
-<?php $first = false; endforeach ?>
+<?php
+		$first = false;
+	}
+?>
 
 <tfoot>
 <tr>
@@ -127,5 +156,3 @@ if ($action == "delete") {
 	print_successful_redirect(plugin_page("snippet_list", true) . Snippet::global_url($global));
 
 }
-
-
