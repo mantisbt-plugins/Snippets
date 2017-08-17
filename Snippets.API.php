@@ -18,6 +18,7 @@ function xmlhttprequest_plugin_snippets_text() {
 		"pattern_help" => plugin_lang_get("pattern_help"),
 	);
 
+	header('Content-type: application/json');
 	echo json_encode($data);
 
 	plugin_pop_current();
@@ -60,6 +61,7 @@ function xmlhttprequest_plugin_snippets() {
 		$data["texts"][$snippet->id] = $snippet;
 	}
 
+	header('Content-type: application/json');
 	$json = json_encode($data);
 	echo $json;
 
