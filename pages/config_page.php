@@ -60,7 +60,7 @@ print_manage_menu();
 	$availableNames = Snippet::get_available_field_names();
 
 	foreach( $availableNames as $name => $lang_get_param ) {
-		echo '<div><label><input type="checkbox" class="ace"name="textarea_names[]" value="', $name, '" ';
+		echo '<div><label><input type="checkbox" class="ace" name="textarea_names[]" value="', $name, '" ';
 		check_checked( in_array( $name, $configuredNames ) );
 		echo '/><span class="lbl">', lang_get( $lang_get_param ), "</span></label></div>\n";
 	}
