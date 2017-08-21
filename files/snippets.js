@@ -29,7 +29,10 @@ jQuery(document).ready(function($) {
 				dataType: "json",
 				url: xhrurl('text'),
 				success: function(data) {SnippetsLangArray = data;}
-			});
+			})
+				.fail(function () {
+					console.error('Unable to retrieve Snippets language strings');
+				});
 		}
 
 		return SnippetsLangArray[str];
@@ -102,7 +105,7 @@ jQuery(document).ready(function($) {
 				}
 
 				} catch(e) {
-					alert(e);
+					console.error('Error occured while generating Snippets UI', e);
 				}
 			});
 		}
@@ -123,7 +126,10 @@ jQuery(document).ready(function($) {
 				url += "&bug_id=" + bug_id;
 			}
 
-			$.getJSON(url, SnippetsUI);
+			$.getJSON(url, SnippetsUI)
+				.fail(function() {
+					console.error('Error occured while retrieving Snippets');
+				});
 		}
 	}
 
