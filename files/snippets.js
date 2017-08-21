@@ -8,6 +8,15 @@ jQuery(document).ready(function($) {
 	var SnippetsLangArray = null;
 
 	/**
+	 * Return MantisBT XMLHttpRequest URL for given endpoint
+	 * @param {string} entrypoint
+	 * @returns {string} XMLHttpRequest URL
+	 */
+	function xhrurl(entrypoint) {
+		return "xmlhttprequest.php?entrypoint=plugin_snippets_" + entrypoint;
+	}
+
+	/**
 	 * Handle retrieving and storing language strings from the server.
 	 */
 	function SnippetsLang(str) {
@@ -15,7 +24,7 @@ jQuery(document).ready(function($) {
 			$.ajax({
 				async: false,
 				dataType: "json",
-				url: "xmlhttprequest.php?entrypoint=plugin_snippets_text",
+				url: xhrurl('text'),
 				success: function(data) {SnippetsLangArray = data;}
 			});
 		}
@@ -99,12 +108,12 @@ jQuery(document).ready(function($) {
 				bug_id = $(this).val();
 			});
 
-			var xhrurl = "xmlhttprequest.php?entrypoint=plugin_snippets";
+			var url = xhrurl('data');
 			if (bug_id > 0) {
-				xhrurl += "&bug_id=" + bug_id;
+				url += "&bug_id=" + bug_id;
 			}
 
-			$.getJSON(xhrurl, SnippetsUI);
+			$.getJSON(url, SnippetsUI);
 		}
 	}
 

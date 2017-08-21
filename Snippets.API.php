@@ -24,7 +24,7 @@ function xmlhttprequest_plugin_snippets_text() {
 	plugin_pop_current();
 }
 
-function xmlhttprequest_plugin_snippets() {
+function xmlhttprequest_plugin_snippets_data() {
 	plugin_push_current("Snippets");
 
 	$bug_id = gpc_get_int("bug_id", 0);
