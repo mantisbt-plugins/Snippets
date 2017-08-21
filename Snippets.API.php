@@ -340,13 +340,13 @@ class Snippet {
 		$snippets = array();
 		while ($row = db_fetch_array($result)) {
 			$snippet = new Snippet(
-				$row['type'],
+				(int)$row['type'],
 				$row['name'],
 				Snippet::replace_legacy_placeholders($row['value']),
-				$row['user_id']);
-			$snippet->id = $row["id"];
+				(int)$row['user_id']);
+			$snippet->id = (int)$row["id"];
 
-			$snippets[$row["id"]] = $snippet;
+			$snippets[$snippet->id] = $snippet;
 		}
 
 		return $snippets;
