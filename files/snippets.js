@@ -17,7 +17,10 @@ jQuery(document).ready(function($) {
 	}
 
 	/**
-	 * Handle retrieving and storing language strings from the server.
+	 * Returns requested language string.
+	 * Handles retrieving language strings from the server with AJAX.
+	 * @param {string} str - Language string
+	 * @returns {string}
 	 */
 	function SnippetsLang(str) {
 		if (SnippetsLangArray === null) {
@@ -53,6 +56,13 @@ jQuery(document).ready(function($) {
 	 * then insert select boxes into the DOM for each supported textarea.
 	 */
 	function SnippetsInit() {
+		/**
+		 * Initialize Snippets user interface.
+		 * Adds a selection list before each textarea.
+		 * @param {object} data - JSON object returned by XHR
+		 * @param {object} data.selector - Comma-delimited list of textarea selectors
+		 * @param {object} data.texts - Snippets list
+		 */
 		function SnippetsUI(data) {
 			var textarrays = data;
 
