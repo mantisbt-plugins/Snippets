@@ -89,8 +89,9 @@ jQuery(document).ready(function($) {
 			});
 		}
 
-		//if we have any textareas then fetch snippets
-		if ($("textarea").length > 0) {
+		// If we have any textareas (excluding those in the plugin's own
+		// edit pages) then fetch Snippets
+		if ($("textarea").not(".snippetspatternhelp textarea").length > 0) {
 			var bug_id = 0;
 
 			$("form[name='bugnoteadd'] input[name='bug_id']").each(function() {
