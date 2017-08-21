@@ -9,17 +9,14 @@ define( 'PLACEHOLDER_REPORTER', '{reporter}' );
 define( 'PLACEHOLDER_HANDLER', '{handler}' );
 define( 'PLACEHOLDER_PROJECT', '{project}' );
 
-function xmlhttprequest_plugin_snippets_text() {
-	plugin_push_current("Snippets");
+/**
+ * AJAX endpoint returning the Snippets pattern help string (for tooltip).
+ */
+function xmlhttprequest_plugin_snippets_pattern_help() {
+	plugin_push_current( 'Snippets' );
 
-	$data = array(
-		"label" => plugin_lang_get("select_label"),
-		"default" => plugin_lang_get("select_default"),
-		"pattern_help" => plugin_lang_get("pattern_help"),
-	);
-
-	header('Content-type: application/json');
-	echo json_encode($data);
+	header('Content-type: text/html');
+	echo plugin_lang_get( 'pattern_help' );
 
 	plugin_pop_current();
 }

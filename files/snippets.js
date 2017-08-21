@@ -5,8 +5,6 @@
 jQuery(document).ready(function($) {
 	"use strict";
 
-	var SnippetsLangArray = null;
-
 	/**
 	 * Return MantisBT XMLHttpRequest URL for given endpoint
 	 * @param {string} entrypoint
@@ -16,42 +14,27 @@ jQuery(document).ready(function($) {
 		return "xmlhttprequest.php?entrypoint=plugin_snippets_" + entrypoint;
 	}
 
-	/**
-	 * Returns requested language string.
-	 * Handles retrieving language strings from the server with AJAX.
-	 * @param {string} str - Language string
-	 * @returns {string}
-	 */
-	function SnippetsLang(str) {
-		if (SnippetsLangArray === null) {
-			$.ajax({
-				async: false,
-				dataType: "json",
-				url: xhrurl('text'),
-				success: function(data) {SnippetsLangArray = data;}
-			})
-				.fail(function () {
-					console.error('Unable to retrieve Snippets language strings');
-				});
-		}
-
-		return SnippetsLangArray[str];
-	}
-
 	// Snippet list behaviors
 	$("input.snippets_select_all").change(function(){
 		$("input[name='snippet_list[]']").prop("checked", $(this).prop("checked"));
 	});
 
 	// Snippet pattern help
-	$(".snippetspatternhelp").each(function() {
-		$(this).simpletip({
-			content: SnippetsLang("pattern_help"),
-			baseClass: "snippetsTooltip",
-			fixed: false,
-			offset: [20, 20]
-		});
-	});
+	var selector = $(".snippetspatternhelp");
+	if (selector.length > 0 ) {
+		$.get(xhrurl('pattern_help'))
+			.done(function (data) {
+				selector.simpletip({
+					content: data,
+					baseClass: "snippetsTooltip",
+					fixed: false,
+					offset: [20, 20]
+				});
+			})
+			.fail(function () {
+				console.error('Error occured while retrieving Snippets pattern help');
+			});
+	}
 
 	/**
 	 * Primary Snippets functionality.
