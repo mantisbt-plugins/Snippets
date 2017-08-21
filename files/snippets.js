@@ -14,28 +14,6 @@ jQuery(document).ready(function($) {
 		return "xmlhttprequest.php?entrypoint=plugin_snippets_" + entrypoint;
 	}
 
-	// Snippet list behaviors
-	$("input.snippets_select_all").change(function(){
-		$("input[name='snippet_list[]']").prop("checked", $(this).prop("checked"));
-	});
-
-	// Snippet pattern help
-	var selector = $(".snippetspatternhelp");
-	if (selector.length > 0 ) {
-		$.get(xhrurl('pattern_help'))
-			.done(function (data) {
-				selector.simpletip({
-					content: data,
-					baseClass: "snippetsTooltip",
-					fixed: false,
-					offset: [20, 20]
-				});
-			})
-			.fail(function () {
-				console.error('Error occured while retrieving Snippets pattern help');
-			});
-	}
-
 	/**
 	 * Primary Snippets functionality.
 	 * Use an AJAX request to retrieve the user's available snippets, and
@@ -118,6 +96,28 @@ jQuery(document).ready(function($) {
 		SnippetsInit();
 	} catch(e) {
 		alert(e);
+	}
+
+	// Snippet list behaviors
+	$("input.snippets_select_all").change(function(){
+		$("input[name='snippet_list[]']").prop("checked", $(this).prop("checked"));
+	});
+
+	// Snippet pattern help
+	var selector = $(".snippetspatternhelp");
+	if (selector.length > 0 ) {
+		$.get(xhrurl('pattern_help'))
+			.done(function (data) {
+				selector.simpletip({
+					content: data,
+					baseClass: "snippetsTooltip",
+					fixed: false,
+					offset: [20, 20]
+				});
+			})
+			.fail(function () {
+				console.error('Error occured while retrieving Snippets pattern help');
+			});
 	}
 
 });
