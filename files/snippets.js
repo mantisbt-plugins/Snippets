@@ -62,21 +62,24 @@ jQuery(document).ready(function($) {
 		/**
 		 * Initialize Snippets user interface.
 		 * Adds a selection list before each textarea.
-		 * @param {object} data - JSON object returned by XHR
-		 * @param {object} data.selector - Comma-delimited list of textarea selectors
-		 * @param {object} data.texts - Snippets list
+		 * @param {object} data - JSON object returned by XHR (see PHPDoc for
+		 *                        xmlhttprequest_plugin_snippets_data() for details)
+		 * @param {string} data.selector
+		 * @param {string} data.label
+		 * @param {string} data.default
+		 * @param {object} data.snippets - Snippets list
 		 */
 		function SnippetsUI(data) {
 			$(data.selector).each(function() {
 				var textarea = $(this);
 
-				if (data.texts !== null) {
+				if (data.snippets !== null) {
 					try {
 						// Create Snippets select
 						var select = $("<select></select>");
-						select.append("<option title='' value=''>" + SnippetsLang("default") + "</option>");
+						select.append("<option title='' value=''>" + data.default + "</option>");
 
-						$.each(data.texts, function(key, snippet) {
+						$.each(data.snippets, function(key, snippet) {
 							// Escape single quotes
 							var value = snippet.value.replace(/'/g, "&#39;");
 
@@ -91,7 +94,7 @@ jQuery(document).ready(function($) {
 							$(this).val("");
 						});
 
-						var label = $("<label>" + SnippetsLang("label") + " </label>");
+						var label = $("<label>" + data.label + " </label>");
 						label.append(select);
 
 						textarea.before(label);

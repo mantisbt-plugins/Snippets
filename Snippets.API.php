@@ -24,6 +24,20 @@ function xmlhttprequest_plugin_snippets_text() {
 	plugin_pop_current();
 }
 
+/**
+ * AJAX endpoint returning JSON with snippets data.
+ * JSON structure:
+ * - {string}     version  - Plugin version
+ * - {string}     selector - Configured jQuery selector for textareas
+ * - {string}     label    - Language string for Snippets select's label
+ * - {string}     default  - Language string for Snippets select's default option
+ * - {null|array} snippets - List of snippets, with following structure:
+ *   - {int}      id
+ *   - {int}      user_id
+ *   - {int}      type
+ *   - {string}   name     - Snippet title
+ *   - {string}   value    - Snippet text
+ */
 function xmlhttprequest_plugin_snippets_data() {
 	plugin_push_current("Snippets");
 
@@ -51,14 +65,16 @@ function xmlhttprequest_plugin_snippets_data() {
 	);
 
 	$data = array(
-		"snippets" => SnippetsPlugin::VERSION,
+		"version" => SnippetsPlugin::VERSION,
 		# return configured jQuery selectors for textareas in "selector" field
-		"selector" => implode(",", $textareaSelectors)
+		"selector" => implode(",", $textareaSelectors),
+		"label" => plugin_lang_get("select_label"),
+		"default" => plugin_lang_get("select_default"),
 	);
 
 	# arrange the available snippets into the data array and return it in "texts" field
 	foreach($snippets as $snippet) {
-		$data["texts"][$snippet->id] = $snippet;
+		$data["snippets"][$snippet->id] = $snippet;
 	}
 
 	header('Content-type: application/json');
