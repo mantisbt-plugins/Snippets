@@ -67,20 +67,16 @@ jQuery(document).ready(function($) {
 		 * @param {object} data.texts - Snippets list
 		 */
 		function SnippetsUI(data) {
-			var textarrays = data;
-
-			$(data.selector).each(function(index) {
+			$(data.selector).each(function() {
 				var textarea = $(this);
-				var textarea_name = textarea.attr("name");
 
-				try {
-					var snippets = textarrays["texts"];
-					if (snippets !== null) {
+				if (data.texts !== null) {
+					try {
 						// Create Snippets select
 						var select = $("<select></select>");
 						select.append("<option title='' value=''>" + SnippetsLang("default") + "</option>");
 
-						$.each(snippets, function(key, snippet) {
+						$.each(data.texts, function(key, snippet) {
 							// Escape single quotes
 							var value = snippet.value.replace(/'/g, "&#39;");
 
@@ -98,14 +94,11 @@ jQuery(document).ready(function($) {
 						var label = $("<label>" + SnippetsLang("label") + " </label>");
 						label.append(select);
 
-						$(this).before(label);
-						$(this).before('<div class="space-4"></div>');
-
-						$(this).parent("td").removeClass("center");
-				}
-
-				} catch(e) {
-					console.error('Error occured while generating Snippets UI', e);
+						textarea.before(label);
+						textarea.before('<div class="space-4"></div>');
+					} catch(e) {
+						console.error('Error occured while generating Snippets UI', e);
+					}
 				}
 			});
 		}
@@ -126,7 +119,8 @@ jQuery(document).ready(function($) {
 				url += "&bug_id=" + bug_id;
 			}
 
-			$.getJSON(url, SnippetsUI)
+			$.getJSON(url)
+				.done(SnippetsUI)
 				.fail(function() {
 					console.error('Error occured while retrieving Snippets');
 				});
