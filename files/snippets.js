@@ -109,11 +109,20 @@ jQuery(document).ready(function($) {
 	if (selector.length > 0 ) {
 		$.get(xhrurl('pattern_help'))
 			.done(function (data) {
-				selector.simpletip({
-					content: data,
-					baseClass: "snippetsTooltip",
-					fixed: false,
-					offset: [20, 20]
+				selector.qtip({
+					content: {
+						text: data.text,
+						title: data.title,
+						button: true
+					},
+					position: {
+						target: $('textarea'),
+						my: 'bottom right',
+						at: 'top right'
+					},
+					hide: {
+						fixed: true,
+					}
 				});
 			})
 			.fail(function () {

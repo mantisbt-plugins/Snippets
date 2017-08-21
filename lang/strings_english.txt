@@ -42,10 +42,11 @@ $s_plugin_Snippets_action_delete = 'Delete';
 $s_plugin_Snippets_action_delete_confirm = 'Do you really want to delete the following snippets?';
 $s_plugin_Snippets_action_update = 'Update';
 
+$s_plugin_Snippets_pattern_title = 'Snippets Pattern Help';
 $s_plugin_Snippets_pattern_help = '
-	Snippets can contain placeholder patterns that will be replaced<br/>
-	with contextual data when pasted into a text field. The following<br/>
-	placeholders are supported:<br/>
+	<p>Snippets can contain placeholder patterns that will be replaced
+	with contextual data when pasted into a text field.</p>
+	<p>The following placeholders are supported:</p>
 	<table>
 	<tr><td><strong>{user}</strong></td><td>Your username</td></tr>
 	<tr><td><strong>{reporter}</strong></td><td>Bug reporter\'s name</td></tr>

@@ -10,6 +10,17 @@ specification.
 
 ## [Unreleased]
 
+### Changed
+
+- Replaced simpletip.js with qTip2
+  [#25](https://github.com/mantisbt-plugins/snippets/issues/25)
+
+### Fixed
+
+- Tooltip not shown on snippets list page 
+  [#19](https://github.com/mantisbt-plugins/snippets/issues/19)
+
+
 ## [2.1.0] - 2017-10-23
 
 ### Changed
@@ -23,6 +34,7 @@ specification.
 
 - Ensure numeric JSON fields have correct data type
 - HTML syntax error in config page
+
 
 ## [2.0.0] - 2017-07-31
 

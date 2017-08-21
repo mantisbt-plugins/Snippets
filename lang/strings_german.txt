@@ -42,10 +42,11 @@ $s_plugin_Snippets_action_delete = 'Löschen';
 $s_plugin_Snippets_action_delete_confirm = 'Wollen Sie wirklich die folgenden Textbausteine löschen?';
 $s_plugin_Snippets_action_update = 'Konfiguration ändern';
 
+$s_plugin_Snippets_pattern_title = 'Hilfe zu Textbausteine Platzhalter';
 $s_plugin_Snippets_pattern_help = '
-	Textbausteine können Platzhalter enthalten, die beim Einfügen in<br/>
-	ein Textfeld durch einen aktuellen Wert ersetzt werden<br/>
-	Die folgenden Platzhalter werden unterstützt:<br/>
+	<p>Textbausteine können Platzhalter enthalten, die beim Einfügen in
+	ein Textfeld durch einen aktuellen Wert ersetzt werden.</p>
+	<p>Die folgenden Platzhalter werden unterstützt:</p>
 	<table>
 	<tr><td><strong>{user}</strong></td><td>Ihr Benutzername</td></tr>
 	<tr><td><strong>{reporter}</strong></td><td>Benutzername des Reporters</td></tr>

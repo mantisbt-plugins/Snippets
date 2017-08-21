@@ -11,12 +11,19 @@ define( 'PLACEHOLDER_PROJECT', '{project}' );
 
 /**
  * AJAX endpoint returning the Snippets pattern help string (for tooltip).
+ * JSON structure:
+ * - {string} title
+ * - {string} text
  */
 function xmlhttprequest_plugin_snippets_pattern_help() {
 	plugin_push_current( 'Snippets' );
 
-	header('Content-type: text/html');
-	echo plugin_lang_get( 'pattern_help' );
+	$t_data = array(
+		'title' => plugin_lang_get( 'pattern_title' ),
+		'text'  => plugin_lang_get( 'pattern_help' ),
+	);
+	header('Content-type: application/json');
+	echo json_encode( $t_data );
 
 	plugin_pop_current();
 }

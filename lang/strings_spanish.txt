@@ -42,10 +42,11 @@ $s_plugin_Snippets_action_delete = 'Eliminar';
 $s_plugin_Snippets_action_delete_confirm = '¿Está seguro de querer eliminar este Snippet?';
 $s_plugin_Snippets_action_update = 'Actualizar';
 
+$s_plugin_Snippets_pattern_title = 'Ayuda de Snippets patrones';
 $s_plugin_Snippets_pattern_help = '
-	Los Snippets pueden contener patrones de marcador de posición que se reemplazarán<br/>
-	con datos contextuales cuando se use en un campo de texto. Puede usar los<br/>
-	siguientes patrones de marcador:<br/>
+	<p>Los Snippets pueden contener patrones de marcador de posición que se reemplazarán
+	con datos contextuales cuando se use en un campo de texto.</p>
+	<p>Puede usar los siguientes patrones de marcador:</p>
 	<table>
 	<tr><td><strong>{user}</strong></td><td>Tu nombre de usuario</td></tr>
 	<tr><td><strong>{reporter}</strong></td><td>Nombre del usuario que reportó la incidencia</td></tr>

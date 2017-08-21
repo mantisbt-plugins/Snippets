@@ -24,3 +24,10 @@
 	padding: 1px;
 	font-size: 8pt;
 }
+
+.qtip-content table {
+	background-color: transparent !important;
+}
+.qtip-content table td {
+	padding: 0 5px;
+}

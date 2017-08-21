@@ -7,4 +7,4 @@ bundled 3rd-party code :
 Name             | Version  | URL
 -----------------|----------|-------------------------------------------
 jquery-textrange | 1.4.0    | https://github.com/dwieeb/jquery-textrange
-Simpletip        | 1.3.1    | http://craigsworks.com/projects/simpletip
+qTip2            | 3.0.3    | http://qtip2.com/
