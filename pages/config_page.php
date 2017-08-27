@@ -62,7 +62,7 @@ print_manage_menu();
 	foreach( $availableNames as $name => $lang_get_param ) {
 		echo '<div><label><input type="checkbox" class="ace" name="textarea_names[]" value="', $name, '" ';
 		check_checked( in_array( $name, $configuredNames ) );
-		echo '/><span class="lbl">', lang_get( $lang_get_param ), "</span></label></div>\n";
+		echo '/><span class="lbl padding-6">', lang_get( $lang_get_param ), "</span></label></div>\n";
 	}
 ?>
 		</td>
