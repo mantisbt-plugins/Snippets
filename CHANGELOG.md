@@ -8,6 +8,22 @@ specification.
 
 --------------------------------------------------------------------------------
 
+## [Unreleased]
+
+## [2.1.0] - 2017-10-23
+
+### Changed
+
+- Javascript refactoring and code cleanup
+- Increase spacing between checkbox and label on config page
+  [#21](https://github.com/mantisbt-plugins/snippets/issues/21)
+- Update jquery-textrange library to 1.4.0
+
+### Fixed
+
+- Ensure numeric JSON fields have correct data type
+- HTML syntax error in config page
+
 ## [2.0.0] - 2017-07-31
 
 ### Added
@@ -146,8 +162,9 @@ specification.
 - Initial release
 
 
-[Unreleased]: https://github.com/mantisbt-plugins/snippets/compare/v2.0.0...HEAD
+[Unreleased]: https://github.com/mantisbt-plugins/snippets/compare/v2.1.0...HEAD
 
+[2.1.0]: https://github.com/mantisbt-plugins/snippets/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/mantisbt-plugins/snippets/compare/v1.2.0...v2.0.0
 
 [1.2.0]: https://github.com/mantisbt-plugins/snippets/compare/v1.1.0...v1.2.0
