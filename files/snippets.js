@@ -34,7 +34,8 @@ jQuery(document).ready(function($) {
 			$(data.selector).each(function() {
 				var textarea = $(this);
 
-				if (data.snippets !== null) {
+				// Only display snippets selector if there are any
+				if (data.snippets) {
 					try {
 						// Create Snippets select
 						var select = $("<select></select>");
