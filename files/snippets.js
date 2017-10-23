@@ -6,12 +6,12 @@ jQuery(document).ready(function($) {
 	"use strict";
 
 	/**
-	 * Return MantisBT XMLHttpRequest URL for given endpoint
-	 * @param {string} entrypoint
-	 * @returns {string} XMLHttpRequest URL
+	 * Return MantisBT REST API URL for given endpoint
+	 * @param {string} endpoint
+	 * @returns {string} REST API URL
 	 */
-	function xhrurl(entrypoint) {
-		return "xmlhttprequest.php?entrypoint=plugin_snippets_" + entrypoint;
+	function rest_api(endpoint) {
+		return "api/rest/plugins/Snippets/" + endpoint;
 	}
 
 	/**
@@ -23,8 +23,8 @@ jQuery(document).ready(function($) {
 		/**
 		 * Initialize Snippets user interface.
 		 * Adds a selection list before each textarea.
-		 * @param {object} data - JSON object returned by XHR (see PHPDoc for
-		 *                        xmlhttprequest_plugin_snippets_data() for details)
+		 * @param {object} data - JSON object returned by REST API (see PHPDoc
+		 *                        for Snippets::route_data() for details)
 		 * @param {string} data.selector
 		 * @param {string} data.label
 		 * @param {string} data.default
@@ -80,9 +80,9 @@ jQuery(document).ready(function($) {
 				bug_id = $(this).val();
 			});
 
-			var url = xhrurl('data');
+			var url = rest_api('data');
 			if (bug_id > 0) {
-				url += "&bug_id=" + bug_id;
+				url += "/" + bug_id;
 			}
 
 			$.getJSON(url)
@@ -135,8 +135,8 @@ jQuery(document).ready(function($) {
 	// Snippet pattern help
 	var selector = $(".snippetspatternhelp");
 	if (selector.length > 0 ) {
-		$.get(xhrurl('pattern_help'))
-			.done(function(data) {
+		$.get(rest_api('help'))
+			.done(function (data) {
 				selector.each(function() {
 					AddTooltip($(this), data);
 				});
