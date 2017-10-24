@@ -202,7 +202,6 @@ class SnippetsPlugin extends MantisPlugin {
 		);
 
 		$t_data = array(
-			'version' => SnippetsPlugin::VERSION,
 			# return configured jQuery selectors for textareas in "selector" field
 			'selector' => implode( ',', $t_selectors ),
 			'label' => plugin_lang_get( 'select_label' ),
