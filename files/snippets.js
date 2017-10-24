@@ -93,6 +93,30 @@ jQuery(document).ready(function($) {
 		}
 	}
 
+	/**
+	 * Initialize Placeholder help tooltip for given object
+	 * @param {object} domObject
+	 * @param {object} data - JSON object returned by XHR
+	 */
+	function AddTooltip(domObject, data) {
+		domObject.qtip({
+			content: {
+				text: data.text,
+				title: data.title,
+				button: true
+			},
+			position: {
+				target: domObject.children('textarea'),
+				my: 'bottom right',
+				at: 'top right'
+			},
+			hide: {
+				fixed: true
+			}
+		});
+	}
+
+
 	try {
 		SnippetsInit();
 	} catch(e) {
@@ -100,7 +124,7 @@ jQuery(document).ready(function($) {
 	}
 
 	// Snippet list behaviors
-	$("input.snippets_select_all").change(function(){
+	$("input.snippets_select_all").change(function() {
 		$("input[name='snippet_list[]']").prop("checked", $(this).prop("checked"));
 	});
 
@@ -108,21 +132,9 @@ jQuery(document).ready(function($) {
 	var selector = $(".snippetspatternhelp");
 	if (selector.length > 0 ) {
 		$.get(xhrurl('pattern_help'))
-			.done(function (data) {
-				selector.qtip({
-					content: {
-						text: data.text,
-						title: data.title,
-						button: true
-					},
-					position: {
-						target: $('textarea'),
-						my: 'bottom right',
-						at: 'top right'
-					},
-					hide: {
-						fixed: true,
-					}
+			.done(function(data) {
+				selector.each(function() {
+					AddTooltip($(this), data);
 				});
 			})
 			.fail(function () {
