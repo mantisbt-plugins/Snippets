@@ -12,8 +12,13 @@ specification.
 
 ### Changed
 
+- Require MantisBT 2.3 or later
+- Use REST API instead of xmlhttprequest
+  [#16](https://github.com/mantisbt-plugins/snippets/issues/16)
 - Replaced simpletip.js with qTip2
   [#25](https://github.com/mantisbt-plugins/snippets/issues/25)
+- Remove unused version information from JSON payload
+  [#27](https://github.com/mantisbt-plugins/snippets/issues/27)
 
 ### Fixed
 
