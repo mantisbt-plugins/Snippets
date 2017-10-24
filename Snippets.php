@@ -169,7 +169,7 @@ class SnippetsPlugin extends MantisPlugin {
 	 * @return Psr\Http\Message\ResponseInterface
 	 */
 	public function route_data( $request, $response, $args) {
-		plugin_push_current($this->basename);
+		plugin_push_current( $this->basename );
 
 		# Set the reference Bug Id for placeholders replacements
 		if( isset( $args['bug_id'] ) ) {
