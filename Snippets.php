@@ -139,10 +139,15 @@ class SnippetsPlugin extends MantisPlugin {
 	 * @return Psr\Http\Message\ResponseInterface
 	 */
 	public function route_help($request, $response, $args) {
+		plugin_push_current( $this->basename );
+
 		$t_help = array(
-			'title' => plugin_lang_get( 'pattern_title', $this->basename ),
-			'text'  => plugin_lang_get( 'pattern_help', $this->basename ),
+			'title' => plugin_lang_get( 'pattern_title' ),
+			'text'  => plugin_lang_get( 'pattern_help' ),
 		);
+
+		plugin_pop_current();
+
 		return $response
 			->withStatus( HTTP_STATUS_SUCCESS )
 			->withJson( $t_help );
