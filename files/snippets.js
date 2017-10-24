@@ -108,7 +108,11 @@ jQuery(document).ready(function($) {
 			position: {
 				target: domObject.children('textarea'),
 				my: 'bottom right',
-				at: 'top right'
+				at: 'top right',
+				viewport: $(window),
+				adjust: {
+					method: 'flip'
+				}
 			},
 			hide: {
 				fixed: true
