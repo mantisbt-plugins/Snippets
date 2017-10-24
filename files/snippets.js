@@ -142,7 +142,7 @@ jQuery(document).ready(function($) {
 				});
 			})
 			.fail(function () {
-				console.error('Error occured while retrieving Snippets pattern help');
+				console.error('Error occurred while retrieving Snippets pattern help');
 			});
 	}
 
