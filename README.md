@@ -15,7 +15,7 @@ Define snippets of text that can be easily pasted into text fields
 
 ## Requirements
 
-The plugin requires [MantisBT](http://mantisbt.org/) version 2.0 or higher.
+The plugin requires [MantisBT](http://mantisbt.org/) version 2.3 or higher.
 
 If you need compatibility with older releases of MantisBT, please use [legacy
 versions](https://github.com/mantisbt-plugins/snippets/releases) of the plugin, 
