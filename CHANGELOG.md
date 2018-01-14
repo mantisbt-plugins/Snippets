@@ -8,16 +8,19 @@ specification.
 
 --------------------------------------------------------------------------------
 
-## [Unreleased]
+## [2.2.0] - 2018-01-14
 
 ### Changed
 
 - Require MantisBT 2.3 or later
 - Use REST API instead of xmlhttprequest
   [#16](https://github.com/mantisbt-plugins/snippets/issues/16)
-- Replaced simpletip.js with qTip2
+- Replaced simpletip.js library with qTip2
   [#25](https://github.com/mantisbt-plugins/snippets/issues/25)
-- Remove unused version information from JSON payload
+
+### Removed
+
+- Unused version information from JSON payload
   [#27](https://github.com/mantisbt-plugins/snippets/issues/27)
 
 ### Fixed
@@ -179,8 +182,9 @@ specification.
 - Initial release
 
 
-[Unreleased]: https://github.com/mantisbt-plugins/snippets/compare/v2.1.0...HEAD
+[Unreleased]: https://github.com/mantisbt-plugins/snippets/compare/v2.2.0...HEAD
 
+[2.2.0]: https://github.com/mantisbt-plugins/snippets/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/mantisbt-plugins/snippets/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/mantisbt-plugins/snippets/compare/v1.2.0...v2.0.0
 
