@@ -8,6 +8,14 @@ specification.
 
 --------------------------------------------------------------------------------
 
+## [Unreleased]
+
+### Fixed
+
+- Can't retrieve snippets data from REST API if URL rewriting is not working
+  [#31](https://github.com/mantisbt-plugins/snippets/issues/31)
+
+
 ## [2.2.0] - 2018-01-14
 
 ### Changed
@@ -184,6 +192,7 @@ specification.
 
 [Unreleased]: https://github.com/mantisbt-plugins/snippets/compare/v2.2.0...HEAD
 
+[2.2.1]: https://github.com/mantisbt-plugins/snippets/compare/v2.1.0...v2.2.0
 [2.2.0]: https://github.com/mantisbt-plugins/snippets/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/mantisbt-plugins/snippets/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/mantisbt-plugins/snippets/compare/v1.2.0...v2.0.0

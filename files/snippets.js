@@ -11,7 +11,9 @@ jQuery(document).ready(function($) {
 	 * @returns {string} REST API URL
 	 */
 	function rest_api(endpoint) {
-		return "api/rest/plugins/Snippets/" + endpoint;
+		// Using the full URL (through index.php) to avoid issues on sites
+		// where URL rewriting is not working (#31)
+		return "api/rest/index.php/plugins/Snippets/" + endpoint;
 	}
 
 	/**
