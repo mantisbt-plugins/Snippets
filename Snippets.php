@@ -5,7 +5,7 @@
 # Licensed under the MIT license
 
 class SnippetsPlugin extends MantisPlugin {
-	const VERSION = '2.2.0';
+	const VERSION = '2.2.1';
 
 	public function register() {
 		$this->name = plugin_lang_get("name");
