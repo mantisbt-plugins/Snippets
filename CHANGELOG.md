@@ -8,6 +8,14 @@ specification.
 
 --------------------------------------------------------------------------------
 
+## [2.2.2] - 2018-02-26
+
+### Fixed
+
+- qTip2 library throws 'Source map error' in browser console
+  [#32](https://github.com/mantisbt-plugins/snippets/issues/32)
+
+
 ## [2.2.1] - 2018-01-31
 
 ### Fixed
@@ -190,8 +198,9 @@ specification.
 - Initial release
 
 
-[Unreleased]: https://github.com/mantisbt-plugins/snippets/compare/v2.2.1...HEAD
+[Unreleased]: https://github.com/mantisbt-plugins/snippets/compare/v2.2.2...HEAD
 
+[2.2.2]: https://github.com/mantisbt-plugins/snippets/compare/v2.2.1...v2.2.2
 [2.2.1]: https://github.com/mantisbt-plugins/snippets/compare/v2.2.0...v2.2.1
 [2.2.0]: https://github.com/mantisbt-plugins/snippets/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/mantisbt-plugins/snippets/compare/v2.0.0...v2.1.0
