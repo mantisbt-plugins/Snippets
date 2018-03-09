@@ -140,16 +140,16 @@ class Snippet {
 			$bug = bug_get($bug_id);
 			user_cache_array_rows(array($bug->reporter_id, $bug->handler_id, $current_user));
 
-			$reporter = user_get_name($bug->reporter_id);
+			$reporter = user_get_username($bug->reporter_id);
             
 			if($bug->handler_id != NO_USER) {
-				$handler = user_get_name($bug->handler_id);
+				$handler = user_get_username($bug->handler_id);
 			}
 
 			$project = project_get_name($bug->project_id);
-            $username = user_get_name($current_user);
+            $username = user_get_username($current_user);
 		} else {
-            $username = user_get_name($current_user);
+            $username = user_get_username($current_user);
             $reporter = $username;
 			$project = project_get_name(helper_get_current_project());
 		}
