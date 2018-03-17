@@ -206,12 +206,8 @@ class SnippetsPlugin extends MantisPlugin {
 			'selector' => implode( ',', $t_selectors ),
 			'label' => plugin_lang_get( 'select_label' ),
 			'default' => plugin_lang_get( 'select_default' ),
+			'snippets' => array_values( $t_snippets ),
 		);
-
-		# Arrange the available snippets into the data array
-		foreach( $t_snippets as $t_snippet ) {
-			$t_data['snippets'][$t_snippet->id] = $t_snippet;
-		}
 
 		plugin_pop_current();
 

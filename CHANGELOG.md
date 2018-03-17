@@ -8,6 +8,14 @@ specification.
 
 --------------------------------------------------------------------------------
 
+## [Unreleased]
+
+### Fixed
+
+- Sort Snippets selection list by name
+  [#34](https://github.com/mantisbt-plugins/snippets/issues/34)
+
+
 ## [2.2.3] - 2018-03-17
 
 ### Fixed
