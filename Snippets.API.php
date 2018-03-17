@@ -91,7 +91,7 @@ class Snippet {
 	 * @param object Snippet object
 	 * @param string Target format
 	 * @param boolean Replacement patterns
-	 * @return object Cleaned snippet object
+	 * @return array|object Cleaned snippet object
 	 */
 	public static function clean($dirty, $target="view", $pattern=false) {
 		if (is_array($dirty)) {

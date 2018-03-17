@@ -133,10 +133,10 @@ class SnippetsPlugin extends MantisPlugin {
 	 *   - {string} title
 	 *   - {string} text
 	 *
-	 * @param Psr\Http\Message\ServerRequestInterface $request
-	 * @param Psr\Http\Message\ResponseInterface $response
+	 * @param Slim\Http\Request $request
+	 * @param Slim\Http\Response $response
 	 * @param array $args
-	 * @return Psr\Http\Message\ResponseInterface
+	 * @return Slim\Http\Response
 	 */
 	public function route_help($request, $response, $args) {
 		plugin_push_current( $this->basename );
@@ -168,10 +168,10 @@ class SnippetsPlugin extends MantisPlugin {
 	 *   - {string}   name     - Snippet title
 	 *   - {string}   value    - Snippet text
 	 *
-	 * @param Psr\Http\Message\ServerRequestInterface $request
-	 * @param Psr\Http\Message\ResponseInterface $response
+	 * @param Slim\Http\Request $request
+	 * @param Slim\Http\Response $response
 	 * @param array $args [bug_id = Bug Id for patterns replacement]
-	 * @return Psr\Http\Message\ResponseInterface
+	 * @return Slim\Http\Response
 	 */
 	public function route_data( $request, $response, $args) {
 		plugin_push_current( $this->basename );
