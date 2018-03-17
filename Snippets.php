@@ -81,6 +81,7 @@ class SnippetsPlugin extends MantisPlugin {
 
 			return '<a href="' . string_html_specialchars( $page ) . '">' . $label . '</a>';
 		}
+		return '';
 	}
 
 	public function resources($event) {
