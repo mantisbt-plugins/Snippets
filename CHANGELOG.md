@@ -8,6 +8,19 @@ specification.
 
 --------------------------------------------------------------------------------
 
+## [2.2.5] - 2018-03-18
+
+### Added
+
+- Korean translation
+  [#42](https://github.com/mantisbt-plugins/snippets/issues/42)
+
+### Fixed
+
+- Hide Snippets selection list when none are available 
+  [#41](https://github.com/mantisbt-plugins/snippets/issues/41)
+
+
 ## [2.2.4] - 2018-03-18
 
 ### Fixed
@@ -214,8 +227,9 @@ specification.
 - Initial release
 
 
-[Unreleased]: https://github.com/mantisbt-plugins/snippets/compare/v2.2.4...HEAD
+[Unreleased]: https://github.com/mantisbt-plugins/snippets/compare/v2.2.5...HEAD
 
+[2.2.4]: https://github.com/mantisbt-plugins/snippets/compare/v2.2.4...v2.2.5
 [2.2.4]: https://github.com/mantisbt-plugins/snippets/compare/v2.2.3...v2.2.4
 [2.2.3]: https://github.com/mantisbt-plugins/snippets/compare/v2.2.2...v2.2.3
 [2.2.2]: https://github.com/mantisbt-plugins/snippets/compare/v2.2.1...v2.2.2
