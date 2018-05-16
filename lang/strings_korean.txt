@@ -1,0 +1,58 @@
+<?php
+
+# Copyright (c) 2010 - 2012  John Reese
+# Copyright (c) 2012 - 2017  MantisBT Team - mantisbt-dev@lists.sourceforge.net
+# Licensed under the MIT license
+
+$s_plugin_Snippets_ = '';
+$s_plugin_Snippets_name = 'Snippets';
+$s_plugin_Snippets_description = 'Allow users to save blocks of text';
+
+$s_plugin_Snippets_error_name_empty = 'The snippet name is empty.';
+$s_plugin_Snippets_error_value_empty = 'The snippet value is empty.';
+
+$s_plugin_Snippets_select_label = '문구: ';
+$s_plugin_Snippets_select_default = '--';
+
+$s_plugin_Snippets_list_title = '내 고정문구';
+$s_plugin_Snippets_list_global_title = '전체 고정문구';
+$s_plugin_Snippets_list_name = '제목';
+$s_plugin_Snippets_list_value = '노출 문구';
+
+$s_plugin_Snippets_edit_title = '내 고정문구 편집';
+$s_plugin_Snippets_edit_global_title = '전체 고정문구 편집';
+$s_plugin_Snippets_edit_name = '제목';
+$s_plugin_Snippets_edit_value = '노출 문구';
+
+$s_plugin_Snippets_create_title = '내 고정문구 생성하기';
+$s_plugin_Snippets_create_global_title = '전체 고정문구 생성하기';
+$s_plugin_Snippets_create_name = '제목';
+$s_plugin_Snippets_create_value = '노출 문구';
+
+$s_plugin_Snippets_config = '설정';
+$s_plugin_Snippets_config_title = '고정문구 설정';
+$s_plugin_Snippets_edit_global_threshold = '전체 고정문구 편집권한';
+$s_plugin_Snippets_use_global_threshold = '전체 고정문구 사용권한';
+$s_plugin_Snippets_edit_own_threshold = '내 고정문구 편집권한';
+
+$s_plugin_Snippets_action_go = '선택';
+$s_plugin_Snippets_action_create = '생성하기';
+$s_plugin_Snippets_action_edit = '편집';
+$s_plugin_Snippets_action_delete = '삭제';
+$s_plugin_Snippets_action_delete_confirm = '"아래 문구를 삭제합니다."';
+$s_plugin_Snippets_action_update = '업데이트';
+
+$s_plugin_Snippets_pattern_title = 'Snippets Pattern Help';
+$s_plugin_Snippets_pattern_help = '
+	<p>Snippets can contain placeholder patterns that will be replaced
+	with contextual data when pasted into a text field.</p>
+	<p>The following placeholders are supported:</p>
+	<table>
+	<tr><td><strong>{user}</strong></td><td>Your username</td></tr>
+	<tr><td><strong>{reporter}</strong></td><td>Bug reporter\'s name</td></tr>
+	<tr><td><strong>{handler}</strong></td><td>Bug handler\'s name</td></tr>
+	<tr><td><strong>{project}</strong></td><td>Project name</td></tr>
+	</table>
+	';
+
+$s_plugin_Snippets_textarea_names = 'Use Snippets For';
