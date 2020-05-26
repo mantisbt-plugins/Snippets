@@ -4,15 +4,21 @@
 # Copyright (c) 2012 - 2018  MantisBT Team - mantisbt-dev@lists.sourceforge.net
 # Licensed under the MIT license
 
+$t_current_page = basename( __FILE__, '.php' );
 $global = gpc_get_bool( "global", false );
 
 if( $global ) {
 	access_ensure_global_level( plugin_config_get( "edit_global_threshold" ) );
 	$admin = access_has_global_level( config_get( "manage_plugin_threshold" ) );
 	$user_id = 0;
+	$t_current_page .= '&amp;global';
 } else {
 	access_ensure_global_level( plugin_config_get( "edit_own_threshold" ) );
 	$user_id = auth_get_current_user_id();
+	# This is a hack to trick the HTML API which relies on strpos to determine
+	# the active tab, to only highlight the "My Snippets" tab and not the
+	# "Global Snippets" one when the former is active
+	$t_current_page .= '"';
 }
 
 $snippets = Snippet::load_by_user_id( $user_id );
@@ -21,7 +27,7 @@ layout_page_header();
 
 layout_page_begin();
 
-print_account_menu();
+print_account_menu( $t_current_page );
 ?>
 <div class="col-md-12 col-xs-12">
 
