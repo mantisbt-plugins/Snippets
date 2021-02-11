@@ -92,18 +92,18 @@ class Snippet {
 	 *
 	 * @param Snippet|Snippet[] $dirty  Snippet object(s) to process
 	 * @param string $target Target format ('view' or 'form'
-	 * @param boolean $pattern Replacement patterns
+	 * @param int $bug_id Reference Bug Id for pattern replacements
 	 *
 	 * @return Snippet[] Cleaned snippet objects
 	 */
-	public static function clean($dirty, $target="view", $pattern=false) {
+	public static function clean($dirty, $target="view", $bug_id=0) {
 		if (is_array($dirty)) {
 			$cleaned = array();
 			foreach ($dirty as $id => $snippet) {
 				$cleaned[$id] = self::clean($snippet, $target);
 			}
-			if (false !== $pattern) {
-				$cleaned = self::patterns($cleaned, $pattern);
+			if ($bug_id) {
+				$cleaned = self::patterns($cleaned, $bug_id);
 			}
 
 		} else {
