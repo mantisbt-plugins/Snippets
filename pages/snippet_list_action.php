@@ -38,7 +38,11 @@ function array_object_properties($arr, $prop) {
 ### DELETE
 if ($action == "delete") {
 	$snippet_names = array_object_properties(Snippet::clean($snippets), "name");
-	helper_ensure_confirmed(plugin_lang_get("action_delete_confirm") . "<br/>" . implode(", ", $snippet_names), plugin_lang_get("action_delete"));
+	helper_ensure_confirmed(
+		plugin_lang_get("action_delete_confirm")
+		. "<br>" . implode( ", ", $snippet_names ),
+		plugin_lang_get("action_delete")
+	);
 	Snippet::delete_by_id(array_keys($snippets), $user_id);
 
 	form_security_purge("plugin_Snippets_list_action");
