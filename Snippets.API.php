@@ -83,6 +83,8 @@ class Snippet {
 				$this->id
 			));
 		}
+
+		return $this->id;
 	}
 
 	/**
