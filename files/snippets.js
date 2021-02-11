@@ -75,12 +75,15 @@ jQuery(document).ready(function($) {
 		if ($("textarea").not(".snippetspatternhelp textarea").length > 0) {
 			var bug_id = 0;
 
-			$("form[name='bugnoteadd'] input[name='bug_id']").each(function() {
-				bug_id = $(this).val();
+			// Retrieve the bug id from the known forms where we know
+			// Snippets-supported textareas exist.
+ 			var selector = '';
+			var known_forms = ['bug_update.php', 'bugnote_add.php', 'bug_reminder.php'];
+			known_forms.forEach(function (value) {
+				selector += "form[action='" + value + "'], ";
 			});
-			$("form[action='bug_update.php'] input[name='bug_id']").each(function() {
-				bug_id = $(this).val();
-			});
+			selector = selector.replace(/, $/, '');
+			bug_id = $(selector).find("input[name='bug_id']").val();
 
 			var url = rest_api('data');
 			if (bug_id > 0) {
