@@ -46,6 +46,8 @@ class SnippetsPlugin extends MantisPlugin {
 
 			"EVENT_LAYOUT_RESOURCES" => "resources",
 
+			"EVENT_MANAGE_USER_DELETE" => "user_delete",
+
 			'EVENT_REST_API_ROUTES' => 'routes',
 		);
 	}
@@ -112,6 +114,20 @@ class SnippetsPlugin extends MantisPlugin {
 			<script src="' . plugin_file("snippets.js") . '"></script>
 			<link rel="stylesheet" type="text/css" href="' . plugin_file("jquery.qtip.min.css") . '"/>
 			<link rel="stylesheet" type="text/css" href="' . plugin_file("snippets.css") . '"/>';
+	}
+
+	/**
+	 * Hook for EVENT_MANAGE_USER_DELETE.
+	 *
+	 * When deleting a user's account, cleanup their Snippets.
+	 *
+	 * @param string $event
+	 * @param int    $user_id
+	 *
+	 * @noinspection PhpUnusedParameterInspection
+	 */
+	public function user_delete($event, $user_id) {
+		Snippet::delete_by_user_id($user_id);
 	}
 
 	/**
