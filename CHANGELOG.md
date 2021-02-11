@@ -8,6 +8,27 @@ specification.
 
 --------------------------------------------------------------------------------
 
+## [2.3.0] - 2021-02-12
+
+### Changed
+
+- {handler} placeholder replaced by default string if issue is not assigned
+  [#48](https://github.com/mantisbt-plugins/snippets/issues/48)
+- Added page titles
+  [#50](https://github.com/mantisbt-plugins/snippets/issues/50)
+- Redirect to originating page from Config page
+  [#51](https://github.com/mantisbt-plugins/snippets/issues/51)
+
+### Fixed
+
+- {project} and {handler} placeholders in bug_reminder_page.php
+  [#46](https://github.com/mantisbt-plugins/snippets/issues/46)
+- My/Global Snippets tabs are not marked as active
+  [#49](https://github.com/mantisbt-plugins/snippets/issues/49)
+- Orphaned Snippet records in the database
+  [#52](https://github.com/mantisbt-plugins/snippets/issues/52)
+
+
 ## [2.2.5] - 2018-03-18
 
 ### Added
@@ -227,9 +248,10 @@ specification.
 - Initial release
 
 
-[Unreleased]: https://github.com/mantisbt-plugins/snippets/compare/v2.2.5...HEAD
+[Unreleased]: https://github.com/mantisbt-plugins/snippets/compare/v2.3.0...HEAD
 
-[2.2.4]: https://github.com/mantisbt-plugins/snippets/compare/v2.2.4...v2.2.5
+[2.3.0]: https://github.com/mantisbt-plugins/snippets/compare/v2.2.5...v2.3.0
+[2.2.5]: https://github.com/mantisbt-plugins/snippets/compare/v2.2.4...v2.2.5
 [2.2.4]: https://github.com/mantisbt-plugins/snippets/compare/v2.2.3...v2.2.4
 [2.2.3]: https://github.com/mantisbt-plugins/snippets/compare/v2.2.2...v2.2.3
 [2.2.2]: https://github.com/mantisbt-plugins/snippets/compare/v2.2.1...v2.2.2
