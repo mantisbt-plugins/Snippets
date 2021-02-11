@@ -156,15 +156,20 @@ class SnippetsPlugin extends MantisPlugin {
 	}
 
 	public function schema() {
+		require_once('install.php');
+
 		return array(
 			# 2010-03-18
-			array("CreateTableSQL", array(plugin_table("snippet"), "
+			0 => array("CreateTableSQL", array(plugin_table("snippet"), "
 				id			I		NOTNULL UNSIGNED AUTOINCREMENT PRIMARY,
 				user_id		I		NOTNULL UNSIGNED,
 				type		I		NOTNULL UNSIGNED,
 				name		C(128)	NOTNULL,
 				value		XL		NOTNULL
 				")),
+
+			# 2.3.0
+			1 => array("UpdateFunction", "delete_orphans"),
 		);
 	}
 
