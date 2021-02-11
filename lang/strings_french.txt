@@ -55,4 +55,6 @@ $s_plugin_Snippets_pattern_help = '
 	</table>
 	';
 
+$s_plugin_Snippets_no_handler = '[personne]';
+
 $s_plugin_Snippets_textarea_names = 'Utiliser Bribes Pour';

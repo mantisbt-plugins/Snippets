@@ -55,4 +55,7 @@ $s_plugin_Snippets_pattern_help = '
 	</table>
 	';
 
+# String to use for {handler} placeholder when issue is not assigned
+$s_plugin_Snippets_no_handler = '[Nobody]';
+
 $s_plugin_Snippets_textarea_names = 'Use Snippets For';

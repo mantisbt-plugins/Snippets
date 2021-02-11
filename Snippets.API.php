@@ -138,7 +138,7 @@ class Snippet {
 	 * @return Snippet[] Updated snippet objects
 	 */
 	public static function patterns($snippets, $bug_id) {
-		$handler = PLACEHOLDER_HANDLER;
+		$handler = null;
 
 		$current_user = auth_get_current_user_id();
 
@@ -158,6 +158,10 @@ class Snippet {
 			$username = user_get_username($current_user);
 			$reporter = $username;
 			$project = project_get_name(helper_get_current_project());
+		}
+
+		if (!$handler) {
+			$handler = plugin_lang_get('no_handler');
 		}
 
 		foreach ($snippets as $snippet) {
