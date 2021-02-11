@@ -6,6 +6,7 @@
 
 access_ensure_global_level(config_get("manage_plugin_threshold"));
 
+$f_return_page = gpc_get('return_page', '');
 $page_title = plugin_lang_get('config_title') ;
 
 layout_page_header($page_title);
@@ -19,6 +20,7 @@ print_manage_menu('manage_plugin_page.php');
 <div class="form-container">
 <form action="<?php echo plugin_page("config") ?>" method="post">
 <?php echo form_security_field("plugin_Snippets_config") ?>
+<input type="hidden" name="return_page"	value="<?php echo string_attribute( $f_return_page ) ?>" />
 <div class="widget-box widget-color-blue2">
 <div class="widget-header widget-header-small">
 	<h4 class="widget-title lighter">

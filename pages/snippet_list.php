@@ -4,21 +4,21 @@
 # Copyright (c) 2012 - 2018  MantisBT Team - mantisbt-dev@lists.sourceforge.net
 # Licensed under the MIT license
 
-$t_current_page = basename( __FILE__, '.php' );
+$t_page_name = basename( __FILE__, '.php' );
 $global = gpc_get_bool( "global", false );
 
 if( $global ) {
 	access_ensure_global_level( plugin_config_get( "edit_global_threshold" ) );
 	$admin = access_has_global_level( config_get( "manage_plugin_threshold" ) );
 	$user_id = 0;
-	$t_current_page .= '&amp;global';
+	$t_current_page = $t_page_name . '&amp;global';
 } else {
 	access_ensure_global_level( plugin_config_get( "edit_own_threshold" ) );
 	$user_id = auth_get_current_user_id();
 	# This is a hack to trick the HTML API which relies on strpos to determine
 	# the active tab, to only highlight the "My Snippets" tab and not the
 	# "Global Snippets" one when the former is active
-	$t_current_page .= '"';
+	$t_current_page = $t_page_name . '"';
 }
 
 $snippets = Snippet::load_by_user_id( $user_id );
@@ -56,10 +56,12 @@ print_account_menu( $t_current_page );
 		if( $admin ) {
 ?>
 						<div class="widget-toolbox padding-8 clearfix">
-							<a class="btn btn-xs btn-primary btn-white btn-round"
-							   href="<?php echo plugin_page( 'config_page' ); ?>">
-								<?php echo plugin_lang_get( 'config' ); ?>
-							</a>
+<?php
+			print_link_button(
+				plugin_page( 'config_page' ) . '&return_page='. $t_page_name,
+				plugin_lang_get( 'config' ), 'btn-xs'
+			);
+?>
 						</div>
 <?php
 		}
