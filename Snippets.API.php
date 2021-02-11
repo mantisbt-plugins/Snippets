@@ -13,6 +13,9 @@ define( 'PLACEHOLDER_PROJECT', '{project}' );
  * Object representing a Snippet (saved block of text).
  */
 class Snippet {
+	const TARGET_VIEW = 'view';
+	const TARGET_FORM = 'form';
+
 	public $id;
 	public $user_id;
 	public $type;
@@ -91,12 +94,12 @@ class Snippet {
 	 * Create a copy of the given Snippet with strings cleaned for output.
 	 *
 	 * @param Snippet|Snippet[] $dirty  Snippet object(s) to process
-	 * @param string $target Target format ('view' or 'form'
+	 * @param string $target Target format (VIEW or FORM)
 	 * @param int $bug_id Reference Bug Id for pattern replacements
 	 *
 	 * @return Snippet[] Cleaned snippet objects
 	 */
-	public static function clean($dirty, $target="view", $bug_id=0) {
+	public static function clean($dirty, $target = self::TARGET_VIEW, $bug_id = 0) {
 		if (is_array($dirty)) {
 			$cleaned = array();
 			foreach ($dirty as $id => $snippet) {
@@ -107,12 +110,16 @@ class Snippet {
 			}
 
 		} else {
-			if ($target == "view") {
-				$dirty->name = string_display_line($dirty->name);
-				$dirty->value = string_display($dirty->value);
-			} elseif ($target == "form") {
-				$dirty->name = string_attribute($dirty->name);
-				$dirty->value = string_textarea($dirty->value);
+			switch ($target) {
+				case self::TARGET_FORM:
+					$dirty->name = string_attribute($dirty->name);
+					$dirty->value = string_textarea($dirty->value);
+					break;
+				case self::TARGET_VIEW:
+				default:
+					$dirty->name = string_display_line($dirty->name);
+					$dirty->value = string_display($dirty->value);
+					break;
 			}
 
 			$cleaned = new Snippet(

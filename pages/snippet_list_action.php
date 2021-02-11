@@ -50,7 +50,7 @@ if ($action == "delete") {
 
 ### EDIT
 } elseif ($action == "edit") {
-	$snippets = Snippet::clean($snippets, "form");
+	$snippets = Snippet::clean($snippets, Snippet::TARGET_FORM);
 	layout_page_header();
 	layout_page_begin();
 ?>
