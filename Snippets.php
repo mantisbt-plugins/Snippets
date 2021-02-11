@@ -60,6 +60,8 @@ class SnippetsPlugin extends MantisPlugin {
 	 * Adds "My Snippets" and "Global Snippets" menu items.
 	 *
 	 * @return array
+	 *
+	 * @noinspection PhpUnused
 	 */
 	public function menu_account() {
 		$t_return = array();
@@ -122,6 +124,8 @@ class SnippetsPlugin extends MantisPlugin {
 	 * @param string $p_event_name The event name
 	 * @param array  $p_event_args The event arguments
 	 * @return void
+	 *
+	 * @noinspection PhpUnusedParameterInspection
 	 */
 	public function routes( $p_event_name, $p_event_args ) {
 		$t_app = $p_event_args['app'];
@@ -162,6 +166,8 @@ class SnippetsPlugin extends MantisPlugin {
 	 * @param array $args
 	 *
 	 * @return Slim\Http\Response
+	 *
+	 * @noinspection PhpUnused, PhpUnusedParameterInspection
 	 */
 	public function route_help($request, $response, $args) {
 		plugin_push_current( $this->basename );
@@ -198,6 +204,8 @@ class SnippetsPlugin extends MantisPlugin {
 	 * @param array $args [bug_id = Bug Id for patterns replacement]
 	 *
 	 * @return Slim\Http\Response
+	 *
+	 * @noinspection PhpUnused, PhpUnusedParameterInspection
 	 */
 	public function route_data( $request, $response, $args) {
 		plugin_push_current( $this->basename );

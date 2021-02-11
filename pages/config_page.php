@@ -31,22 +31,34 @@ print_manage_menu();
 		<div class="table-responsive">
 			<table class="table table-bordered table-condensed table-striped">
 	<tr>
-		<td class="category"><?php echo plugin_lang_get( 'edit_global_threshold' ) ?></td>
-		<td><select name="edit_global_threshold"><?php
+		<td class="category">
+			<label for="edit_global_threshold">
+				<?php echo plugin_lang_get( 'edit_global_threshold' ) ?>
+			</label>
+		</td>
+		<td><select id="edit_global_threshold" name="edit_global_threshold"><?php
 			print_enum_string_option_list( 'access_levels', plugin_config_get( 'edit_global_threshold' ) );
 		?></select></td>
 	</tr>
 
 	<tr>
-		<td class="category"><?php echo plugin_lang_get( 'use_global_threshold' ) ?></td>
-		<td><select name="use_global_threshold"><?php
+		<td class="category">
+			<label for="use_global_threshold">
+				<?php echo plugin_lang_get( 'use_global_threshold' ) ?>
+			</label>
+		</td>
+		<td><select id="use_global_threshold" name="use_global_threshold"><?php
 			print_enum_string_option_list( 'access_levels', plugin_config_get( 'use_global_threshold' ) );
 		?></select></td>
 	</tr>
 
 	<tr>
-		<td class="category"><?php echo plugin_lang_get( 'edit_own_threshold' ) ?></td>
-		<td><select name="edit_own_threshold"><?php
+		<td class="category">
+			<label for="edit_own_threshold">
+				<?php echo plugin_lang_get( 'edit_own_threshold' ) ?>
+			</label>
+		</td>
+		<td><select id="edit_own_threshold" name="edit_own_threshold"><?php
 			print_enum_string_option_list( 'access_levels', plugin_config_get( 'edit_own_threshold' ) );
 		?></select></td>
 	</tr>

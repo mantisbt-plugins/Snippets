@@ -6,7 +6,7 @@
 
 form_security_validate("plugin_Snippets_list_action");
 
-$global = gpc_get_bool("global", false);
+$global = gpc_get_bool("global");
 
 if ($global) {
 	access_ensure_global_level(plugin_config_get("edit_global_threshold"));
@@ -94,7 +94,10 @@ if ($action == "delete") {
 		# Hide checkbox when operating on a single Snippet
 		if( !$single ) {
 ?>
-<td class="center" rowspan="2"><input type="checkbox" name="snippet_list[]" value="<?php echo $snippet->id ?>" checked="checked"/></td>
+<td class="center" rowspan="2">
+	<!--suppress HtmlFormInputWithoutLabel -->
+	<input type="checkbox" name="snippet_list[]" value="<?php echo $snippet->id ?>" checked="checked"/>
+</td>
 <?php
 		}
 ?>
@@ -109,12 +112,22 @@ if ($action == "delete") {
 		echo plugin_lang_get("edit_name")
 ?>
 </td>
-<td><input type="text" name="name_<?php echo $snippet->id ?>" size="40" value="<?php echo $snippet->name ?>"/></td>
+<td>
+	<!--suppress HtmlFormInputWithoutLabel -->
+	<input type="text" name="name_<?php echo $snippet->id ?>" size="40" value="<?php echo $snippet->name ?>"/>
+</td>
 </tr>
 
 <tr>
-<td class="category"><?php echo plugin_lang_get("edit_value") ?></td>
-<td class="snippetspatternhelp"><textarea name="value_<?php echo $snippet->id ?>" cols="80" rows="6"><?php echo $snippet->value ?></textarea></td>
+	<td class="category">
+		<label for="value_<?php echo $snippet->id ?>">
+			<?php echo plugin_lang_get("edit_value") ?>
+		</label>
+	</td>
+	<td class="snippetspatternhelp">
+		<textarea id="value_<?php echo $snippet->id ?>" name="value_<?php echo $snippet->id ?>"
+				  cols="80" rows="6"><?php echo $snippet->value ?></textarea>
+	</td>
 </tr>
 
 <?php
