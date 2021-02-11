@@ -73,11 +73,9 @@ class SnippetsPlugin extends MantisPlugin {
 			$t_return[] = "<a href=\"{$page}\">{$label}</a>";
 		}
 
-		if (access_has_global_level(plugin_config_get("edit_global_threshold"))) {
-			$page = plugin_page("snippet_list") . Snippet::global_url();
-			$label = plugin_lang_get("list_global_title");
-
-			$t_return[] = '<a href="' . string_html_specialchars( $page ) . '">' . $label . '</a>';
+		$t_menu_item = $this->menu_manage();
+		if( $t_menu_item ) {
+			$t_return[] = $t_menu_item;
 		}
 
 		return $t_return;
