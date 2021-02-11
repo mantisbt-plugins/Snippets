@@ -6,10 +6,11 @@
 
 access_ensure_global_level(config_get("manage_plugin_threshold"));
 
-layout_page_header();
+$page_title = plugin_lang_get('config_title') ;
 
+layout_page_header($page_title);
 layout_page_begin();
-print_manage_menu();
+print_manage_menu('manage_plugin_page.php');
 ?>
 
 <div class="col-md-12 col-xs-12">
@@ -22,7 +23,7 @@ print_manage_menu();
 <div class="widget-header widget-header-small">
 	<h4 class="widget-title lighter">
 		<i class="ace-icon fa fa-file-o"></i>
-		<?php echo plugin_lang_get( 'config_title' ) ?>
+		<?php echo $page_title ?>
 	</h4>
 </div>
 

@@ -22,9 +22,9 @@ if( $global ) {
 }
 
 $snippets = Snippet::load_by_user_id( $user_id );
+$page_title = plugin_lang_get( $global ? "list_global_title" : "list_title" ) ;
 
-layout_page_header();
-
+layout_page_header($page_title);
 layout_page_begin();
 
 print_account_menu( $t_current_page );
@@ -39,7 +39,7 @@ print_account_menu( $t_current_page );
 			<div class="widget-header widget-header-small">
 				<h4 class="widget-title lighter">
 					<i class="ace-icon fa fa-file-o"></i>
-					<?php echo plugin_lang_get( $global ? "list_global_title" : "list_title" ) ?>
+					<?php echo $page_title ?>
 				</h4>
 				<?php echo form_security_field( "plugin_Snippets_list_action" ) ?>
 			</div>
