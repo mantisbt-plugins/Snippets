@@ -10,7 +10,7 @@ define( 'PLACEHOLDER_HANDLER', '{handler}' );
 define( 'PLACEHOLDER_PROJECT', '{project}' );
 
 /**
- * Object representing a saved block of text.
+ * Object representing a Snippet (saved block of text).
  */
 class Snippet {
 	public $id;
@@ -20,7 +20,7 @@ class Snippet {
 	public $value;
 
 	/**
-	 * Create a new text object with the given details.
+	 * Create a new Snippet object with the given details.
 	 *
 	 * @param int Field type
 	 * @param string Short name
@@ -37,7 +37,7 @@ class Snippet {
 	/**
 	 * Create or update the database with the object's values.
 	 *
-	 * @return int Text ID if created
+	 * @return int Snippet ID if created
 	 */
 	public function save() {
 		$snippet_table = plugin_table("snippet");
@@ -86,12 +86,13 @@ class Snippet {
 	}
 
 	/**
-	 * Create a copy of the given object with strings cleaned for output.
+	 * Create a copy of the given Snippet with strings cleaned for output.
 	 *
-	 * @param object Snippet object
-	 * @param string Target format
-	 * @param boolean Replacement patterns
-	 * @return array|object Cleaned snippet object
+	 * @param Snippet|Snippet[] $dirty  Snippet object(s) to process
+	 * @param string $target Target format ('view' or 'form'
+	 * @param boolean $pattern Replacement patterns
+	 *
+	 * @return Snippet[] Cleaned snippet objects
 	 */
 	public static function clean($dirty, $target="view", $pattern=false) {
 		if (is_array($dirty)) {
@@ -128,8 +129,11 @@ class Snippet {
 	 * Replace placeholder patterns in the snippet values with appropriate
 	 * strings before being sent to the client for usage.
 	 *
-	 * @param array Snippet objects
-	 * @return array Updated snippet objects
+	 * @param Snippet[] $snippets objects to process
+	 * @param int $bug_id Reference bug id; if 0, default values will be used
+	 *                    (current user / current project)
+	 *
+	 * @return Snippet[] Updated snippet objects
 	 */
 	public static function patterns($snippets, $bug_id) {
 		$handler = PLACEHOLDER_HANDLER;
@@ -169,7 +173,8 @@ class Snippet {
 	 *
 	 * @param mixed Snippet ID (int or array)
 	 * @param int User ID
-	 * @return mixed Snippet(s)
+	 *
+	 * @return Snippet|Snippet[]
 	 */
 	public static function load_by_id($id, $user_id) {
 		$snippet_table = plugin_table("snippet");
@@ -203,7 +208,8 @@ class Snippet {
 	 * @param int Field type
 	 * @param int User ID
 	 * @param boolean Include global text objects
-	 * @return array Text objects
+	 *
+	 * @return Snippet[]
 	 */
 	public static function load_by_type_user($type, $user_id, $include_global=true) {
 		$user_ids = array((int) $user_id);
@@ -224,7 +230,8 @@ class Snippet {
 	 * Load text objects for a given user id.
 	 *
 	 * @param int User ID
-	 * @return array Text objects
+	 *
+	 * @return Snippet[]
 	 */
 	public static function load_by_user_id($user_id) {
 		$snippet_table = plugin_table("snippet");
@@ -238,7 +245,8 @@ class Snippet {
 	/**
 	 * Delete snippets with the given ID.
 	 *
-	 * @param mixed Snippet ID (int or array)
+	 * @param mixed $id Snippet ID (int or array)
+	 * @param int $user_id
 	 */
 	public static function delete_by_id($id, $user_id) {
 		$snippet_table = plugin_table("snippet");
@@ -264,7 +272,7 @@ class Snippet {
 	/**
 	 * Delete all text objects for a given user.
 	 *
-	 * @param int User ID
+	 * @param int $user_id User ID
 	 */
 	public static function delete_by_user_id($user_id) {
 		$snippet_table = plugin_table("snippet");
@@ -273,10 +281,11 @@ class Snippet {
 	}
 
 	/**
-	 * Convert a database query result to an array of text objects.
+	 * Convert a database query result to an array of Snippet objects.
 	 *
-	 * @param object Database query result
-	 * @return array Text objects
+	 * @param IteratorAggregate $result Database query result
+	 *
+	 * @return Snippet[] objects
 	 */
 	private static function from_db_result($result) {
 		$snippets = array();
@@ -298,6 +307,7 @@ class Snippet {
 	 * Replace legacy placeholders (e.g. %u) with modern ones (e.g. {user}).
 	 *
 	 * @param string $p_value The snippet to process.
+	 *
 	 * @return string The processed snippet.
 	 */
 	private static function replace_legacy_placeholders($p_value) {

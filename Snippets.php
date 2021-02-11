@@ -54,7 +54,14 @@ class SnippetsPlugin extends MantisPlugin {
 		require_once("Snippets.API.php");
 	}
 
-	public function menu_account($event, $user_id) {
+	/**
+	 * Hook for EVENT_MENU_ACCOUNT.
+	 *
+	 * Adds "My Snippets" and "Global Snippets" menu items.
+	 *
+	 * @return array
+	 */
+	public function menu_account() {
 		$t_return = array();
 
 		if (access_has_global_level(plugin_config_get("edit_own_threshold"))) {
@@ -74,7 +81,14 @@ class SnippetsPlugin extends MantisPlugin {
 		return $t_return;
 	}
 
-	public function menu_manage($event, $user_id) {
+	/**
+	 * Hook for EVENT_MENU_MANAGE.
+	 *
+	 * Adds "Global Snippets" menu item.
+	 *
+	 * @return string
+	 */
+	public function menu_manage() {
 		if (access_has_global_level(plugin_config_get("edit_global_threshold"))) {
 			$page = plugin_page("snippet_list") . Snippet::global_url();
 			$label = plugin_lang_get("list_global_title");
@@ -84,7 +98,14 @@ class SnippetsPlugin extends MantisPlugin {
 		return '';
 	}
 
-	public function resources($event) {
+	/**
+	 * Hook for EVENT_LAYOUT_RESOURCES.
+	 *
+	 * Adds "Global Snippets" menu item.
+	 *
+	 * @return string
+	 */
+	public function resources() {
 		return '
 			<script src="' . plugin_file("jquery-textrange.js") . '"></script>
 			<script src="' . plugin_file("jquery.qtip.min.js") . '"></script>
@@ -94,6 +115,8 @@ class SnippetsPlugin extends MantisPlugin {
 	}
 
 	/**
+	 * Hook for EVENT_REST_API_ROUTES.
+	 *
 	 * Add the RESTful routes handled by this plugin.
 	 *
 	 * @param string $p_event_name The event name
@@ -137,6 +160,7 @@ class SnippetsPlugin extends MantisPlugin {
 	 * @param Slim\Http\Request $request
 	 * @param Slim\Http\Response $response
 	 * @param array $args
+	 *
 	 * @return Slim\Http\Response
 	 */
 	public function route_help($request, $response, $args) {
@@ -172,6 +196,7 @@ class SnippetsPlugin extends MantisPlugin {
 	 * @param Slim\Http\Request $request
 	 * @param Slim\Http\Response $response
 	 * @param array $args [bug_id = Bug Id for patterns replacement]
+	 *
 	 * @return Slim\Http\Response
 	 */
 	public function route_data( $request, $response, $args) {
