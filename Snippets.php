@@ -54,6 +54,10 @@ class SnippetsPlugin extends MantisPlugin {
 
 	public function init() {
 		require_once("Snippets.API.php");
+
+		if( plugin_needs_upgrade( $this ) ) {
+			require_once( dirname( __FILE__ ) . '/install_functions.php' );
+		}
 	}
 
 	/**
@@ -156,8 +160,6 @@ class SnippetsPlugin extends MantisPlugin {
 	}
 
 	public function schema() {
-		require_once('install.php');
-
 		return array(
 			# 2010-03-18
 			0 => array("CreateTableSQL", array(plugin_table("snippet"), "
