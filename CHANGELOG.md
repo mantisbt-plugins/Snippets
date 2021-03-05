@@ -8,6 +8,16 @@ specification.
 
 --------------------------------------------------------------------------------
 
+## [2.3.1] - 2021-03-05
+
+### Fixed
+
+- MantisBT install page included instead of plugin's install functions
+  [#53](https://github.com/mantisbt-plugins/snippets/issues/53)
+- Install functions always included even if not needed
+  [#54](https://github.com/mantisbt-plugins/snippets/issues/54)
+
+
 ## [2.3.0] - 2021-02-12
 
 ### Changed
@@ -248,8 +258,9 @@ specification.
 - Initial release
 
 
-[Unreleased]: https://github.com/mantisbt-plugins/snippets/compare/v2.3.0...HEAD
+[Unreleased]: https://github.com/mantisbt-plugins/snippets/compare/v2.3.1...HEAD
 
+[2.3.1]: https://github.com/mantisbt-plugins/snippets/compare/v2.3.0...v2.3.1
 [2.3.0]: https://github.com/mantisbt-plugins/snippets/compare/v2.2.5...v2.3.0
 [2.2.5]: https://github.com/mantisbt-plugins/snippets/compare/v2.2.4...v2.2.5
 [2.2.4]: https://github.com/mantisbt-plugins/snippets/compare/v2.2.3...v2.2.4
