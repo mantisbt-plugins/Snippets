@@ -8,6 +8,14 @@ specification.
 
 --------------------------------------------------------------------------------
 
+## [2.3.2] - 2021-03-31
+
+### Fixed
+
+- New 2.3.1 install (or upgrade from < 2.3.0 to 2.3.1) fails
+  [#55](https://github.com/mantisbt-plugins/snippets/issues/55)
+
+
 ## [2.3.1] - 2021-03-05
 
 ### Fixed
@@ -258,8 +266,9 @@ specification.
 - Initial release
 
 
-[Unreleased]: https://github.com/mantisbt-plugins/snippets/compare/v2.3.1...HEAD
+[Unreleased]: https://github.com/mantisbt-plugins/snippets/compare/v2.3.2...HEAD
 
+[2.3.2]: https://github.com/mantisbt-plugins/snippets/compare/v2.3.1...v2.3.2
 [2.3.1]: https://github.com/mantisbt-plugins/snippets/compare/v2.3.0...v2.3.1
 [2.3.0]: https://github.com/mantisbt-plugins/snippets/compare/v2.2.5...v2.3.0
 [2.2.5]: https://github.com/mantisbt-plugins/snippets/compare/v2.2.4...v2.2.5
