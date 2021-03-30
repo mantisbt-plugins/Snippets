@@ -54,10 +54,6 @@ class SnippetsPlugin extends MantisPlugin {
 
 	public function init() {
 		require_once("Snippets.API.php");
-
-		if( plugin_needs_upgrade( $this ) ) {
-			require_once( dirname( __FILE__ ) . '/install_functions.php' );
-		}
 	}
 
 	/**
@@ -173,6 +169,13 @@ class SnippetsPlugin extends MantisPlugin {
 			# 2.3.0
 			1 => array("UpdateFunction", "delete_orphans"),
 		);
+	}
+
+	public function upgrade( $p_schema ) {
+		if( $p_schema == 1 ) {
+			require_once( dirname( __FILE__ ) . '/install_functions.php' );
+		}
+		return true;
 	}
 
 	/**
