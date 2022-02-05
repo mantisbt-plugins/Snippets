@@ -22,6 +22,10 @@ $snippet_list = gpc_get_int_array("snippet_list", array());
 
 if (count($snippet_list) < 1) {
 	form_security_purge("plugin_Snippets_list_action");
+	helper_ensure_confirmed(
+		plugin_lang_get( 'action_nothing_to_do' ),
+		lang_get( 'ok' )
+	);
 	print_header_redirect(plugin_page("snippet_list", true) . Snippet::global_url($global));
 }
 

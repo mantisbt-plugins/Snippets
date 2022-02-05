@@ -40,6 +40,7 @@ $s_plugin_Snippets_action_create = 'Create';
 $s_plugin_Snippets_action_select_all = 'Select/Deselect all Snippets';
 $s_plugin_Snippets_action_edit = 'Edit';
 $s_plugin_Snippets_action_delete = 'Delete';
+$s_plugin_Snippets_action_nothing_to_do = 'Please select at least one Snippet to process.';
 $s_plugin_Snippets_action_delete_confirm = 'Do you really want to delete the following snippets?';
 $s_plugin_Snippets_action_update = 'Update';
 
