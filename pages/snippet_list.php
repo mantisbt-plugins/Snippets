@@ -99,20 +99,28 @@ print_account_menu( $t_current_page );
 						</table>
 					</div>
 				</div>
-				<div class="widget-toolbox padding-8 clearfix">
-					<input class="ace snippets_select_all" type="checkbox"
-						   title="<?php echo plugin_lang_get( 'action_select_all' ); ?>"
-					/>
-					<span class="lbl"></span>
 
-					<button type="submit" name="action" value="edit"
-							class="btn btn-primary btn-white btn-sm btn-round">
-						<?php echo plugin_lang_get( "action_edit" ) ?>
-					</button>
-					<button type="submit" name="action" value="delete"
-							class="btn btn-primary btn-white btn-sm btn-round">
-						<?php echo plugin_lang_get( "action_delete" ) ?>
-					</button>
+				<div class="widget-toolbox no-padding clearfix ">
+					<table id="snippets-list-footer" class="table">
+						<tr>
+							<td class="center width-5">
+								<input class="ace snippets_select_all" type="checkbox"
+									   title="<?php echo plugin_lang_get( 'action_select_all' ); ?>"
+								/>
+								<span class="lbl"></span>
+							</td>
+							<td>
+								<button type="submit" name="action" value="edit"
+										class="btn btn-primary btn-white btn-sm btn-round">
+									<?php echo plugin_lang_get( "action_edit" ) ?>
+								</button>
+								<button type="submit" name="action" value="delete"
+										class="btn btn-primary btn-white btn-sm btn-round">
+									<?php echo plugin_lang_get( "action_delete" ) ?>
+								</button>
+							</td>
+						</tr>
+					</table>
 				</div>
 			</div>
 		</div>
