@@ -14,6 +14,7 @@ if( $global ) {
 	$t_current_page = $t_page_name . '&amp;global';
 } else {
 	access_ensure_global_level( plugin_config_get( "edit_own_threshold" ) );
+	$admin = false;
 	$user_id = auth_get_current_user_id();
 	# This is a hack to trick the HTML API which relies on strpos to determine
 	# the active tab, to only highlight the "My Snippets" tab and not the
@@ -42,31 +43,35 @@ print_account_menu( $t_current_page );
 					<?php echo $page_title ?>
 				</h4>
 				<?php echo form_security_field( "plugin_Snippets_list_action" ) ?>
+<?php
+	if( $global ) {
+?>
+				<input type="hidden" name="global" value="true"/>
+<?php
+	}
+?>
 			</div>
 
 			<div class="widget-body">
 				<div class="widget-main no-padding">
 					<div class="table-responsive">
-
-<?php
-	if( $global ) {
-?>
-						<input type="hidden" name="global" value="true"/>
-<?php
-		if( $admin ) {
-?>
 						<div class="widget-toolbox padding-8 clearfix">
 <?php
-			print_link_button(
-				plugin_page( 'config_page' ) . '&return_page='. $t_page_name,
-				plugin_lang_get( 'config' ), 'btn-xs'
-			);
-?>
-						</div>
-<?php
-		}
+	# Jump to Create Snippet section
+	print_link_button( "#create_snippet",
+		plugin_lang_get( 'create_goto' ),
+		'btn-sm'
+	);
+
+	if( $admin ) {
+		echo '&nbsp;';
+		print_link_button(
+			plugin_page( 'config_page' ) . '&return_page='. $t_page_name,
+			plugin_lang_get( 'config' ), 'btn-sm'
+		);
 	}
 ?>
+						</div>
 
 						<table class="table table-striped table-bordered table-condensed table-hover">
 							<thead>
@@ -106,6 +111,7 @@ print_account_menu( $t_current_page );
 	<div class="space-10"></div>
 
 	<div class="form-container">
+		<a id="create_snippet"></a>
 
 		<form action="<?php echo plugin_page( "snippet_create" ) ?>" method="post">
 			<?php echo form_security_field( "plugin_snippets_create" ) ?>

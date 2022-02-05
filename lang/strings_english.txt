@@ -28,6 +28,7 @@ $s_plugin_Snippets_create_title = 'Create Snippet';
 $s_plugin_Snippets_create_global_title = 'Create Global Snippet';
 $s_plugin_Snippets_create_name = 'Name';
 $s_plugin_Snippets_create_value = 'Snippet';
+$s_plugin_Snippets_create_goto = 'Jump to Create Snippet section';
 
 $s_plugin_Snippets_config = 'Configuration';
 $s_plugin_Snippets_config_title = 'Snippet Configuration';
