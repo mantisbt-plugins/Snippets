@@ -36,7 +36,6 @@ $s_plugin_Snippets_edit_global_threshold = 'Edit Global Snippets';
 $s_plugin_Snippets_use_global_threshold = 'Use Global Snippets';
 $s_plugin_Snippets_edit_own_threshold = 'Edit Own Snippets';
 
-$s_plugin_Snippets_action_go = 'Go';
 $s_plugin_Snippets_action_create = 'Create';
 $s_plugin_Snippets_action_select_all = 'Select/Deselect all Snippets';
 $s_plugin_Snippets_action_edit = 'Edit';

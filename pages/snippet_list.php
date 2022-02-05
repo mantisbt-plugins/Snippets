@@ -105,11 +105,14 @@ print_account_menu( $t_current_page );
 					/>
 					<span class="lbl"></span>
 
-					<select class="snippets_select_action" name="action">
-						<option value="edit"><?php echo plugin_lang_get( "action_edit" ) ?></option>
-						<option value="delete"><?php echo plugin_lang_get( "action_delete" ) ?></option>
-					</select>
-					<input class="btn btn-primary btn-white btn-sm btn-round" type="submit" value="<?php echo plugin_lang_get( "action_go" ) ?>"/>
+					<button type="submit" name="action" value="edit"
+							class="btn btn-primary btn-white btn-sm btn-round">
+						<?php echo plugin_lang_get( "action_edit" ) ?>
+					</button>
+					<button type="submit" name="action" value="delete"
+							class="btn btn-primary btn-white btn-sm btn-round">
+						<?php echo plugin_lang_get( "action_delete" ) ?>
+					</button>
 				</div>
 			</div>
 		</div>

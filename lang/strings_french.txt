@@ -35,7 +35,6 @@ $s_plugin_Snippets_edit_global_threshold = 'Editer les bribes globales';
 $s_plugin_Snippets_use_global_threshold = 'Utiliser les bribes globales';
 $s_plugin_Snippets_edit_own_threshold = 'Editer ses propres bribes';
 
-$s_plugin_Snippets_action_go = 'Valider';
 $s_plugin_Snippets_action_create = 'Créer';
 $s_plugin_Snippets_action_edit = 'Editer';
 $s_plugin_Snippets_action_delete = 'Supprimer';

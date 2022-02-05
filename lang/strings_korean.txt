@@ -35,7 +35,6 @@ $s_plugin_Snippets_edit_global_threshold = '전체 고정문구 편집권한';
 $s_plugin_Snippets_use_global_threshold = '전체 고정문구 사용권한';
 $s_plugin_Snippets_edit_own_threshold = '내 고정문구 편집권한';
 
-$s_plugin_Snippets_action_go = '선택';
 $s_plugin_Snippets_action_create = '생성하기';
 $s_plugin_Snippets_action_edit = '편집';
 $s_plugin_Snippets_action_delete = '삭제';
