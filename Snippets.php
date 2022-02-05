@@ -4,12 +4,13 @@
 # Copyright (c) 2012 - 2021  MantisBT Team - mantisbt-dev@lists.sourceforge.net
 # Licensed under the MIT license
 
-class SnippetsPlugin extends MantisPlugin {
+class SnippetsPlugin extends MantisPlugin
+{
 	const VERSION = '2.3.2';
 
 	public function register() {
-		$this->name = plugin_lang_get("name");
-		$this->description = plugin_lang_get("description");
+		$this->name = plugin_lang_get( "name" );
+		$this->description = plugin_lang_get( "description" );
 		$this->page = "config_page";
 
 		$this->version = self::VERSION;
@@ -34,8 +35,8 @@ class SnippetsPlugin extends MantisPlugin {
 
 	public function errors() {
 		return array(
-			"name_empty" => plugin_lang_get("error_name_empty"),
-			"value_empty" => plugin_lang_get("error_value_empty"),
+			"name_empty" => plugin_lang_get( "error_name_empty" ),
+			"value_empty" => plugin_lang_get( "error_value_empty" ),
 		);
 	}
 
@@ -53,7 +54,7 @@ class SnippetsPlugin extends MantisPlugin {
 	}
 
 	public function init() {
-		require_once("Snippets.API.php");
+		require_once( "Snippets.API.php" );
 	}
 
 	/**
@@ -68,11 +69,12 @@ class SnippetsPlugin extends MantisPlugin {
 	public function menu_account() {
 		$t_return = array();
 
-		if (access_has_global_level(plugin_config_get("edit_own_threshold"))) {
-			$page = plugin_page("snippet_list");
-			$label = plugin_lang_get("list_title");
+		if( access_has_global_level( plugin_config_get( "edit_own_threshold" )
+		) ) {
+			$page = plugin_page( "snippet_list" );
+			$label = plugin_lang_get( "list_title" );
 
-			$t_return[] = "<a href=\"{$page}\">{$label}</a>";
+			$t_return[] = "<a href=\"$page\">$label</a>";
 		}
 
 		$t_menu_item = $this->menu_manage();
@@ -91,9 +93,9 @@ class SnippetsPlugin extends MantisPlugin {
 	 * @return string
 	 */
 	public function menu_manage() {
-		if (access_has_global_level(plugin_config_get("edit_global_threshold"))) {
-			$page = plugin_page("snippet_list") . Snippet::global_url();
-			$label = plugin_lang_get("list_global_title");
+		if( access_has_global_level( plugin_config_get( "edit_global_threshold"	) ) ) {
+			$page = plugin_page( "snippet_list" ) . Snippet::global_url();
+			$label = plugin_lang_get( "list_global_title" );
 
 			return '<a href="' . string_html_specialchars( $page ) . '">' . $label . '</a>';
 		}
@@ -109,11 +111,11 @@ class SnippetsPlugin extends MantisPlugin {
 	 */
 	public function resources() {
 		return '
-			<script src="' . plugin_file("jquery-textrange.js") . '"></script>
-			<script src="' . plugin_file("jquery.qtip.min.js") . '"></script>
-			<script src="' . plugin_file("snippets.js") . '"></script>
-			<link rel="stylesheet" type="text/css" href="' . plugin_file("jquery.qtip.min.css") . '"/>
-			<link rel="stylesheet" type="text/css" href="' . plugin_file("snippets.css") . '"/>';
+			<script src="' . plugin_file( "jquery-textrange.js" ) . '"></script>
+			<script src="' . plugin_file( "jquery.qtip.min.js" ) . '"></script>
+			<script src="' . plugin_file( "snippets.js" ) . '"></script>
+			<link rel="stylesheet" type="text/css" href="' . plugin_file( "jquery.qtip.min.css" ) . '"/>
+			<link rel="stylesheet" type="text/css" href="' . plugin_file( "snippets.css" ) . '"/>';
 	}
 
 	/**
@@ -126,8 +128,8 @@ class SnippetsPlugin extends MantisPlugin {
 	 *
 	 * @noinspection PhpUnusedParameterInspection
 	 */
-	public function user_delete($event, $user_id) {
-		Snippet::delete_by_user_id($user_id);
+	public function user_delete( $event, $user_id ) {
+		Snippet::delete_by_user_id( $user_id );
 	}
 
 	/**
@@ -147,10 +149,10 @@ class SnippetsPlugin extends MantisPlugin {
 		$t_app->group(
 			plugin_route_group(),
 			function() use ( $t_app, $t_plugin ) {
-				$t_app->get( '/help', [$t_plugin, 'route_help'] );
+				$t_app->get( '/help', [ $t_plugin, 'route_help' ] );
 
-				$t_app->get( '/data', [$t_plugin, 'route_data'] );
-				$t_app->get( '/data/{bug_id}', [$t_plugin, 'route_data'] );
+				$t_app->get( '/data', [ $t_plugin, 'route_data' ] );
+				$t_app->get( '/data/{bug_id}', [ $t_plugin, 'route_data' ] );
 			}
 		);
 	}
@@ -158,7 +160,7 @@ class SnippetsPlugin extends MantisPlugin {
 	public function schema() {
 		return array(
 			# 2010-03-18
-			0 => array("CreateTableSQL", array(plugin_table("snippet"), "
+			0 => array( "CreateTableSQL", array( plugin_table( "snippet" ), "
 				id			I		NOTNULL UNSIGNED AUTOINCREMENT PRIMARY,
 				user_id		I		NOTNULL UNSIGNED,
 				type		I		NOTNULL UNSIGNED,
@@ -167,7 +169,7 @@ class SnippetsPlugin extends MantisPlugin {
 				")),
 
 			# 2.3.0
-			1 => array("UpdateFunction", "delete_orphans"),
+			1 => array( "UpdateFunction", "delete_orphans" ),
 		);
 	}
 
@@ -185,20 +187,20 @@ class SnippetsPlugin extends MantisPlugin {
 	 *   - {string} title
 	 *   - {string} text
 	 *
-	 * @param Slim\Http\Request $request
+	 * @param Slim\Http\Request  $request
 	 * @param Slim\Http\Response $response
-	 * @param array $args
+	 * @param array              $args
 	 *
 	 * @return Slim\Http\Response
 	 *
 	 * @noinspection PhpUnused, PhpUnusedParameterInspection
 	 */
-	public function route_help($request, $response, $args) {
+	public function route_help( $request, $response, $args ) {
 		plugin_push_current( $this->basename );
 
 		$t_help = array(
 			'title' => plugin_lang_get( 'pattern_title' ),
-			'text'  => plugin_lang_get( 'pattern_help' ),
+			'text' => plugin_lang_get( 'pattern_help' ),
 		);
 
 		plugin_pop_current();
@@ -215,7 +217,8 @@ class SnippetsPlugin extends MantisPlugin {
 	 * - {string}     version  - Plugin version
 	 * - {string}     selector - Configured jQuery selector for textareas
 	 * - {string}     label    - Language string for Snippets select's label
-	 * - {string}     default  - Language string for Snippets select's default option
+	 * - {string}     default  - Language string for Snippets select's default
+	 * option
 	 * - {null|array} snippets - List of snippets, with following structure:
 	 *   - {int}      id
 	 *   - {int}      user_id
@@ -223,15 +226,16 @@ class SnippetsPlugin extends MantisPlugin {
 	 *   - {string}   name     - Snippet title
 	 *   - {string}   value    - Snippet text
 	 *
-	 * @param Slim\Http\Request $request
+	 * @param Slim\Http\Request  $request
 	 * @param Slim\Http\Response $response
-	 * @param array $args [bug_id = Bug Id for patterns replacement]
+	 * @param array              $args [bug_id = Bug Id for patterns
+	 *                                 replacement]
 	 *
 	 * @return Slim\Http\Response
 	 *
 	 * @noinspection PhpUnused, PhpUnusedParameterInspection
 	 */
-	public function route_data( $request, $response, $args) {
+	public function route_data( $request, $response, $args ) {
 		plugin_push_current( $this->basename );
 
 		# Set the reference Bug Id for placeholders replacements
@@ -253,7 +257,7 @@ class SnippetsPlugin extends MantisPlugin {
 		# Split names of textareas found in 'textarea_names' option, and
 		# make an array of "textarea[name='FIELD_NAME']" strings
 		$t_selectors = array_map(
-			function($name) {
+			function( $name ) {
 				return "textarea[name='$name']";
 			},
 			Snippet::get_configured_field_names()
