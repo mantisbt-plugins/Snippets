@@ -41,3 +41,7 @@ table#snippets-list-footer {
 	background-color: transparent !important;
 	margin-bottom: 0 !important;
 }
+
+tr.spacer > td {
+	border-bottom-width: 0 !important;
+}
