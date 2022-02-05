@@ -76,7 +76,7 @@ print_account_menu( $t_current_page );
 						<table class="table table-striped table-bordered table-condensed table-hover">
 							<thead>
 								<tr>
-								<th width="5%"></th>
+								<th class="width-5"></th>
 								<th><?php echo plugin_lang_get( "list_name" ) ?></th>
 								<th><?php echo plugin_lang_get( "list_value" ) ?></th>
 								</tr>
@@ -85,7 +85,11 @@ print_account_menu( $t_current_page );
 							<?php foreach( Snippet::clean( $snippets ) as $snippet ): ?>
 								<tr>
 									<td class="center">
-										<input type="checkbox" class="ace" name="snippet_list[]" value="<?php echo $snippet->id ?>"/><span class="lbl"></span>
+										<!--suppress HtmlFormInputWithoutLabel -->
+										<input type="checkbox" class="ace" name="snippet_list[]"
+											   value="<?php echo $snippet->id ?>"
+										/>
+										<span class="lbl"></span>
 									</td>
 									<td><?php echo $snippet->name ?></td>
 									<td><?php echo $snippet->value ?></td>
@@ -130,13 +134,25 @@ print_account_menu( $t_current_page );
 					<div class="table-responsive">
 						<table class="table table-bordered table-condensed table-striped">
 							<tr>
-								<td class="category"><?php echo plugin_lang_get( "create_name" ) ?></td>
-								<td><input type="text" name="name" size="40" /></td>
+								<td class="category">
+									<label for="name">
+										<?php echo plugin_lang_get( "create_name" ) ?>
+									</label>
+								</td>
+								<td>
+									<input type="text" id="name" name="name" size="40" />
+								</td>
 							</tr>
 
 							<tr>
-								<td class="category"><?php echo plugin_lang_get( "create_value" ) ?></td>
-								<td class="snippetspatternhelp"><textarea name="value" cols="80" rows="6"></textarea></td>
+								<td class="category">
+									<label for="value">
+										<?php echo plugin_lang_get( "create_value" ) ?>
+									</label>
+								</td>
+								<td class="snippetspatternhelp">
+									<textarea id="value" name="value" cols="80" rows="6"></textarea>
+								</td>
 							</tr>
 						</table>
 					</div>

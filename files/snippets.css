@@ -31,3 +31,8 @@
 .qtip-content table td {
 	padding: 0 5px;
 }
+
+/* Snippets list layout */
+.width-5 {
+	width: 5%;
+}
