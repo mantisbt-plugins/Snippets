@@ -38,6 +38,7 @@ $s_plugin_Snippets_edit_own_threshold = 'Edit Own Snippets';
 
 $s_plugin_Snippets_action_go = 'Go';
 $s_plugin_Snippets_action_create = 'Create';
+$s_plugin_Snippets_action_select_all = 'Select/Deselect all Snippets';
 $s_plugin_Snippets_action_edit = 'Edit';
 $s_plugin_Snippets_action_delete = 'Delete';
 $s_plugin_Snippets_action_delete_confirm = 'Do you really want to delete the following snippets?';

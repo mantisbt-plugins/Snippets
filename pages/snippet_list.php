@@ -100,7 +100,11 @@ print_account_menu( $t_current_page );
 					</div>
 				</div>
 				<div class="widget-toolbox padding-8 clearfix">
-					<input class="ace snippets_select_all" type="checkbox"/><span class="lbl"></span>
+					<input class="ace snippets_select_all" type="checkbox"
+						   title="<?php echo plugin_lang_get( 'action_select_all' ); ?>"
+					/>
+					<span class="lbl"></span>
+
 					<select class="snippets_select_action" name="action">
 						<option value="edit"><?php echo plugin_lang_get( "action_edit" ) ?></option>
 						<option value="delete"><?php echo plugin_lang_get( "action_delete" ) ?></option>
