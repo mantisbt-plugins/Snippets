@@ -8,6 +8,24 @@ specification.
 
 --------------------------------------------------------------------------------
 
+## [2.4.0] - 2022-02-06
+
+### Changed
+
+- Add button to jump to Create Snippet section from Edit Snippets page
+  [#35](https://github.com/mantisbt-plugins/snippets/issues/35)
+- Replace select+Go button by Edit/Delete buttons
+  [#36](https://github.com/mantisbt-plugins/snippets/issues/36)
+- Add tooltip to "Select all" checkbox
+  [#59](https://github.com/mantisbt-plugins/snippets/issues/59)
+- Improve layout of Snippets list footer
+  [#60](https://github.com/mantisbt-plugins/snippets/issues/60)
+- Display message when no snippets are selected
+  [#61](https://github.com/mantisbt-plugins/snippets/issues/61)
+- Adapt Edit Snippets page layout to Mantis 2.x style
+  [#62](https://github.com/mantisbt-plugins/snippets/issues/62)
+
+
 ## [2.3.2] - 2021-03-31
 
 ### Fixed
@@ -266,8 +284,9 @@ specification.
 - Initial release
 
 
-[Unreleased]: https://github.com/mantisbt-plugins/snippets/compare/v2.3.2...HEAD
+[Unreleased]: https://github.com/mantisbt-plugins/snippets/compare/v2.4.0...HEAD
 
+[2.4.0]: https://github.com/mantisbt-plugins/snippets/compare/v2.3.2...v2.4.0
 [2.3.2]: https://github.com/mantisbt-plugins/snippets/compare/v2.3.1...v2.3.2
 [2.3.1]: https://github.com/mantisbt-plugins/snippets/compare/v2.3.0...v2.3.1
 [2.3.0]: https://github.com/mantisbt-plugins/snippets/compare/v2.2.5...v2.3.0
