@@ -6,7 +6,7 @@
 
 class SnippetsPlugin extends MantisPlugin
 {
-	const VERSION = '2.3.2';
+	const VERSION = '2.4.0';
 
 	public function register() {
 		$this->name = plugin_lang_get( "name" );
