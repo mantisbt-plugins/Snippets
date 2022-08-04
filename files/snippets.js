@@ -41,6 +41,10 @@ jQuery(document).ready(function($) {
 					try {
 						// Create Snippets select
 						var select = $("<select></select>");
+
+						// Set the Tab index equal to the associated textareas
+						select.attr('tabindex', textarea.attr('tabindex'));
+
 						select.append("<option title='' value=''>" + data.default + "</option>");
 
 						$.each(data.snippets, function(key, snippet) {
