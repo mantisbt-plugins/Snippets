@@ -10,6 +10,8 @@ specification.
 
 ## [2.4.1] - 2022-08-04
 
+### Fixed
+
 - Snippet selects are not in expected tab order on Bug Update page
   [#63](https://github.com/mantisbt-plugins/snippets/issues/63)
 
