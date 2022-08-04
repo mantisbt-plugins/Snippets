@@ -45,7 +45,7 @@ $s_plugin_Snippets_pattern_title = 'Aide pour les marqueurs de bribes';
 $s_plugin_Snippets_pattern_help = '
 	<p>Les bribes peuvent contenir des marqueurs qui seront remplacés par
 	des données contextuelles lors de leur insertion dans un champ texte.</p>
-	<p>Les marqueurs suivants sont pris en compte :<br/>
+	<p>Les marqueurs suivants sont pris en compte :</p>
 	<table>
 	<tr><td><strong>{user}</strong></td><td>Votre nom d\'utilisateur</td></tr>
 	<tr><td><strong>{reporter}</strong></td><td>Le nom du rapporteur de la demande</td></tr>
