@@ -20,16 +20,6 @@ $t_data = array(
 $t_command = new SnippetAddCommand( $t_data );
 $t_command->execute();
 
-// if( is_blank( $name ) ) {
-// 	plugin_error( "name_empty" );
-// }
-// if( is_blank( $value ) ) {
-// 	plugin_error( "value_empty" );
-// }
-
-// $snippet = new Snippet( 0, $name, $value, $user_id );
-// $snippet->save();
-
 form_security_purge( 'plugin_snippets_create' );
 print_successful_redirect(
 	plugin_page( 'snippet_list', true ) . Snippet::global_url( $f_global )
