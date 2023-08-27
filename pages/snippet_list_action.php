@@ -56,7 +56,7 @@ if( $action == 'delete' ) {
 	}
 
 	form_security_purge( "plugin_Snippets_list_action" );
-	print_successful_redirect( $t_redirect_page );
+	print_header_redirect( $t_redirect_page );
 
 ### EDIT
 } elseif( $action == "edit" ) {
@@ -208,5 +208,5 @@ if( $action == 'delete' ) {
 	}
 
 	form_security_purge( "plugin_Snippets_list_action" );
-	print_successful_redirect( $t_redirect_page );
+	print_header_redirect( $t_redirect_page );
 }

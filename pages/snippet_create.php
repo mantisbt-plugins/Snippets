@@ -21,6 +21,6 @@ $t_command = new SnippetAddCommand( $t_data );
 $t_command->execute();
 
 form_security_purge( 'plugin_snippets_create' );
-print_successful_redirect(
+print_header_redirect(
 	plugin_page( 'snippet_list', true ) . Snippet::global_url( $f_global )
 );
