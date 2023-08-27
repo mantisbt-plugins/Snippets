@@ -55,6 +55,7 @@ class SnippetsPlugin extends MantisPlugin
 	public function init() {
 		require_once( dirname( __FILE__ ) . '/core/Snippets.API.php' );
 		require_once( dirname( __FILE__ ) . '/core/commands/SnippetAddCommand.php' );
+		require_once( dirname( __FILE__ ) . '/core/commands/SnippetDeleteCommand.php' );
 		require_once( dirname( __FILE__ ) . '/core/commands/SnippetSearchCommand.php' );
 	}
 
@@ -156,6 +157,7 @@ class SnippetsPlugin extends MantisPlugin
 				$t_app->get( '/data/{bug_id}', [ $t_plugin, 'route_data' ] );
 
 				$t_app->post( '/snippets', [ $t_plugin, 'snippet_add' ] );
+				$t_app->delete( '/snippets/{snippet_id}', [ $t_plugin, 'snippet_delete' ] );
 				$t_app->get( '/search', [ $t_plugin, 'search' ] );
 			}
 		);
@@ -207,6 +209,32 @@ class SnippetsPlugin extends MantisPlugin
 		return $p_response
 			->withStatus( HTTP_STATUS_CREATED )
 			->withJson( $t_result );
+	}
+
+	/**
+	 * REST API for deleting a snippet by id.
+	 *
+	 * @param Slim\Http\Request  $p_request
+	 * @param Slim\Http\Response $p_response
+	 * @param array              $p_args
+	 * @return Slim\Http\Response
+	 */
+	public function snippet_delete( $p_request, $p_response, $p_args ) {
+		plugin_push_current( $this->basename );
+
+		$t_data = array(
+			'query' => array(
+				'id' => isset( $p_args['snippet_id'] ) ? (int)$p_args['snippet_id'] : 0
+			)
+		);
+
+		$t_command = new SnippetDeleteCommand( $t_data );
+		$t_command->execute();
+
+		plugin_pop_current();
+
+		return $p_response
+			->withStatus( HTTP_STATUS_NO_CONTENT );
 	}
 
 	/**
