@@ -237,7 +237,7 @@ class SnippetsPlugin extends MantisPlugin
 		plugin_pop_current();
 
 		return $p_response
-			->withStatus( HTTP_STATUS_CREATED )
+			->withStatus( HTTP_STATUS_SUCCESS )
 			->withJson( $t_result );
 	}
 
