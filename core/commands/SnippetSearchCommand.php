@@ -5,6 +5,8 @@
 
 require_once( dirname( __FILE__ ) . '/../Snippets.API.php' );
 
+use Mantis\Exceptions\ClientException;
+
 define( 'SNIPPETS_MATCH_TYPE_TITLE', 'title' );
 define( 'SNIPPETS_MATCH_TYPE_CONTENT', 'content' );
 
