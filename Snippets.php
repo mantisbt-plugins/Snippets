@@ -54,6 +54,7 @@ class SnippetsPlugin extends MantisPlugin
 
 	public function init() {
 		require_once( dirname( __FILE__ ) . '/core/Snippets.API.php' );
+		require_once( dirname( __FILE__ ) . '/core/commands/SnippetSearchCommand.php' );
 	}
 
 	/**
@@ -152,6 +153,8 @@ class SnippetsPlugin extends MantisPlugin
 
 				$t_app->get( '/data', [ $t_plugin, 'route_data' ] );
 				$t_app->get( '/data/{bug_id}', [ $t_plugin, 'route_data' ] );
+
+				$t_app->get( '/search', [ $t_plugin, 'search' ] );
 			}
 		);
 	}
@@ -177,6 +180,45 @@ class SnippetsPlugin extends MantisPlugin
 			require_once( dirname( __FILE__ ) . '/install_functions.php' );
 		}
 		return true;
+	}
+
+	/**
+	 * REST API for searching accessible snippets.
+	 *
+	 * Caller can provide a search string `query` that will be matched for snippets
+	 * whose title or content contains the search string. Default is no filtering.
+	 *
+	 * Caller can provide a limit on number of snippets return. Default is 10.
+	 *
+	 * @param Slim\Http\Request  $p_request
+	 * @param Slim\Http\Response $p_response
+	 * @param array              $p_args
+	 * @return Slim\Http\Response
+	 */
+	public function search( $p_request, $p_response, $p_args ) {
+		plugin_push_current( $this->basename );
+
+		$t_query_data = array(
+			'query' => $t_query = $p_request->getParam( 'query' )
+		);
+
+		$t_limit = $p_request->getParam( 'limit' );
+		if( $t_limit ) {
+			$t_query_data['limit'] = (int)$t_limit;
+		}
+
+		$t_data = array(
+			'query' => $t_query_data
+		);
+
+		$t_command = new SnippetSearchCommand( $t_data );
+		$t_result = $t_command->execute();
+
+		plugin_pop_current();
+
+		return $p_response
+			->withStatus( HTTP_STATUS_SUCCESS )
+			->withJson( $t_result );
 	}
 
 	/**
