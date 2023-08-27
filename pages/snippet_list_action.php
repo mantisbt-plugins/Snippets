@@ -177,21 +177,23 @@ if( $action == "delete" ) {
 	layout_page_end();
 
 ### UPDATE
-} elseif( $action == "update" ) {
+} elseif( $action == 'update' ) {
 	foreach( $snippets as $snippet_id => $snippet ) {
 		$new_name = gpc_get_string( "name_$snippet_id" );
 		$new_value = gpc_get_string( "value_$snippet_id" );
 
-		if( $snippet->name != $new_name || $snippet->value != $new_value ) {
-			if( !is_blank( $new_name ) ) {
-				$snippet->name = $new_name;
-			}
-			if( !is_blank( $new_value ) ) {
-				$snippet->value = $new_value;
-			}
+		$t_data = array(
+			'query' => array(
+				'id' => $snippet_id,
+			),
+			'payload' => array(
+				'name' => $new_name,
+				'text' => $new_value,
+			)
+		);
 
-			$snippet->save();
-		}
+		$t_command = new SnippetUpdateCommand( $t_data );
+		$t_command->execute();
 	}
 
 	form_security_purge( "plugin_Snippets_list_action" );
