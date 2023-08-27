@@ -35,14 +35,25 @@ $snippets = Snippet::load_by_id( $snippet_list, $user_id );
 $single = count( $snippets ) == 1;
 
 ### DELETE
-if( $action == "delete" ) {
+if( $action == 'delete' ) {
 	$snippet_names = array_column( Snippet::clean( $snippets ), 'name' );
 	helper_ensure_confirmed(
 		plugin_lang_get( "action_delete_confirm" )
 		. "<br>" . implode( ", ", $snippet_names ),
 		plugin_lang_get( "action_delete" )
 	);
-	Snippet::delete_by_id( array_keys( $snippets ), $user_id );
+
+	$t_ids = array_keys( $snippets );
+	foreach( $t_ids as $t_id ) {
+		$t_data = array(
+			'query' => array(
+				'id' => $t_id,
+			)
+		);
+
+		$t_command = new SnippetDeleteCommand( $t_data );
+		$t_command->execute();
+	}
 
 	form_security_purge( "plugin_Snippets_list_action" );
 	print_successful_redirect( $t_redirect_page );
