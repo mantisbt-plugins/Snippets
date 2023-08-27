@@ -5,6 +5,8 @@
 
 require_once( dirname( __FILE__ ) . '/../Snippets.API.php' );
 
+use Mantis\Exceptions\ClientException;
+
 /**
  * Command to add snippets.
  */
