@@ -162,7 +162,7 @@ class SnippetsPlugin extends MantisPlugin
 				$t_app->post( '/snippets', [ $t_plugin, 'snippet_add' ] );
 				$t_app->put( '/snippets/{snippet_id}', [ $t_plugin, 'snippet_update' ] );
 				$t_app->delete( '/snippets/{snippet_id}', [ $t_plugin, 'snippet_delete' ] );
-				$t_app->get( '/search', [ $t_plugin, 'search' ] );
+				$t_app->get( '/snippets/search', [ $t_plugin, 'search' ] );
 			}
 		);
 	}
