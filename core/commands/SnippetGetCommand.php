@@ -50,12 +50,13 @@ class SnippetGetCommand extends Command {
 
 	/**
 	 * Execute the command.
+	 *
 	 * @return array result
 	 */
 	protected function process() {
 		$t_snippets_result = array();
 
-		# global is always false, because we will expicitly include the global user id (NO_USER)
+		# global is always false, because we will explicitly include the global user id (NO_USER)
 		# or the current user id, as appropriate
 		$t_snippets = Snippet::load_by_type_user( 0, $this->owner_id, /* global */ false );
 
