@@ -9,6 +9,11 @@ use Mantis\Exceptions\ClientException;
 
 /**
  * Command to get global snippets or snippets for a user.
+ *
+ * The intent of this APIs is for getting the list of user snippets or global
+ * snippets for scenarios like managing such lists. For consumption of snippets
+ * available to a user scenarios, use the Search API with no filter or a specific
+ * text filter.
  */
 class SnippetGetCommand extends Command {
 	/**
