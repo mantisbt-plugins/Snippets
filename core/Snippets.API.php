@@ -146,10 +146,11 @@ class Snippet
 	/**
 	 * Load snippets by ID.
 	 *
-	 * @param mixed Snippet ID (int or array)
+	 * @param int|array Snippet ID (int or array)
 	 * @param int|null User ID or null if not to be included in the query
 	 *
-	 * @return Snippet|Snippet[]|null
+	 * @return Snippet|Snippet[]|null Snippet array when array is requested.
+	 *                                Specific Snippet or null if single ID is provided.
 	 */
 	public static function load_by_id( $id, $user_id ) {
 		$snippet_table = plugin_table( "snippet" );
