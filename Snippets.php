@@ -160,11 +160,11 @@ class SnippetsPlugin extends MantisPlugin
 				$t_app->get( '/data', [ $t_plugin, 'route_data' ] );
 				$t_app->get( '/data/{bug_id}', [ $t_plugin, 'route_data' ] );
 
-				$t_app->get( '/snippets', [ $t_plugin, 'snippet_get' ] );
-				$t_app->post( '/snippets', [ $t_plugin, 'snippet_add' ] );
-				$t_app->put( '/snippets/{snippet_id}', [ $t_plugin, 'snippet_update' ] );
-				$t_app->delete( '/snippets/{snippet_id}', [ $t_plugin, 'snippet_delete' ] );
-				$t_app->get( '/snippets/search', [ $t_plugin, 'search' ] );
+				$t_app->get( '/snippets', [ $t_plugin, 'route_snippet_get' ] );
+				$t_app->post( '/snippets', [ $t_plugin, 'route_snippet_add' ] );
+				$t_app->put( '/snippets/{snippet_id}', [ $t_plugin, 'route_snippet_update' ] );
+				$t_app->delete( '/snippets/{snippet_id}', [ $t_plugin, 'route_snippet_delete' ] );
+				$t_app->get( '/snippets/search', [ $t_plugin, 'route_search' ] );
 			}
 		);
 	}
@@ -200,7 +200,7 @@ class SnippetsPlugin extends MantisPlugin
 	 * @param array              $p_args
 	 * @return Slim\Http\Response
 	 */
-	public function snippet_add( $p_request, $p_response, $p_args ) {
+	public function route_snippet_add( $p_request, $p_response, $p_args ) {
 		plugin_push_current( $this->basename );
 
 		$t_data = array(
@@ -225,7 +225,7 @@ class SnippetsPlugin extends MantisPlugin
 	 * @param array              $p_args
 	 * @return Slim\Http\Response
 	 */
-	public function snippet_update( $p_request, $p_response, $p_args ) {
+	public function route_snippet_update( $p_request, $p_response, $p_args ) {
 		plugin_push_current( $this->basename );
 
 		$t_data = array(
@@ -251,7 +251,7 @@ class SnippetsPlugin extends MantisPlugin
 	 * @param array              $p_args
 	 * @return Slim\Http\Response
 	 */
-	public function snippet_delete( $p_request, $p_response, $p_args ) {
+	public function route_snippet_delete( $p_request, $p_response, $p_args ) {
 		plugin_push_current( $this->basename );
 
 		$t_data = array(
@@ -277,7 +277,7 @@ class SnippetsPlugin extends MantisPlugin
 	 * @param array              $p_args
 	 * @return Slim\Http\Response
 	 */
-	public function snippet_get( $p_request, $p_response, $p_args ) {
+	public function route_snippet_get( $p_request, $p_response, $p_args ) {
 		plugin_push_current( $this->basename );
 
 		$t_query = array();
@@ -314,7 +314,7 @@ class SnippetsPlugin extends MantisPlugin
 	 * @param array              $p_args
 	 * @return Slim\Http\Response
 	 */
-	public function search( $p_request, $p_response, $p_args ) {
+	public function route_search( $p_request, $p_response, $p_args ) {
 		plugin_push_current( $this->basename );
 
 		$t_query_data = array(
