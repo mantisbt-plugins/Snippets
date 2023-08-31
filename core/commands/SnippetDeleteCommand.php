@@ -81,9 +81,10 @@ class SnippetDeleteCommand extends Command {
 	/**
 	 * Execute the command.
 	 *
-	 * @return void
+	 * @return array
 	 */
 	protected function process() {
 		Snippet::delete_by_id( array( $this->snippet_id ), $this->owner_id );
+		return [];
 	}
 }
