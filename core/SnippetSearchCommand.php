@@ -3,7 +3,7 @@
 # Copyright (c) MantisBT Team - mantisbt-dev@lists.sourceforge.net
 # Licensed under the MIT license
 
-require_once( dirname( __FILE__ ) . '/../Snippets.API.php' );
+require_once( dirname( __FILE__ ) . '/Snippets.API.php' );
 
 use Mantis\Exceptions\ClientException;
 
