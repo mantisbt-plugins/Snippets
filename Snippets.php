@@ -160,11 +160,11 @@ class SnippetsPlugin extends MantisPlugin
 				$t_app->get( '/data', [ $t_plugin, 'route_data' ] );
 				$t_app->get( '/data/{bug_id}', [ $t_plugin, 'route_data' ] );
 
-				$t_app->get( '/snippets', [ $t_plugin, 'route_snippet_get' ] );
-				$t_app->post( '/snippets', [ $t_plugin, 'route_snippet_add' ] );
-				$t_app->put( '/snippets/{snippet_id}', [ $t_plugin, 'route_snippet_update' ] );
-				$t_app->delete( '/snippets/{snippet_id}', [ $t_plugin, 'route_snippet_delete' ] );
-				$t_app->get( '/snippets/search', [ $t_plugin, 'route_search' ] );
+				$t_app->get( '[/]', [ $t_plugin, 'route_snippet_get' ] );
+				$t_app->post( '[/]', [ $t_plugin, 'route_snippet_add' ] );
+				$t_app->put( '/{snippet_id}', [ $t_plugin, 'route_snippet_update' ] );
+				$t_app->delete( '/{snippet_id}', [ $t_plugin, 'route_snippet_delete' ] );
+				$t_app->get( '/search', [ $t_plugin, 'route_search' ] );
 			}
 		);
 	}
