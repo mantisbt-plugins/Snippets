@@ -54,13 +54,12 @@ class SnippetsPlugin extends MantisPlugin
 
 	public function init() {
 		$t_core_path = dirname( __FILE__ ) . '/core/';
-		$t_cmds_path = $t_core_path . 'commands/';
 		require_once( $t_core_path . 'Snippets.API.php' );
-		require_once( $t_cmds_path . 'SnippetGetCommand.php' );
-		require_once( $t_cmds_path . 'SnippetAddCommand.php' );
-		require_once( $t_cmds_path . 'SnippetUpdateCommand.php' );
-		require_once( $t_cmds_path . 'SnippetDeleteCommand.php' );
-		require_once( $t_cmds_path . 'SnippetSearchCommand.php' );
+		require_once( $t_core_path . 'SnippetGetCommand.php' );
+		require_once( $t_core_path . 'SnippetAddCommand.php' );
+		require_once( $t_core_path . 'SnippetUpdateCommand.php' );
+		require_once( $t_core_path . 'SnippetDeleteCommand.php' );
+		require_once( $t_core_path . 'SnippetSearchCommand.php' );
 	}
 
 	/**
