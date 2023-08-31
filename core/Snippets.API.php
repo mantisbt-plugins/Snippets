@@ -149,8 +149,8 @@ class Snippet
 	 * @param int|array Snippet ID (int or array)
 	 * @param int|null User ID or null if not to be included in the query
 	 *
-	 * @return Snippet|Snippet[]|null Snippet array when array is requested.
-	 *                                Specific Snippet or null if single ID is provided.
+	 * @return Snippet|Snippet[] Snippet array with elements or empty array
+	 *                           Snippet if single id is provided and found.
 	 */
 	public static function load_by_id( $id, $user_id ) {
 		$snippet_table = plugin_table( "snippet" );
@@ -187,7 +187,7 @@ class Snippet
 			$result = db_query( $query, $t_params );
 
 			$snippets = self::from_db_result( $result );
-			return empty( $snippets ) ? null : $snippets[$id];
+			return empty( $snippets ) ? [] : $snippets[$id];
 		}
 	}
 
