@@ -1,5 +1,5 @@
 <?php
-# Copyright (c) 2010 - 2012 John Reese
+# Copyright (c) 2010 - 2012 Amethyst Reese
 # Copyright (c) MantisBT Team - mantisbt-dev@lists.sourceforge.net
 # Licensed under the MIT license
 

@@ -1,5 +1,5 @@
 <?php
-# Copyright (c) 2010 - 2012  John Reese
+# Copyright (c) 2010 - 2012  Amethyst Reese
 # Copyright (c) 2012 - 2021  MantisBT Team - mantisbt-dev@lists.sourceforge.net
 # Licensed under the MIT license
 
@@ -21,7 +21,7 @@ class SnippetsPlugin extends MantisPlugin
 			"MantisCore" => "2.3.0",
 		);
 
-		$this->author = "John Reese and MantisBT Team";
+		$this->author = "Amethyst Reese, Damien Regad and MantisBT Team";
 		$this->contact = "mantisbt-dev@lists.sourceforge.net";
 		$this->url = "https://github.com/mantisbt-plugins/snippets";
 	}

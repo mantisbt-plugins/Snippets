@@ -1,6 +1,6 @@
 # Snippets plugin for MantisBT
 
-Copyright (c) 2010 - 2012  John Reese - http://noswap.com  
+Copyright (c) 2010 - 2012  Amethyst Reese - https://noswap.com  
 Copyright (c) 2012 - 2021  MantisBT Team - mantisbt-dev@lists.sourceforge.net
 
 Released under the [MIT license](http://opensource.org/licenses/MIT)
