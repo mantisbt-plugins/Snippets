@@ -3,6 +3,9 @@
 # Copyright (c) 2012 - 2021  MantisBT Team - mantisbt-dev@lists.sourceforge.net
 # Licensed under the MIT license
 
+use Mantis\Exceptions\ClientException;
+use Slim\App;
+
 class SnippetsPlugin extends MantisPlugin
 {
 	const VERSION = '2.4.1';
@@ -146,9 +149,10 @@ class SnippetsPlugin extends MantisPlugin
 	 * @param array  $p_event_args The event arguments
 	 * @return void
 	 *
-	 * @noinspection PhpUnusedParameterInspection
+	 * @noinspection PhpUnusedParameterInspection, PhpVariableIsUsedOnlyInClosureInspection
 	 */
 	public function routes( $p_event_name, $p_event_args ) {
+		/** @var App $t_app */
 		$t_app = $p_event_args['app'];
 		$t_plugin = $this;
 		$t_app->group(
@@ -197,7 +201,11 @@ class SnippetsPlugin extends MantisPlugin
 	 * @param Slim\Http\Request  $p_request
 	 * @param Slim\Http\Response $p_response
 	 * @param array              $p_args
+	 *
 	 * @return Slim\Http\Response
+	 * @throws ClientException
+	 *
+	 * @noinspection PhpUnusedParameterInspection
 	 */
 	public function route_snippet_add( $p_request, $p_response, $p_args ) {
 		plugin_push_current( $this->basename );
@@ -222,7 +230,9 @@ class SnippetsPlugin extends MantisPlugin
 	 * @param Slim\Http\Request  $p_request
 	 * @param Slim\Http\Response $p_response
 	 * @param array              $p_args
+	 *
 	 * @return Slim\Http\Response
+	 * @throws ClientException
 	 */
 	public function route_snippet_update( $p_request, $p_response, $p_args ) {
 		plugin_push_current( $this->basename );
@@ -248,7 +258,11 @@ class SnippetsPlugin extends MantisPlugin
 	 * @param Slim\Http\Request  $p_request
 	 * @param Slim\Http\Response $p_response
 	 * @param array              $p_args
+	 *
 	 * @return Slim\Http\Response
+	 * @throws ClientException
+	 *
+	 * @noinspection PhpUnusedParameterInspection
 	 */
 	public function route_snippet_delete( $p_request, $p_response, $p_args ) {
 		plugin_push_current( $this->basename );
@@ -274,7 +288,11 @@ class SnippetsPlugin extends MantisPlugin
 	 * @param Slim\Http\Request  $p_request
 	 * @param Slim\Http\Response $p_response
 	 * @param array              $p_args
+	 *
 	 * @return Slim\Http\Response
+	 * @throws ClientException
+	 *
+	 * @noinspection PhpUnusedParameterInspection
 	 */
 	public function route_snippet_get( $p_request, $p_response, $p_args ) {
 		plugin_push_current( $this->basename );
@@ -311,7 +329,11 @@ class SnippetsPlugin extends MantisPlugin
 	 * @param Slim\Http\Request  $p_request
 	 * @param Slim\Http\Response $p_response
 	 * @param array              $p_args
+	 *
 	 * @return Slim\Http\Response
+	 * @throws ClientException
+	 *
+	 * @noinspection PhpUnusedParameterInspection
 	 */
 	public function route_search( $p_request, $p_response, $p_args ) {
 		plugin_push_current( $this->basename );
