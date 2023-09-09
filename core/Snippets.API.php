@@ -146,10 +146,11 @@ class Snippet
 	/**
 	 * Load snippets by ID.
 	 *
-	 * @param mixed Snippet ID (int or array)
-	 * @param int User ID
+	 * @param int|array Snippet ID (int or array)
+	 * @param int|null User ID or null if not to be included in the query
 	 *
-	 * @return Snippet|Snippet[]
+	 * @return Snippet|Snippet[] Snippet array with elements or empty array
+	 *                           Snippet if single id is provided and found.
 	 */
 	public static function load_by_id( $id, $user_id ) {
 		$snippet_table = plugin_table( "snippet" );
@@ -162,19 +163,31 @@ class Snippet
 			}
 
 			$ids = implode( ",", $ids );
+			$t_params = array();
+			$query = "SELECT * FROM $snippet_table WHERE id IN ($ids)";
 
-			$query = "SELECT * FROM $snippet_table WHERE id IN ($ids) AND user_id=" . db_param();
-			$result = db_query( $query, array( $user_id ) );
+			if( !is_null( $user_id ) ) {
+				$query .= " AND user_id=" . db_param();
+				$t_params[] = $user_id;
+			}
+
+			$result = db_query( $query, $t_params );
 
 			return self::from_db_result( $result );
-
 		}
 		else {
-			$query = "SELECT * FROM $snippet_table WHERE id=" . db_param() . " AND user_id=" . db_param();
-			$result = db_query( $query, array( $id, $user_id ) );
+			$t_params = array( $id );
+			$query = "SELECT * FROM $snippet_table WHERE id=" . db_param();
+
+			if( !is_null( $user_id ) ) {
+				$query .= " AND user_id=" . db_param();
+				$t_params[] = $user_id;
+			}
+
+			$result = db_query( $query, $t_params );
 
 			$snippets = self::from_db_result( $result );
-			return $snippets[0];
+			return empty( $snippets ) ? [] : $snippets[$id];
 		}
 	}
 

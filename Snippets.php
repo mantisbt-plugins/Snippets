@@ -1,5 +1,4 @@
 <?php
-
 # Copyright (c) 2010 - 2012  John Reese
 # Copyright (c) 2012 - 2021  MantisBT Team - mantisbt-dev@lists.sourceforge.net
 # Licensed under the MIT license
@@ -54,7 +53,13 @@ class SnippetsPlugin extends MantisPlugin
 	}
 
 	public function init() {
-		require_once( "Snippets.API.php" );
+		$t_core_path = dirname( __FILE__ ) . '/core/';
+		require_once( $t_core_path . 'Snippets.API.php' );
+		require_once( $t_core_path . 'SnippetGetCommand.php' );
+		require_once( $t_core_path . 'SnippetAddCommand.php' );
+		require_once( $t_core_path . 'SnippetUpdateCommand.php' );
+		require_once( $t_core_path . 'SnippetDeleteCommand.php' );
+		require_once( $t_core_path . 'SnippetSearchCommand.php' );
 	}
 
 	/**
@@ -153,6 +158,12 @@ class SnippetsPlugin extends MantisPlugin
 
 				$t_app->get( '/data', [ $t_plugin, 'route_data' ] );
 				$t_app->get( '/data/{bug_id}', [ $t_plugin, 'route_data' ] );
+
+				$t_app->get( '[/]', [ $t_plugin, 'route_snippet_get' ] );
+				$t_app->post( '[/]', [ $t_plugin, 'route_snippet_add' ] );
+				$t_app->put( '/{snippet_id}', [ $t_plugin, 'route_snippet_update' ] );
+				$t_app->delete( '/{snippet_id}', [ $t_plugin, 'route_snippet_delete' ] );
+				$t_app->get( '/search', [ $t_plugin, 'route_search' ] );
 			}
 		);
 	}
@@ -178,6 +189,154 @@ class SnippetsPlugin extends MantisPlugin
 			require_once( dirname( __FILE__ ) . '/install_functions.php' );
 		}
 		return true;
+	}
+
+	/**
+	 * REST API for adding a snippet.
+	 *
+	 * @param Slim\Http\Request  $p_request
+	 * @param Slim\Http\Response $p_response
+	 * @param array              $p_args
+	 * @return Slim\Http\Response
+	 */
+	public function route_snippet_add( $p_request, $p_response, $p_args ) {
+		plugin_push_current( $this->basename );
+
+		$t_data = array(
+			'payload' => $p_request->getParsedBody()
+		);
+
+		$t_command = new SnippetAddCommand( $t_data );
+		$t_result = $t_command->execute();
+
+		plugin_pop_current();
+
+		return $p_response
+			->withStatus( HTTP_STATUS_CREATED )
+			->withJson( $t_result );
+	}
+
+	/**
+	 * REST API for updating a snippet.
+	 *
+	 * @param Slim\Http\Request  $p_request
+	 * @param Slim\Http\Response $p_response
+	 * @param array              $p_args
+	 * @return Slim\Http\Response
+	 */
+	public function route_snippet_update( $p_request, $p_response, $p_args ) {
+		plugin_push_current( $this->basename );
+
+		$t_data = array(
+			'query' => array( 'id' => isset( $p_args['snippet_id'] ) ? (int)$p_args['snippet_id'] : 0 ),
+			'payload' => $p_request->getParsedBody()
+		);
+
+		$t_command = new SnippetUpdateCommand( $t_data );
+		$t_result = $t_command->execute();
+
+		plugin_pop_current();
+
+		return $p_response
+			->withStatus( HTTP_STATUS_SUCCESS )
+			->withJson( $t_result );
+	}
+
+	/**
+	 * REST API for deleting a snippet by id.
+	 *
+	 * @param Slim\Http\Request  $p_request
+	 * @param Slim\Http\Response $p_response
+	 * @param array              $p_args
+	 * @return Slim\Http\Response
+	 */
+	public function route_snippet_delete( $p_request, $p_response, $p_args ) {
+		plugin_push_current( $this->basename );
+
+		$t_data = array(
+			'query' => array(
+				'id' => isset( $p_args['snippet_id'] ) ? (int)$p_args['snippet_id'] : 0
+			)
+		);
+
+		$t_command = new SnippetDeleteCommand( $t_data );
+		$t_command->execute();
+
+		plugin_pop_current();
+
+		return $p_response
+			->withStatus( HTTP_STATUS_NO_CONTENT );
+	}
+
+	/**
+	 * REST API for getting global or user specific snippets
+	 *
+	 * @param Slim\Http\Request  $p_request
+	 * @param Slim\Http\Response $p_response
+	 * @param array              $p_args
+	 * @return Slim\Http\Response
+	 */
+	public function route_snippet_get( $p_request, $p_response, $p_args ) {
+		plugin_push_current( $this->basename );
+
+		$t_query = array();
+
+		$t_global = $p_request->getParam( 'global' );
+		if( !is_null( $t_global ) ) {
+			$t_query['global'] = $t_global;
+		}
+
+		$t_data = array(
+			'query' => $t_query
+		);
+
+		$t_command = new SnippetGetCommand( $t_data );
+		$t_result = $t_command->execute();
+
+		plugin_pop_current();
+
+		return $p_response
+			->withStatus( HTTP_STATUS_SUCCESS )
+			->withJson( $t_result );
+	}
+
+	/**
+	 * REST API for searching accessible snippets.
+	 *
+	 * Caller can provide a search string `query` that will be matched for snippets
+	 * whose title or content contains the search string. Default is no filtering.
+	 *
+	 * Caller can provide a limit on number of snippets return. Default is 10.
+	 *
+	 * @param Slim\Http\Request  $p_request
+	 * @param Slim\Http\Response $p_response
+	 * @param array              $p_args
+	 * @return Slim\Http\Response
+	 */
+	public function route_search( $p_request, $p_response, $p_args ) {
+		plugin_push_current( $this->basename );
+
+		$t_query_data = array(
+			'query' => $p_request->getParam( 'query' )
+		);
+
+		$t_limit = $p_request->getParam( 'limit' );
+		if( $t_limit ) {
+			$t_query_data['limit'] = (int)$t_limit;
+		}
+
+		$t_data = array(
+			'query' => $t_query_data
+		);
+
+		$t_command = new SnippetSearchCommand( $t_data );
+		$t_result = $t_command->execute();
+
+		plugin_pop_current();
+
+		return $p_response
+			->withStatus( HTTP_STATUS_SUCCESS )
+			->withJson( $t_result );
 	}
 
 	/**
