@@ -8,6 +8,14 @@ specification.
 
 --------------------------------------------------------------------------------
 
+## [2.5.0] - 2023-09-09
+
+### Added
+
+- REST APIs, thanks to @vboctor
+  [#66](https://github.com/mantisbt-plugins/snippets/issues/66)
+
+
 ## [2.4.1] - 2022-08-04
 
 ### Fixed
@@ -292,8 +300,9 @@ specification.
 - Initial release
 
 
-[Unreleased]: https://github.com/mantisbt-plugins/snippets/compare/v2.4.1...HEAD
+[Unreleased]: https://github.com/mantisbt-plugins/snippets/compare/v2.5.0...HEAD
 
+[2.5.0]: https://github.com/mantisbt-plugins/snippets/compare/v2.4.1...v2.5.0
 [2.4.1]: https://github.com/mantisbt-plugins/snippets/compare/v2.4.0...v2.4.1
 [2.4.0]: https://github.com/mantisbt-plugins/snippets/compare/v2.3.2...v2.4.0
 [2.3.2]: https://github.com/mantisbt-plugins/snippets/compare/v2.3.1...v2.3.2
