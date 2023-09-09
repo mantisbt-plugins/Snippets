@@ -186,7 +186,7 @@ class SnippetsPlugin extends MantisPlugin
 
 	public function upgrade( $p_schema ) {
 		if( $p_schema == 1 ) {
-			require_once( dirname( __FILE__ ) . '/install_functions.php' );
+			require_once(  'core/install_functions.php' );
 		}
 		return true;
 	}
