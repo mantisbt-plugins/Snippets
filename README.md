@@ -21,10 +21,10 @@ If you need compatibility with older releases of MantisBT, please use [legacy
 versions](https://github.com/mantisbt-plugins/snippets/releases) of the plugin, 
 as per table below:
 
-MantisBT version | Plugin version
-:---:|:---:
-| 1.3 | 1.x ([master-1.3.x branch](https://github.com/mantisbt-plugins/snippets/tree/master-1.3.x))
-| 1.2 | [0.6](https://github.com/mantisbt-plugins/snippets/releases/tag/v0.6)
+| MantisBT version |                                       Plugin version                                        |
+|:----------------:|:-------------------------------------------------------------------------------------------:|
+|       1.3        | 1.x ([master-1.3.x branch](https://github.com/mantisbt-plugins/snippets/tree/master-1.3.x)) |
+|       1.2        |            [0.6](https://github.com/mantisbt-plugins/snippets/releases/tag/v0.6)            |
 
 
 ## Installation
@@ -49,12 +49,12 @@ MantisBT version | Plugin version
 The following placeholders are supported in the Snippet's text; they will be
 replaced by the corresponding contents when inserted:
 
- Placeholder | Description
-:-----------:|-------------------------
-{user}       | your username
-{reporter}   | the bug reporter's name
-{handler}    | the bug handler's name
-{project}    | the project name
+| Placeholder  | Description             |
+|:------------:|-------------------------|
+|    {user}    | your username           |
+|  {reporter}  | the bug reporter's name |
+|  {handler}   | the bug handler's name  |
+|  {project}   | the project name        |
 
 
 ### Using Snippets
