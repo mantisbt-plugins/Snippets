@@ -70,6 +70,57 @@ By default only the *Bug Note* field is configured to use Snippets.
 Other *text* fields (*Description*, *Steps To Reproduce* as well as *Additional
 Information*) can be setup to use Snippets via configuration page `Manage > Global Snippets > Configuration`.
 
+### REST API
+
+The following public API endpoints can be used to manage Snippets.
+
+Base URL is https://example.com/mantisbt/api/rest/plugins/Snippets
+
+#### GET /search
+
+Search for and return a list of Snippets available to the user.
+
+Parameters:
+- `query`: Return only Snippets having a title or contents matching the given
+  search string. Default is no filtering.
+- `limit`: Limit the number of Snippets returned. Default is 10.
+
+#### GET /
+
+Retrieve the list of Global or the user's Personal Snippets.
+
+Parameters:
+- `global`: 1 for global Snippets, 0 for personal Snippets. Default is 0.
+
+#### POST /
+
+Create a new snippet. Provide data as JSON body
+
+```json
+{
+  "name": "Snippet's name",
+  "text": "Snippet's body",
+  "global": true / false
+}
+```
+
+#### PUT /{SnippetId}
+
+Update an existing Snippet.
+Note that *global* state cannot be changed.
+
+```json
+{
+  "name": "New name",
+  "text": "New body"
+}
+```
+
+#### DELETE /{SnippetId}
+
+Delete snippet.
+
+
 ## Support
 
 The following support channels are available if you wish to file a
