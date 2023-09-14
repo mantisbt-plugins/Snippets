@@ -44,7 +44,9 @@ class SnippetGetCommand extends Command {
 		if( $t_global ) {
 			$t_global_snippets_threshold = plugin_config_get( 'use_global_threshold', null, false, NO_USER );
 			if( !access_has_global_level( $t_global_snippets_threshold ) ) {
-				access_denied();
+				throw new ClientException(
+					'User does not have access to global snippets.',
+					ERROR_ACCESS_DENIED );
 			}
 
 			$this->owner_id = NO_USER;

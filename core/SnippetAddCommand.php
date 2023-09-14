@@ -67,10 +67,22 @@ class SnippetAddCommand extends Command {
 		}
 
 		if( $t_global ) {
-			access_ensure_global_level( plugin_config_get( 'edit_global_threshold' ) );
+			$t_threshold = plugin_config_get( 'edit_global_threshold' );
+			if( !access_has_global_level( $t_threshold ) ) {
+				throw new ClientException(
+					'User does not have access to add global snippets.',
+					ERROR_ACCESS_DENIED );
+			}
+
 			$this->owner_id = NO_USER;
 		} else {
-			access_ensure_global_level( plugin_config_get( 'edit_own_threshold' ) );
+			$t_threshold = plugin_config_get( 'edit_own_threshold' );
+			if( !access_has_global_level( $t_threshold ) ) {
+				throw new ClientException(
+					'User does not have access to add snippets.',
+					ERROR_ACCESS_DENIED );
+			}
+
 			$this->owner_id = auth_get_current_user_id();
 		}
 	}

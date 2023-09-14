@@ -64,10 +64,22 @@ class SnippetDeleteCommand extends Command {
 		$t_global = $t_snippet->user_id == NO_USER;
 
 		if( $t_global ) {
-			access_ensure_global_level( plugin_config_get( 'edit_global_threshold' ) );
+			$t_threshold = plugin_config_get( 'edit_global_threshold' );
+			if( !access_has_global_level( $t_threshold ) ) {
+				throw new ClientException(
+					'User does not have access to delete global snippets.',
+					ERROR_ACCESS_DENIED );
+			}
+
 			$this->owner_id = NO_USER;
 		} else {
-			access_ensure_global_level( plugin_config_get( 'edit_own_threshold' ) );
+			$t_threshold = plugin_config_get( 'edit_own_threshold' );
+			if( !access_has_global_level( $t_threshold ) ) {
+				throw new ClientException(
+					'User does not have access to delete snippets.',
+					ERROR_ACCESS_DENIED );
+			}
+
 			$t_current_user_id = auth_get_current_user_id();
 			$this->owner_id = $t_current_user_id;
 
