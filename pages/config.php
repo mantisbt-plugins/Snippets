@@ -26,4 +26,4 @@ maybe_set_option( "edit_own_threshold", gpc_get_int( "edit_own_threshold" ) );
 maybe_set_option( "textarea_names", implode( ",", gpc_get_string_array( "textarea_names" ) ) );
 
 form_security_purge( "plugin_Snippets_config" );
-print_successful_redirect( $f_return_page );
+print_header_redirect( $f_return_page );
