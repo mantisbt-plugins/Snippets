@@ -19,7 +19,7 @@ specification.
 ### Fixed
 
 - Page redirections trigger a deprecation warning since MantisBT 2.26.0
-  [#70](https://github.com/mantisbt-plugins/source-integration/issues/70)
+  [#70](https://github.com/mantisbt-plugins/snippets/issues/70)
 
 
 ## [2.4.1] - 2022-08-04
