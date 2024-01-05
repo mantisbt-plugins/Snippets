@@ -8,7 +8,7 @@ use Slim\App;
 
 class SnippetsPlugin extends MantisPlugin
 {
-	const VERSION = '2.4.1';
+	const VERSION = '2.5.0';
 
 	public function register() {
 		$this->name = plugin_lang_get( "name" );
