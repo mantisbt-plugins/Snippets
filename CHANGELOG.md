@@ -8,12 +8,18 @@ specification.
 
 --------------------------------------------------------------------------------
 
-## [2.5.0] - 2023-09-09
+## [2.5.0] - 2024-01-05
 
 ### Added
 
 - REST APIs, thanks to @vboctor
   [#66](https://github.com/mantisbt-plugins/snippets/issues/66)
+  [#68](https://github.com/mantisbt-plugins/snippets/issues/68)
+
+### Fixed
+
+- Page redirections trigger a deprecation warning since MantisBT 2.26.0
+  [#70](https://github.com/mantisbt-plugins/source-integration/issues/70)
 
 
 ## [2.4.1] - 2022-08-04
