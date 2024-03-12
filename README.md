@@ -10,7 +10,7 @@ See the [Changelog](https://github.com/mantisbt-plugins/snippets/blob/master/CHA
 
 ## Description
 
-Define snippets of text that can be easily pasted into text fields
+Define snippets of text that can be easily pasted into text fields.
 
 
 ## Requirements
@@ -43,8 +43,11 @@ as per table below:
 
 ### Managing Snippets
 
-- Global snippets can be managed from *Manage -> Manage Plugins*.
-- User-specific snippets can be managed from *My Account -> My Snippets*.
+Once the plugin is installed and configured, you need to define at least one
+Snippet, otherwise the selection list will not be shown.
+
+- Global snippets can be managed from *Manage > Manage Plugins*.
+- User-specific snippets can be managed from *My Account > My Snippets*.
 
 The following placeholders are supported in the Snippet's text; they will be
 replaced by the corresponding contents when inserted:
@@ -56,19 +59,25 @@ replaced by the corresponding contents when inserted:
 |  {handler}   | the bug handler's name  |
 |  {project}   | the project name        |
 
+![Create new Snippet screenshot](doc/create_snippet.png)
 
 ### Using Snippets
 
 Each configured text field will have a selection list above it, which can be
 used to pick the desired Snippet.
 
+![Select Snippet screenshot](doc/usage_1_select_snippet.png)
+
 Once selection is made, the Snippet's text will be inserted in the field at the
 current position. If text is currently selected, the Snippet will replace the
 selection.
 
+![Snippet inserted screenshot](doc/usage_2_snippet_inserted.png)
+
 By default only the *Bug Note* field is configured to use Snippets.
 Other *text* fields (*Description*, *Steps To Reproduce* as well as *Additional
-Information*) can be setup to use Snippets via configuration page `Manage > Global Snippets > Configuration`.
+Information*) can be setup to use Snippets via configuration page 
+*Manage > Global Snippets > Configuration*.
 
 ### REST API
 
@@ -100,9 +109,12 @@ Create a new snippet. Provide data as JSON body
 {
   "name": "Snippet's name",
   "text": "Snippet's body",
-  "global": true / false
+  "global": true
 }
 ```
+
+If *global* is `false`, then a personal Snippet will be created for the user
+calling the API endpoint.
 
 #### PUT /{SnippetId}
 
