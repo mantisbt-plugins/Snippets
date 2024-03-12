@@ -3,7 +3,7 @@
 Copyright (c) 2010 - 2012  Amethyst Reese - https://noswap.com  
 Copyright (c) 2012 - 2021  MantisBT Team - mantisbt-dev@lists.sourceforge.net
 
-Released under the [MIT license](http://opensource.org/licenses/MIT)
+Released under the [MIT license](https://opensource.org/licenses/MIT)
 
 See the [Changelog](https://github.com/mantisbt-plugins/snippets/blob/master/CHANGELOG.md).
 
@@ -15,7 +15,7 @@ Define snippets of text that can be easily pasted into text fields
 
 ## Requirements
 
-The plugin requires [MantisBT](http://mantisbt.org/) version 2.3 or higher.
+The plugin requires [MantisBT](https://mantisbt.org/) version 2.3 or higher.
 
 If you need compatibility with older releases of MantisBT, please use [legacy
 versions](https://github.com/mantisbt-plugins/snippets/releases) of the plugin, 
@@ -127,7 +127,7 @@ The following support channels are available if you wish to file a
 [bug report](https://github.com/mantisbt-plugins/snippets/issues/new),
 or have questions related to use and installation:
 
-  - [GitHub issues tracker](http://github.com/mantisbt-plugins/snippets/issues)
+  - [GitHub issues tracker](https://github.com/mantisbt-plugins/snippets/issues)
   - MantisBT [Gitter chat room](https://gitter.im/mantisbt/mantisbt)
   - If you feel lucky you may also want to try the legacy
     [#mantisbt IRC channel](https://webchat.freenode.net/?channels=%23mantisbt)
