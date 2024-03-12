@@ -128,7 +128,7 @@ The following support channels are available if you wish to file a
 or have questions related to use and installation:
 
   - [GitHub issues tracker](https://github.com/mantisbt-plugins/snippets/issues)
-  - MantisBT [Gitter chat room](https://gitter.im/mantisbt/mantisbt)
+  - MantisBT [Gitter chat room](https://matrix.to/#/#mantisbt-plugins:gitter.im)
   - If you feel lucky you may also want to try the legacy
     [#mantisbt IRC channel](https://webchat.freenode.net/?channels=%23mantisbt)
     on Freenode (irc://freenode.net/mantisbt)
