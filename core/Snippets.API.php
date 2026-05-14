@@ -194,7 +194,7 @@ class Snippet
 	/**
 	 * Convert a database query result to an array of Snippet objects.
 	 *
-	 * @param IteratorAggregate $result Database query result
+	 * @param ADORecordSet $result Database query result
 	 *
 	 * @return Snippet[] objects
 	 */
