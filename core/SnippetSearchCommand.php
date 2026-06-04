@@ -72,7 +72,7 @@ class SnippetSearchCommand extends Command {
 
 		$t_snippets_result = array();
 
-		$t_snippets = Snippet::load_by_type_user( 0, $this->user_id, $t_use_global );
+		$t_snippets = Snippet::load_by_type_user( Snippet::TYPE_STANDARD, $this->user_id, $t_use_global );
 
 		# Include matching snippets up to limit specified
 		# - First start with ones where the query matches the title
