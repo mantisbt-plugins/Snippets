@@ -7,9 +7,9 @@
 access_ensure_global_level( config_get( "manage_plugin_threshold" ) );
 
 $f_return_page = gpc_get( 'return_page', '' );
-$page_title = plugin_lang_get( 'config_title' );
+$t_page_title = plugin_lang_get( 'config_title' );
 
-layout_page_header( $page_title );
+layout_page_header( $t_page_title );
 layout_page_begin();
 print_manage_menu( 'manage_plugin_page.php' );
 ?>
@@ -27,7 +27,7 @@ print_manage_menu( 'manage_plugin_page.php' );
 				<div class="widget-header widget-header-small">
 					<h4 class="widget-title lighter">
 						<i class="ace-icon fa fa-file-o"></i>
-						<?php echo $page_title ?>
+						<?php echo $t_page_title ?>
 					</h4>
 				</div>
 
@@ -96,13 +96,13 @@ print_manage_menu( 'manage_plugin_page.php' );
 									</td>
 									<td>
 <?php
-	$configuredNames = Snippet::get_configured_field_names();
-	$availableNames = Snippet::get_available_field_names();
+	$t_configured_names = Snippet::get_configured_field_names();
+	$t_available_names = Snippet::get_available_field_names();
 
-	foreach( $availableNames as $name => $lang_get_param ) {
-		echo '<div><label><input type="checkbox" class="ace" name="textarea_names[]" value="', $name, '" ';
-		check_checked( in_array( $name, $configuredNames ) );
-		echo '/><span class="lbl padding-6">', lang_get( $lang_get_param ), "</span></label></div>\n";
+	foreach( $t_available_names as $t_name => $t_lang_get_param ) {
+		echo '<div><label><input type="checkbox" class="ace" name="textarea_names[]" value="', $t_name, '" ';
+		check_checked( in_array( $t_name, $t_configured_names ) );
+		echo '/><span class="lbl padding-6">', lang_get( $t_lang_get_param ), "</span></label></div>\n";
 	}
 ?>
 									</td>

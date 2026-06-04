@@ -14,9 +14,9 @@ if( $f_return_page ) {
 	$f_return_page = 'manage_plugin_page.php';
 }
 
-function maybe_set_option( $name, $value ) {
-	if( $value != plugin_config_get( $name ) ) {
-		plugin_config_set( $name, $value );
+function maybe_set_option( $p_name, $p_value ) {
+	if( $p_value != plugin_config_get( $p_name ) ) {
+		plugin_config_set( $p_name, $p_value );
 	}
 }
 

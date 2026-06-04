@@ -5,27 +5,27 @@
 # Licensed under the MIT license
 
 $t_page_name = basename( __FILE__, '.php' );
-$global = gpc_get_bool( "global", false );
+$f_global = gpc_get_bool( "global", false );
 
-if( $global ) {
+if( $f_global ) {
 	access_ensure_global_level( plugin_config_get( "edit_global_threshold" ) );
-	$admin = access_has_global_level( config_get( "manage_plugin_threshold" ) );
-	$user_id = 0;
+	$t_admin = access_has_global_level( config_get( "manage_plugin_threshold" ) );
+	$t_user_id = 0;
 	$t_current_page = $t_page_name . '&amp;global';
 } else {
 	access_ensure_global_level( plugin_config_get( "edit_own_threshold" ) );
-	$admin = false;
-	$user_id = auth_get_current_user_id();
+	$t_admin = false;
+	$t_user_id = auth_get_current_user_id();
 	# This is a hack to trick the HTML API which relies on strpos to determine
 	# the active tab, to only highlight the "My Snippets" tab and not the
 	# "Global Snippets" one when the former is active
 	$t_current_page = $t_page_name . '"';
 }
 
-$snippets = Snippet::load_by_user_id( $user_id );
-$page_title = plugin_lang_get( $global ? "list_global_title" : "list_title" );
+$t_snippets = Snippet::load_by_user_id( $t_user_id );
+$t_page_title = plugin_lang_get( $f_global ? "list_global_title" : "list_title" );
 
-layout_page_header( $page_title );
+layout_page_header( $t_page_title );
 layout_page_begin();
 
 print_account_menu( $t_current_page );
@@ -43,11 +43,11 @@ $t_form_security_field = form_security_field( "plugin_Snippets_list_action" );
 					<div class="widget-header widget-header-small">
 						<h4 class="widget-title lighter">
 							<i class="ace-icon fa fa-file-o"></i>
-							<?php echo $page_title ?>
+							<?php echo $t_page_title ?>
 						</h4>
 						<?php echo $t_form_security_field; ?>
 <?php
-	if( $global ) {
+	if( $f_global ) {
 ?>
 							<input type="hidden" name="global" value="true"/>
 <?php
@@ -66,7 +66,7 @@ $t_form_security_field = form_security_field( "plugin_Snippets_list_action" );
 		'btn-sm'
 	);
 
-	if( $admin ) {
+	if( $t_admin ) {
 		echo '&nbsp;';
 		print_link_button(
 			plugin_page( 'config_page' ) . '&return_page=' . $t_page_name,
@@ -76,7 +76,7 @@ $t_form_security_field = form_security_field( "plugin_Snippets_list_action" );
 	}
 
 	# Sort order (only for personal Snippets)
-	if( !$global ) {
+	if( !$f_global ) {
 ?>
 									<div class="pull-right">
 										<form action="<?php echo plugin_page( "snippet_list_action" ) ?>">
@@ -109,7 +109,7 @@ $t_form_security_field = form_security_field( "plugin_Snippets_list_action" );
 									</thead>
 									<tbody>
 <?php
-	foreach( Snippet::clean( $snippets ) as $snippet ): {
+	foreach( Snippet::clean( $t_snippets ) as $t_snippet ): {
 ?>
 										<tr>
 											<td class="center">
@@ -117,12 +117,12 @@ $t_form_security_field = form_security_field( "plugin_Snippets_list_action" );
 												<input type="checkbox"
 													   class="ace"
 													   name="snippet_list[]"
-													   value="<?php echo $snippet->id ?>"
+													   value="<?php echo $t_snippet->id ?>"
 												/>
 												<span class="lbl"></span>
 											</td>
-											<td><?php echo $snippet->name ?></td>
-											<td><?php echo $snippet->value ?></td>
+											<td><?php echo $t_snippet->name ?></td>
+											<td><?php echo $t_snippet->value ?></td>
 										</tr>
 <?php
 	} endforeach
@@ -171,7 +171,7 @@ $t_form_security_field = form_security_field( "plugin_Snippets_list_action" );
 				  method="post">
 				<?php echo form_security_field( "plugin_snippets_create" ) ?>
 <?php
-	if( $global ) {
+	if( $f_global ) {
 ?>
 				<input type="hidden" name="global" value="true"/>
 <?php
@@ -181,7 +181,7 @@ $t_form_security_field = form_security_field( "plugin_Snippets_list_action" );
 					<div class="widget-header widget-header-small">
 						<h4 class="widget-title lighter">
 							<i class="ace-icon fa fa-file-o"></i>
-							<?php echo plugin_lang_get( $global ? "create_global_title" : "create_title" ) ?>
+							<?php echo plugin_lang_get( $f_global ? "create_global_title" : "create_title" ) ?>
 						</h4>
 					</div>
 

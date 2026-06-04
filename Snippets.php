@@ -118,10 +118,10 @@ class SnippetsPlugin extends MantisPlugin
 
 		if( access_has_global_level( plugin_config_get( "edit_own_threshold" )
 		) ) {
-			$page = plugin_page( "snippet_list" );
-			$label = plugin_lang_get( "list_title" );
+			$t_page = plugin_page( "snippet_list" );
+			$t_label = plugin_lang_get( "list_title" );
 
-			$t_return[] = "<a href=\"$page\">$label</a>";
+			$t_return[] = "<a href=\"$t_page\">$t_label</a>";
 		}
 
 		$t_menu_item = $this->menu_manage();
@@ -141,10 +141,10 @@ class SnippetsPlugin extends MantisPlugin
 	 */
 	public function menu_manage() {
 		if( access_has_global_level( plugin_config_get( "edit_global_threshold"	) ) ) {
-			$page = plugin_page( "snippet_list" ) . Snippet::global_url();
-			$label = plugin_lang_get( "list_global_title" );
+			$t_page = plugin_page( "snippet_list" ) . Snippet::global_url();
+			$t_label = plugin_lang_get( "list_global_title" );
 
-			return '<a href="' . string_html_specialchars( $page ) . '">' . $label . '</a>';
+			return '<a href="' . string_html_specialchars( $t_page ) . '">' . $t_label . '</a>';
 		}
 		return '';
 	}
@@ -170,13 +170,13 @@ class SnippetsPlugin extends MantisPlugin
 	 *
 	 * When deleting a user's account, cleanup their Snippets.
 	 *
-	 * @param string $event
-	 * @param int    $user_id
+	 * @param string $p_event
+	 * @param int    $p_user_id
 	 *
 	 * @noinspection PhpUnusedParameterInspection
 	 */
-	public function user_delete( $event, $user_id ) {
-		Snippet::delete_by_user_id( $user_id );
+	public function user_delete( $p_event, $p_user_id ) {
+		Snippet::delete_by_user_id( $p_user_id );
 	}
 
 	/**
@@ -407,15 +407,15 @@ class SnippetsPlugin extends MantisPlugin
 	 *   - {string} title
 	 *   - {string} text
 	 *
-	 * @param Slim\Http\Request  $request
-	 * @param Slim\Http\Response $response
-	 * @param array              $args
+	 * @param Slim\Http\Request  $p_request
+	 * @param Slim\Http\Response $p_response
+	 * @param array              $p_args
 	 *
 	 * @return Slim\Http\Response
 	 *
 	 * @noinspection PhpUnused, PhpUnusedParameterInspection
 	 */
-	public function route_help( $request, $response, $args ) {
+	public function route_help( $p_request, $p_response, $p_args ) {
 		plugin_push_current( $this->basename );
 
 		$t_help = array(
@@ -425,7 +425,7 @@ class SnippetsPlugin extends MantisPlugin
 
 		plugin_pop_current();
 
-		return $response
+		return $p_response
 			->withStatus( HTTP_STATUS_SUCCESS )
 			->withJson( $t_help );
 	}
@@ -446,9 +446,9 @@ class SnippetsPlugin extends MantisPlugin
 	 *   - {string}   name     - Snippet title
 	 *   - {string}   value    - Snippet text
 	 *
-	 * @param Slim\Http\Request  $request
-	 * @param Slim\Http\Response $response
-	 * @param array              $args [bug_id = Bug Id for patterns
+	 * @param Slim\Http\Request  $p_request
+	 * @param Slim\Http\Response $p_response
+	 * @param array              $p_args [bug_id = Bug Id for patterns
 	 *                                 replacement]
 	 *
 	 * @return Slim\Http\Response
@@ -456,12 +456,12 @@ class SnippetsPlugin extends MantisPlugin
 	 * @noinspection PhpUnused, PhpUnusedParameterInspection
 	 * @throws ClientException
 	 */
-	public function route_data( $request, $response, $args ) {
+	public function route_data( $p_request, $p_response, $p_args ) {
 		plugin_push_current( $this->basename );
 
 		# Set the reference Bug Id for placeholders replacements
-		if( isset( $args['bug_id'] ) ) {
-			$t_bug_id = (int)$args['bug_id'];
+		if( isset( $p_args['bug_id'] ) ) {
+			$t_bug_id = (int)$p_args['bug_id'];
 		} else {
 			$t_bug_id = 0;
 		}
@@ -478,8 +478,8 @@ class SnippetsPlugin extends MantisPlugin
 		# Split names of textareas found in 'textarea_names' option, and
 		# make an array of "textarea[name='FIELD_NAME']" strings
 		$t_selectors = array_map(
-			function( $name ) {
-				return "textarea[name='$name']";
+			function( $p_name ) {
+				return "textarea[name='$p_name']";
 			},
 			Snippet::get_configured_field_names()
 		);
@@ -494,7 +494,7 @@ class SnippetsPlugin extends MantisPlugin
 
 		plugin_pop_current();
 
-		return $response
+		return $p_response
 			->withStatus( HTTP_STATUS_SUCCESS )
 			->withJson( $t_data );
 	}
