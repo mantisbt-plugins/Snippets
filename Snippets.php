@@ -415,6 +415,7 @@ class SnippetsPlugin extends MantisPlugin
 	 * @return Slim\Http\Response
 	 *
 	 * @noinspection PhpUnused, PhpUnusedParameterInspection
+	 * @throws ClientException
 	 */
 	public function route_data( $request, $response, $args ) {
 		plugin_push_current( $this->basename );

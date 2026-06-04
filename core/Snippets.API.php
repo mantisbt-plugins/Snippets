@@ -11,6 +11,9 @@ use Mantis\Exceptions\ClientException;
  */
 class Snippet
 {
+	/**
+	 * Target formats.
+	 */
 	const TARGET_VIEW = 'view';
 	const TARGET_FORM = 'form';
 
@@ -31,10 +34,10 @@ class Snippet
 	/**
 	 * Create a new Snippet object with the given details.
 	 *
-	 * @param int Field type
-	 * @param string Short name
-	 * @param string Full text value
-	 * @param int User ID
+	 * @param int    $type    Field type
+	 * @param string $name    Short name
+	 * @param string $value   Full text value
+	 * @param int    $user_id User ID
 	 */
 	public function __construct( $type, $name, $value, $user_id = 0 ) {
 		$this->type = $type;
@@ -46,12 +49,12 @@ class Snippet
 	/**
 	 * Create a copy of the given Snippet with strings cleaned for output.
 	 *
-	 * @param Snippet|Snippet[] $dirty Snippet object(s) to process
+	 * @param Snippet|Snippet[] $dirty  Snippet object(s) to process
 	 * @param string            $target Target format (VIEW or FORM)
-	 * @param int               $bug_id Reference Bug Id for pattern
-	 *                                  replacements
+	 * @param int               $bug_id Reference Bug Id for pattern replacements
 	 *
 	 * @return Snippet[] Cleaned snippet objects
+	 * @throws ClientException
 	 */
 	public static function clean( $dirty, $target = self::TARGET_VIEW, $bug_id = 0 ) {
 		if( is_array( $dirty ) ) {
@@ -99,6 +102,7 @@ class Snippet
 	 *                            (current user / current project)
 	 *
 	 * @return Snippet[] Updated snippet objects
+	 * @throws ClientException
 	 */
 	public static function patterns( $snippets, $bug_id ) {
 		$handler = null;
@@ -151,8 +155,8 @@ class Snippet
 	/**
 	 * Load snippets by ID.
 	 *
-	 * @param int|array Snippet ID (int or array)
-	 * @param int|null User ID or null if not to be included in the query
+	 * @param int|array $id      Snippet ID (int or array)
+	 * @param int|null  $user_id User ID or null if not to be included in the query
 	 *
 	 * @return Snippet|Snippet[] Snippet array with elements or empty array
 	 *                           Snippet if single id is provided and found.
@@ -240,9 +244,9 @@ class Snippet
 	/**
 	 * Load text objects for a given field type and user id.
 	 *
-	 * @param int Field type
-	 * @param int User ID
-	 * @param boolean Include global text objects
+	 * @param int  $type           Field type
+	 * @param int  $user_id        User ID
+	 * @param bool $include_global Include global text objects
 	 *
 	 * @return Snippet[]
 	 */
@@ -269,7 +273,7 @@ class Snippet
 	/**
 	 * Load text objects for a given user id.
 	 *
-	 * @param int User ID
+	 * @param int $user_id User ID
 	 *
 	 * @return Snippet[]
 	 */
