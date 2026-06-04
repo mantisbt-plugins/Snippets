@@ -58,10 +58,12 @@ class Snippet
 	 */
 	public static function clean( $dirty, $target = self::TARGET_VIEW, $bug_id = 0 ) {
 		if( is_array( $dirty ) ) {
-			$cleaned = array();
-			foreach( $dirty as $id => $snippet ) {
-				$cleaned[$id] = self::clean( $snippet, $target );
-			}
+			$cleaned = array_map(
+				function( $snippet ) use ( $target ) {
+					return self::clean( $snippet, $target );
+				},
+				$dirty
+			);
 			if( $bug_id ) {
 				$cleaned = self::patterns( $cleaned, $bug_id );
 			}
