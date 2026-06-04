@@ -4,10 +4,7 @@
 # Copyright (c) 2012 - 2021  MantisBT Team - mantisbt-dev@lists.sourceforge.net
 # Licensed under the MIT license
 
-define( 'PLACEHOLDER_USER', '{user}' );
-define( 'PLACEHOLDER_REPORTER', '{reporter}' );
-define( 'PLACEHOLDER_HANDLER', '{handler}' );
-define( 'PLACEHOLDER_PROJECT', '{project}' );
+use Mantis\Exceptions\ClientException;
 
 /**
  * Object representing a Snippet (saved block of text).
@@ -16,6 +13,14 @@ class Snippet
 {
 	const TARGET_VIEW = 'view';
 	const TARGET_FORM = 'form';
+
+	/**
+	 * Placeholder types.
+	 */
+	const PLACEHOLDER_USER = '{user}';
+	const PLACEHOLDER_REPORTER = '{reporter}';
+	const PLACEHOLDER_HANDLER = '{handler}';
+	const PLACEHOLDER_PROJECT = '{project}';
 
 	public $id;
 	public $user_id;
@@ -130,10 +135,10 @@ class Snippet
 		foreach( $snippets as $snippet ) {
 			$snippet->value = str_replace(
 				array(
-					PLACEHOLDER_USER,
-					PLACEHOLDER_REPORTER,
-					PLACEHOLDER_HANDLER,
-					PLACEHOLDER_PROJECT,
+					self::PLACEHOLDER_USER,
+					self::PLACEHOLDER_REPORTER,
+					self::PLACEHOLDER_HANDLER,
+					self::PLACEHOLDER_PROJECT,
 				),
 				array( $username, $reporter, $handler, $project ),
 				$snippet->value
@@ -225,10 +230,10 @@ class Snippet
 	 */
 	private static function replace_legacy_placeholders( $p_value ) {
 		$t_value = $p_value;
-		$t_value = str_replace( '%u', PLACEHOLDER_USER, $t_value );
-		$t_value = str_replace( '%r', PLACEHOLDER_REPORTER, $t_value );
-		$t_value = str_replace( '%h', PLACEHOLDER_HANDLER, $t_value );
-		$t_value = str_replace( '%p', PLACEHOLDER_PROJECT, $t_value );
+		$t_value = str_replace( '%u', self::PLACEHOLDER_USER, $t_value );
+		$t_value = str_replace( '%r', self::PLACEHOLDER_REPORTER, $t_value );
+		$t_value = str_replace( '%h', self::PLACEHOLDER_HANDLER, $t_value );
+		$t_value = str_replace( '%p', self::PLACEHOLDER_PROJECT, $t_value );
 		return $t_value;
 	}
 
