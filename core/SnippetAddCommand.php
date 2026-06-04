@@ -92,7 +92,7 @@ class SnippetAddCommand extends Command {
 	 * @return array result
 	 */
 	protected function process() {
-		$t_snippet = new Snippet( /* type */ 0, $this->name, $this->text, $this->owner_id );
+		$t_snippet = new Snippet( Snippet::TYPE_STANDARD, $this->name, $this->text, $this->owner_id );
 		$t_snippet->save();
 
 		$t_results = array(

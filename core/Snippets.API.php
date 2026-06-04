@@ -12,6 +12,11 @@ use Mantis\Exceptions\ClientException;
 class Snippet
 {
 	/**
+	 * Snippet types.
+	 */
+	const TYPE_STANDARD = 0;
+
+	/**
 	 * Target formats.
 	 */
 	const TARGET_VIEW = 'view';
@@ -36,7 +41,7 @@ class Snippet
 	public int $user_id;
 
 	/**
-	 * @var int Snippet type (We only use 0 for now)
+	 * @var int Snippet type, see TYPE_* constants
 	 */
 	public int $type;
 

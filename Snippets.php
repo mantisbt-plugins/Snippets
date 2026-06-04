@@ -433,7 +433,7 @@ class SnippetsPlugin extends MantisPlugin
 		if( access_has_global_level( plugin_config_get( 'edit_own_threshold' ) ) ) {
 			$t_user_id = auth_get_current_user_id();
 		}
-		$t_snippets = Snippet::load_by_type_user( 0, $t_user_id, $t_use_global );
+		$t_snippets = Snippet::load_by_type_user( Snippet::TYPE_STANDARD, $t_user_id, $t_use_global );
 		$t_snippets = Snippet::clean( $t_snippets, Snippet::TARGET_FORM, $t_bug_id );
 
 		# Split names of textareas found in 'textarea_names' option, and
