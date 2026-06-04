@@ -25,11 +25,30 @@ class Snippet
 	const PLACEHOLDER_HANDLER = '{handler}';
 	const PLACEHOLDER_PROJECT = '{project}';
 
-	public $id;
-	public $user_id;
-	public $type;
-	public $name;
-	public $value;
+	/**
+	 * @var int|null Snippet id
+	 */
+	public ?int $id;
+
+	/**
+	 * @var int User id
+	 */
+	public int $user_id;
+
+	/**
+	 * @var int Snippet type (We only use 0 for now)
+	 */
+	public int $type;
+
+	/**
+	 * @var string Snippet name
+	 */
+	public string $name;
+
+	/**
+	 * @var string Snippet value
+	 */
+	public string $value;
 
 	/**
 	 * Create a new Snippet object with the given details.
