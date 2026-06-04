@@ -115,19 +115,11 @@ print_manage_menu( 'manage_plugin_page.php' );
 										</label>
 									</td>
 									<td>
-										<select id="sort_order"
-										        name="sort_order">
-											<?php
-											$t_current = plugin_config_get( 'sort_order',
-													null, false, ALL_USERS, ALL_PROJECTS );
-											foreach( SnippetsPlugin::get_sort_options() as $t_key => $t_label ) {
-												printf( '<option value="%s"%s>%s</s>',
-														$t_key,
-														$t_current == $t_key ? ' selected' : '',
-														$t_label );
-											}
-											?>
-										</select>
+										<?php
+										$t_current = plugin_config_get( 'sort_order',
+												null, false, ALL_USERS, ALL_PROJECTS );
+										SnippetsPlugin::print_sort_options_list( $t_current );
+										?>
 									</td>
 								</tr>
 

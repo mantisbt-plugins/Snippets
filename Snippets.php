@@ -56,6 +56,24 @@ class SnippetsPlugin extends MantisPlugin
 		];
 	}
 
+	/**
+	 * Prints the selection list for Snippets sort options.
+	 *
+	 * @param int $p_current Current sort option, will be selected.
+	 *
+	 * @return void
+	 */
+	public static function print_sort_options_list( int $p_current ) {
+		echo '<select id="sort_order" name="sort_order">';
+		foreach( self::get_sort_options() as $t_key => $t_label ) {
+			printf( '<option value="%s"%s>%s</s>',
+				$t_key,
+				$p_current == $t_key ? ' selected' : '',
+				$t_label );
+		}
+		echo '</select>';
+	}
+
 	public function errors() {
 		return array(
 			"name_empty" => plugin_lang_get( "error_name_empty" ),

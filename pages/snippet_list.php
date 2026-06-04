@@ -29,6 +29,8 @@ layout_page_header( $page_title );
 layout_page_begin();
 
 print_account_menu( $t_current_page );
+
+$t_form_security_field = form_security_field( "plugin_Snippets_list_action" );
 ?>
 	<div class="col-md-12 col-xs-12">
 
@@ -43,7 +45,7 @@ print_account_menu( $t_current_page );
 							<i class="ace-icon fa fa-file-o"></i>
 							<?php echo $page_title ?>
 						</h4>
-						<?php echo form_security_field( "plugin_Snippets_list_action" ) ?>
+						<?php echo $t_form_security_field; ?>
 <?php
 	if( $global ) {
 ?>
@@ -71,6 +73,28 @@ print_account_menu( $t_current_page );
 			plugin_lang_get( 'config' ),
 			'btn-sm'
 		);
+	}
+
+	# Sort order (only for personal Snippets)
+	if( !$global ) {
+?>
+									<div class="pull-right">
+										<form action="<?php echo plugin_page( "snippet_list_action" ) ?>">
+											<label for="sort_order" class="padding-right-8">
+												<?php echo plugin_lang_get( 'sort_order' ) ?>
+											</label>
+											<?php
+											$t_current = plugin_config_get( 'sort_order' );
+											SnippetsPlugin::print_sort_options_list( $t_current );
+											echo $t_form_security_field;
+											?>
+											<button type="submit" name="action" value="sort_order"
+											        class="btn btn-sm btn-white btn-round btn-primary">
+												<?php echo plugin_lang_get( 'action_update' ); ?>
+											</button>
+										</form>
+									</div>
+<?php
 	}
 ?>
 								</div>
