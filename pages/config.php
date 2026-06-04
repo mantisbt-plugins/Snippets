@@ -24,6 +24,7 @@ maybe_set_option( "edit_global_threshold", gpc_get_int( "edit_global_threshold" 
 maybe_set_option( "use_global_threshold", gpc_get_int( "use_global_threshold" ) );
 maybe_set_option( "edit_own_threshold", gpc_get_int( "edit_own_threshold" ) );
 maybe_set_option( "textarea_names", implode( ",", gpc_get_string_array( "textarea_names" ) ) );
+maybe_set_option( "sort_order", gpc_get_int( "sort_order" ) );
 
 form_security_purge( "plugin_Snippets_config" );
 print_header_redirect( $f_return_page );

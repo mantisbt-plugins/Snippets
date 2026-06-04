@@ -10,6 +10,13 @@ class SnippetsPlugin extends MantisPlugin
 {
 	const VERSION = '2.5.0';
 
+	/**
+	 * Sorting criteria for Snippets lists.
+	 */
+	const SORT_ALPHA = 0;
+	const SORT_GLOBAL_FIRST = 1;
+	const SORT_PERSONAL_FIRST = 2;
+
 	public function register() {
 		$this->name = plugin_lang_get( "name" );
 		$this->description = plugin_lang_get( "description" );
@@ -32,7 +39,21 @@ class SnippetsPlugin extends MantisPlugin
 			"use_global_threshold" => REPORTER,
 			"edit_own_threshold" => REPORTER,
 			"textarea_names" => "bugnote_text",
+			"sort_order" => self::SORT_ALPHA,
 		);
+	}
+
+	/**
+	 * Get the list available sort options.
+	 *
+	 * @return void
+	 */
+	public static function get_sort_options(): array {
+		return [
+			self::SORT_ALPHA => plugin_lang_get( 'sort_alpha' ),
+			self::SORT_GLOBAL_FIRST => plugin_lang_get( 'sort_global_first' ),
+			self::SORT_PERSONAL_FIRST => plugin_lang_get( 'sort_personal_first' ),
+		];
 	}
 
 	public function errors() {

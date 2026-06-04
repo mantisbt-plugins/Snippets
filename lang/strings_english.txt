@@ -35,6 +35,10 @@ $s_plugin_Snippets_config_title = 'Snippet Configuration';
 $s_plugin_Snippets_edit_global_threshold = 'Edit Global Snippets';
 $s_plugin_Snippets_use_global_threshold = 'Use Global Snippets';
 $s_plugin_Snippets_edit_own_threshold = 'Edit Own Snippets';
+$s_plugin_Snippets_sort_order = 'Sort order in Snippets selection lists';
+$s_plugin_Snippets_sort_alpha = 'Alphabetic';
+$s_plugin_Snippets_sort_global_first = 'Global first, then Personal';
+$s_plugin_Snippets_sort_personal_first = 'Personal first, then Global';
 
 $s_plugin_Snippets_action_create = 'Create';
 $s_plugin_Snippets_action_select_all = 'Select/Deselect all Snippets';
