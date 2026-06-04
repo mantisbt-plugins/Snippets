@@ -41,13 +41,33 @@ as per table below:
 
 ## Usage
 
+### Configuration
+
+The following options are available from the plugin's Configuration page:
+
+- **Edit Global Snippets**: Access level required to manage global snippets
+  (defaults to ADMINISTRATOR)
+- **Use Global Snippets**: Access level required to use global snippets
+  (defaults to REPORTER)
+- **Edit Own Snippets**: Access level required to manage personal snippets
+  (defaults to REPORTER)
+- **Use Snippets For**: Specifies where Snippets can be inserted.
+  The following fields are available:
+  - Note (default)
+  - Description
+  - Steps To Reproduce
+  - Additional Information
+  - Reminder
+
+
 ### Managing Snippets
 
 Once the plugin is installed and configured, you need to define at least one
 Snippet, otherwise the selection list will not be shown.
 
 - Global snippets can be managed from *Manage > Manage Plugins*.
-- User-specific snippets can be managed from *My Account > My Snippets*.
+- Personal (user-specific) snippets can be managed from 
+  *My Account > My Snippets*.
 
 The following placeholders are supported in the Snippet's text; they will be
 replaced by the corresponding contents when inserted:
