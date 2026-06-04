@@ -14,28 +14,28 @@ class SnippetUpdateCommand extends Command {
 	 *
 	 * @var int
 	 */
-	private $snippet_id;
+	private int $snippet_id;
 
 	/**
 	 * The snippet object
 	 *
 	 * @var Snippet
 	 */
-	private $snippet;
+	private Snippet $snippet;
 
 	/**
 	 * The snippet name
 	 *
 	 * @var string
 	 */
-	private $name;
+	private string $name;
 
 	/**
 	 * The snippet text
 	 *
 	 * @var string
 	 */
-	private $text;
+	private string $text;
 
 	/**
 	 * Constructor
@@ -71,8 +71,8 @@ class SnippetUpdateCommand extends Command {
 				array( 'text' ) );
 		}
 
-		$this->snippet = Snippet::load_by_id( $this->snippet_id, /* user_id */ null );
-		if( !$this->snippet ) {
+		$t_snippet = Snippet::load_by_id( $this->snippet_id, /* user_id */ null );
+		if( !$t_snippet ) {
 			# TODO: ideally we should have a generic ENTITY_NOT_FOUND error to trigger 404 http status code
 			# this error will trigger 500 http status code for now, it should trigge 404.
 			# low priority since this is not used by the UI.
@@ -82,6 +82,7 @@ class SnippetUpdateCommand extends Command {
 			 	array( $this->snippet_id )
 			);
 		}
+		$this->snippet = $t_snippet;
 
 		$t_global = $this->snippet->user_id == NO_USER;
 

@@ -19,7 +19,7 @@ class SnippetGetCommand extends Command {
 	 *
 	 * @var int
 	 */
-	private $owner_id;
+	private int $owner_id;
 
 	/**
 	 * Constructor

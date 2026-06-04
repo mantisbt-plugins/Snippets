@@ -14,14 +14,14 @@ class SnippetDeleteCommand extends Command {
 	 *
 	 * @var int
 	 */
-	private $snippet_id;
+	private int $snippet_id;
 
 	/**
 	 * The snippet owner user id.
 	 *
 	 * @var int
 	 */
-	private $owner_id;
+	private int $owner_id;
 
 	/**
 	 * Constructor

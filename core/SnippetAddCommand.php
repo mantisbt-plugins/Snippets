@@ -14,21 +14,21 @@ class SnippetAddCommand extends Command {
 	 *
 	 * @var int
 	 */
-	private $owner_id;
+	private int $owner_id;
 
 	/**
 	 * The snippet name
 	 *
 	 * @var string
 	 */
-	private $name;
+	private string $name;
 
 	/**
 	 * The snippet text
 	 *
 	 * @var string
 	 */
-	private $text;
+	private string $text;
 
 	/**
 	 * Constructor
