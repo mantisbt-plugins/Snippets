@@ -5,9 +5,6 @@
 
 use Mantis\Exceptions\ClientException;
 
-define( 'SNIPPETS_MATCH_TYPE_TITLE', 'title' );
-define( 'SNIPPETS_MATCH_TYPE_CONTENT', 'content' );
-
 /**
  * Command to search for snippets.
  *
@@ -17,6 +14,12 @@ define( 'SNIPPETS_MATCH_TYPE_CONTENT', 'content' );
  * Caller can provide a limit on number of snippets return. Default is 10.
  */
 class SnippetSearchCommand extends Command {
+	/**
+	 * Match types constants
+	 */
+	const MATCH_TYPE_TITLE = 'title';
+	const MATCH_TYPE_CONTENT = 'content';
+
 	/**
 	 * The current user id
 	 *
@@ -76,7 +79,7 @@ class SnippetSearchCommand extends Command {
 		# - First start with ones where the query matches the title
 		# - Then include ones where the query matches the content
 		$t_included_snippets = array();
-		$t_match_types = array( SNIPPETS_MATCH_TYPE_TITLE, SNIPPETS_MATCH_TYPE_CONTENT );
+		$t_match_types = array( self::MATCH_TYPE_TITLE, self::MATCH_TYPE_CONTENT );
 		foreach( $t_match_types as $t_match ) {
 			foreach( $t_snippets as $t_snippet ) {
 				if( isset( $t_included_snippets[$t_snippet->id] ) ) {
@@ -111,13 +114,13 @@ class SnippetSearchCommand extends Command {
 			return true;
 		}
 
-		if( $p_match == SNIPPETS_MATCH_TYPE_TITLE ) {
+		if( $p_match == self::MATCH_TYPE_TITLE ) {
 			if ( stripos( $p_snippet->name, $p_query ) !== false ) {
 				return true;
 			}
 		}
 
-		if( $p_match == SNIPPETS_MATCH_TYPE_CONTENT ) {
+		if( $p_match == self::MATCH_TYPE_TITLE ) {
 			if ( stripos( $p_snippet->value, $p_query ) !== false ) {
 				return true;
 			}
