@@ -4,6 +4,10 @@
  * Licensed under the MIT license
  */
 
+select.snippet {
+	max-width: 300px;
+}
+
 .snippetsTooltip {
 	position: fixed;
 	top: 0;
