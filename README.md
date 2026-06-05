@@ -119,7 +119,7 @@ Parameters:
 Retrieve the list of Global or the user's Personal Snippets.
 
 Parameters:
-- `global`: 1 for global Snippets, 0 for personal Snippets. Default is 0.
+- `global`: `true` (or 1) for global Snippets (default), `false` (0) for personal Snippets.
 
 #### POST /
 
@@ -133,13 +133,17 @@ Create a new snippet. Provide data as JSON body
 }
 ```
 
-If *global* is `false`, then a personal Snippet will be created for the user
+Note that *global* is optional and defaults to `true`, which will create a 
+a global snippet if unspecified.
+If `false`, then a personal Snippet will be created for the user
 calling the API endpoint.
 
 #### PUT /{SnippetId}
 
 Update an existing Snippet.
-Note that *global* state cannot be changed.
+
+> [!NOTE]
+The *global* state cannot be changed.
 
 ```json
 {
