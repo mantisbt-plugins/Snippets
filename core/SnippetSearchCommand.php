@@ -24,21 +24,21 @@ class SnippetSearchCommand extends Command {
 	 *
 	 * @var int
 	 */
-	private $user_id;
+	private int $user_id;
 
 	/**
 	 * The search text
 	 *
 	 * @var string
 	 */
-	private $query;
+	private string $query;
 
 	/**
 	 * The maximum number of results to return.
 	 *
 	 * @var int
 	 */
-	private $limit;
+	private int $limit;
 
 	/**
 	 * Constructor
