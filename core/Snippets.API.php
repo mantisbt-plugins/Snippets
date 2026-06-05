@@ -33,7 +33,7 @@ class Snippet
 	/**
 	 * @var int|null Snippet id
 	 */
-	public ?int $id;
+	public ?int $id = null;
 
 	/**
 	 * @var int User id
