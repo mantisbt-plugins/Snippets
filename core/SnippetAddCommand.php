@@ -100,7 +100,7 @@ class SnippetAddCommand extends Command {
 		$t_snippet = new Snippet( Snippet::TYPE_STANDARD, $this->name, $this->text, $this->owner_id );
 		$t_snippet->save();
 
-		$t_results = array(
+		return array(
 			'snippets' => array(
 				array(
 					'id' => $t_snippet->id,
@@ -109,7 +109,5 @@ class SnippetAddCommand extends Command {
 				)
 			)
 		);
-
-		return $t_results;
 	}
 }

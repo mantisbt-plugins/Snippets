@@ -69,44 +69,39 @@ class SnippetSearchCommand extends Command {
 	 */
 	protected function process() {
 		$t_global_snippets_threshold = plugin_config_get( 'use_global_threshold', null, false, NO_USER );
-		$t_use_global = access_has_global_level( $t_global_snippets_threshold );
+		$t_include_global = access_has_global_level( $t_global_snippets_threshold );
 
 		$t_snippets_result = array();
 
-		$t_snippets = Snippet::load_by_type_user( Snippet::TYPE_STANDARD, $this->user_id, $t_use_global );
+		$t_snippets = Snippet::load_by_type_user( Snippet::TYPE_STANDARD, $this->user_id, $t_include_global );
 
 		# Include matching snippets up to limit specified
 		# - First start with ones where the query matches the title
 		# - Then include ones where the query matches the content
-		$t_included_snippets = array();
 		$t_match_types = array( self::MATCH_TYPE_TITLE, self::MATCH_TYPE_CONTENT );
 		foreach( $t_match_types as $t_match ) {
 			foreach( $t_snippets as $t_snippet ) {
-				if( isset( $t_included_snippets[$t_snippet->id] ) ) {
+				if( isset( $t_snippets_result[$t_snippet->id] ) ) {
 					continue;
 				}
 
 				if( self::match( $t_snippet, $this->query, $t_match ) ) {
-					$t_snippets_result[] = array(
+					$t_snippets_result[$t_snippet->id] = array(
 						'id'   => $t_snippet->id,
 						'name' => $t_snippet->name,
 						'text' => $t_snippet->value
 					);
-
-					$t_included_snippets[$t_snippet->id] = true;
 				}
 
 				if( count( $t_snippets_result ) >= $this->limit ) {
 					break 2;
 				}
-			}	
+			}
 		}
 
-		$t_results = array(
-			'snippets' => $t_snippets_result,
+		return array(
+			'snippets' => array_values( $t_snippets_result ),
 		);
-
-		return $t_results;
 	}
 
 	private static function match( $p_snippet, $p_query, $p_match ) {
@@ -114,16 +109,16 @@ class SnippetSearchCommand extends Command {
 			return true;
 		}
 
-		if( $p_match == self::MATCH_TYPE_TITLE ) {
-			if ( stripos( $p_snippet->name, $p_query ) !== false ) {
-				return true;
-			}
+		if( $p_match == self::MATCH_TYPE_TITLE
+			&& mb_stripos( $p_snippet->name, $p_query ) !== false
+		) {
+			return true;
 		}
 
-		if( $p_match == self::MATCH_TYPE_TITLE ) {
-			if ( stripos( $p_snippet->value, $p_query ) !== false ) {
-				return true;
-			}
+		if( $p_match == self::MATCH_TYPE_TITLE
+			&& mb_stripos( $p_snippet->value, $p_query ) !== false
+		) {
+			return true;
 		}
 
 		return false;

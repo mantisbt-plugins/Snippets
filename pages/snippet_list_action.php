@@ -4,6 +4,8 @@
 # Copyright (c) 2012 - 2021  MantisBT Team - mantisbt-dev@lists.sourceforge.net
 # Licensed under the MIT license
 
+/** @noinspection PhpUnhandledExceptionInspection */
+
 use Mantis\Exceptions\ClientException;
 
 form_security_validate( "plugin_Snippets_list_action" );

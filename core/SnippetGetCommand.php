@@ -73,10 +73,8 @@ class SnippetGetCommand extends Command {
 			);
 		}
 
-		$t_results = array(
+		return array(
 			'snippets' => $t_snippets_result,
 		);
-
-		return $t_results;
 	}
 }

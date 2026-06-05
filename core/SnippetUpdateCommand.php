@@ -115,7 +115,7 @@ class SnippetUpdateCommand extends Command {
 		$this->snippet->value = $this->text;
 		$this->snippet->save();
 
-		$t_results = array(
+		return array(
 			'snippets' => array(
 				array(
 					'id' => $this->snippet->id,
@@ -124,7 +124,5 @@ class SnippetUpdateCommand extends Command {
 				)
 			)
 		);
-
-		return $t_results;
 	}
 }
