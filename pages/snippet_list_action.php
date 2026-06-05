@@ -169,9 +169,8 @@ if( $f_action == 'delete' ) {
 								</th>
 								<td>
 									<!--suppress HtmlFormInputWithoutLabel -->
-									<input type="text"
-										   name="name_<?php echo $t_snippet->id ?>"
-										   size="40"
+									<input type="text" name="name_<?php echo $t_snippet->id ?>"
+										   size="40" maxlength="<?php echo SnippetsPlugin::DB_FIELD_SIZE_NAME ?>"
 										   value="<?php echo $t_snippet->name ?>"
 									/>
 								</td>

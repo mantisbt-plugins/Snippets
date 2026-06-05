@@ -10,6 +10,9 @@ class SnippetsPlugin extends MantisPlugin
 {
 	const VERSION = '2.6.0-dev';
 
+	const DB_FIELD_SIZE_NAME = 128;
+
+
 	/**
 	 * Sorting criteria for Snippets lists.
 	 */

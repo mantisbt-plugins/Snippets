@@ -196,8 +196,9 @@ $t_form_security_field = form_security_field( "plugin_Snippets_list_action" );
 											</label>
 										</td>
 										<td>
-											<input type="text" id="name"
-												   name="name" size="40"/>
+											<input type="text" id="name" name="name"
+												   size="40" maxlength="<?php echo SnippetsPlugin::DB_FIELD_SIZE_NAME ?>"
+											/>
 										</td>
 									</tr>
 

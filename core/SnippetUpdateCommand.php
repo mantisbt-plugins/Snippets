@@ -64,6 +64,13 @@ class SnippetUpdateCommand extends Command {
 				array( 'name' ) );
 		}
 
+		if( mb_strlen( $this->name ) > SnippetsPlugin::DB_FIELD_SIZE_NAME ) {
+			throw new ClientException(
+				'Snippet name too long',
+				ERROR_INVALID_FIELD_VALUE,
+				array( 'name' ) );
+		}
+
 		if( is_blank( $this->text ) ) {
 			throw new ClientException(
 				'Snippet text not specified',
