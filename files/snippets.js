@@ -11,9 +11,7 @@ jQuery(function($) {
 	 * @returns {string} REST API URL
 	 */
 	function rest_api(endpoint) {
-		// Using the full URL (through index.php) to avoid issues on sites
-		// where URL rewriting is not working (#31)
-		return "api/rest/index.php/plugins/Snippets/" + endpoint;
+		return "plugin.php?page=Snippets/" + endpoint;
 	}
 
 	/**
@@ -89,7 +87,7 @@ jQuery(function($) {
 
 			let url = rest_api('data');
 			if (bug_id > 0) {
-				url += "/" + bug_id;
+				url += "&bug_id=" + bug_id;
 			}
 
 			$.getJSON(url)
