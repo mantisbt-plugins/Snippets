@@ -10,6 +10,13 @@ class SnippetsPlugin extends MantisPlugin
 {
 	const VERSION = '2.5.0';
 
+	/**
+	 * Sorting criteria for Snippets lists.
+	 */
+	const SORT_ALPHA = 0;
+	const SORT_GLOBAL_FIRST = 1;
+	const SORT_PERSONAL_FIRST = 2;
+
 	public function register() {
 		$this->name = plugin_lang_get( "name" );
 		$this->description = plugin_lang_get( "description" );
@@ -18,7 +25,7 @@ class SnippetsPlugin extends MantisPlugin
 		$this->version = self::VERSION;
 
 		$this->requires = array(
-			"MantisCore" => "2.3.0",
+			"MantisCore" => "2.13.0",
 		);
 
 		$this->author = "Amethyst Reese, Damien Regad and MantisBT Team";
@@ -32,7 +39,39 @@ class SnippetsPlugin extends MantisPlugin
 			"use_global_threshold" => REPORTER,
 			"edit_own_threshold" => REPORTER,
 			"textarea_names" => "bugnote_text",
+			"sort_order" => self::SORT_ALPHA,
 		);
+	}
+
+	/**
+	 * Get the list available sort options.
+	 *
+	 * @return void
+	 */
+	public static function get_sort_options(): array {
+		return [
+			self::SORT_ALPHA => plugin_lang_get( 'sort_alpha' ),
+			self::SORT_GLOBAL_FIRST => plugin_lang_get( 'sort_global_first' ),
+			self::SORT_PERSONAL_FIRST => plugin_lang_get( 'sort_personal_first' ),
+		];
+	}
+
+	/**
+	 * Prints the selection list for Snippets sort options.
+	 *
+	 * @param int $p_current Current sort option, will be selected.
+	 *
+	 * @return void
+	 */
+	public static function print_sort_options_list( int $p_current ) {
+		echo '<select id="sort_order" name="sort_order">';
+		foreach( self::get_sort_options() as $t_key => $t_label ) {
+			printf( '<option value="%s"%s>%s</s>',
+				$t_key,
+				$p_current == $t_key ? ' selected' : '',
+				$t_label );
+		}
+		echo '</select>';
 	}
 
 	public function errors() {

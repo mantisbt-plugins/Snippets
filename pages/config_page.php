@@ -107,6 +107,22 @@ print_manage_menu( 'manage_plugin_page.php' );
 ?>
 									</td>
 								</tr>
+
+								<tr>
+									<td class="category">
+										<label for="sort_order">
+											<?php echo plugin_lang_get( 'sort_order' ) ?>
+										</label>
+									</td>
+									<td>
+										<?php
+										$t_current = plugin_config_get( 'sort_order',
+												null, false, ALL_USERS, ALL_PROJECTS );
+										SnippetsPlugin::print_sort_options_list( $t_current );
+										?>
+									</td>
+								</tr>
+
 							</table>
 						</div>
 					</div>

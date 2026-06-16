@@ -285,13 +285,30 @@ class Snippet
 		if( $include_global ) {
 			$user_ids[] = 0;
 		}
-		$user_ids = implode( ",", $user_ids );
 
 		$snippet_table = plugin_table( "snippet" );
 
-		$query = "SELECT * FROM $snippet_table WHERE type=" . db_param()
-			. " AND user_id IN ($user_ids) ORDER BY name";
-		$result = db_query( $query, array( $type ) );
+		$t_query = new DbQuery();
+		$t_query->sql( "SELECT * FROM $snippet_table"
+			. ' WHERE type = ' . $t_query->param( $type )
+			. ' AND ' . $t_query->sql_in( 'user_id', $user_ids )
+		);
+
+		# Sort order
+		switch( plugin_config_get( 'sort_order', SnippetsPlugin::SORT_ALPHA ) ) {
+			case SnippetsPlugin::SORT_GLOBAL_FIRST:
+				$t_query->append_sql( " ORDER BY user_id ASC, name ASC" );
+				break;
+			case SnippetsPlugin::SORT_PERSONAL_FIRST:
+				$t_query->append_sql( " ORDER BY user_id DESC, name ASC" );
+				break;
+			case SnippetsPlugin::SORT_ALPHA:
+			default:
+				$t_query->append_sql( " ORDER BY name ASC" );
+				break;
+		}
+
+		$result = $t_query->execute();
 
 		return self::from_db_result( $result );
 	}

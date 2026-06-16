@@ -58,6 +58,15 @@ The following options are available from the plugin's Configuration page:
   - Steps To Reproduce
   - Additional Information
   - Reminder
+- **Sort order in Snippets selection lists**: Controls the order in which
+  Snippets are shown in the selection list. The following options are available:
+  - Alphabetic (default)
+  - Global snippets first, followed by Personal snippets
+  - Personal snippets first, followed by Global snippet
+
+  > [!NOTE
+  > Users can override the default Sort order defined by the administrator from
+  the *My Snippets* page.
 
 
 ### Managing Snippets

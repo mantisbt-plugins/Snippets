@@ -4,6 +4,8 @@
 # Copyright (c) 2012 - 2021  MantisBT Team - mantisbt-dev@lists.sourceforge.net
 # Licensed under the MIT license
 
+use Mantis\Exceptions\ClientException;
+
 form_security_validate( "plugin_Snippets_list_action" );
 
 $global = gpc_get_bool( "global" );
@@ -17,12 +19,47 @@ else {
 	$user_id = auth_get_current_user_id();
 }
 
-$action = gpc_get_string( "action" );
-$snippet_list = gpc_get_int_array( "snippet_list", array() );
-
 $t_redirect_page = plugin_page( "snippet_list", true ) . Snippet::global_url( $global );
 
-if( count( $snippet_list ) < 1 ) {
+$action = gpc_get_string( "action" );
+if( $action == 'sort_order' ) {
+	if( $global ) {
+		throw new ClientException(
+			"Must use plugin config page to update global sort order",
+			ERROR_PLUGIN_GENERIC
+		);
+	}
+
+	$t_sort_order = gpc_get_int( 'sort_order' );
+	if( !array_key_exists( $t_sort_order, SnippetsPlugin::get_sort_options() ) ) {
+		throw new ClientException(
+			"Invalid sort option",
+			ERROR_INVALID_FIELD_VALUE,
+			[ 'sort_option' ]
+		);
+	}
+
+	# Set user's sort order, delete if equal to default
+	$t_default_value = plugin_config_get( 'sort_order',
+			SnippetsPlugin::SORT_ALPHA,
+			false,
+			ALL_USERS,
+			ALL_PROJECTS
+	);
+	if( $t_sort_order != $t_default_value ) {
+		plugin_config_set( 'sort_order', $t_sort_order, $user_id );
+	}
+	else {
+		plugin_config_delete( 'sort_order', $user_id );
+	}
+
+	form_security_purge( 'plugin_Snippets_list_action' );
+	print_header_redirect( $t_redirect_page );
+}
+
+$snippets_list = gpc_get_int_array( "snippet_list", array() );
+$snippets = Snippet::load_by_id( $snippets_list, $user_id );
+if( empty( $snippets ) ) {
 	form_security_purge( "plugin_Snippets_list_action" );
 	helper_ensure_confirmed(
 		plugin_lang_get( 'action_nothing_to_do' ),
@@ -30,8 +67,6 @@ if( count( $snippet_list ) < 1 ) {
 	);
 	print_header_redirect( $t_redirect_page );
 }
-
-$snippets = Snippet::load_by_id( $snippet_list, $user_id );
 $single = count( $snippets ) == 1;
 
 ### DELETE

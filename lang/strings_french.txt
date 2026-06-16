@@ -34,6 +34,10 @@ $s_plugin_Snippets_config_title = 'Configuration des Bribes';
 $s_plugin_Snippets_edit_global_threshold = 'Editer les bribes globales';
 $s_plugin_Snippets_use_global_threshold = 'Utiliser les bribes globales';
 $s_plugin_Snippets_edit_own_threshold = 'Editer ses propres bribes';
+$s_plugin_Snippets_sort_order = 'Ordre de tri pour les listes de sélection des bribes';
+$s_plugin_Snippets_sort_alpha = 'Alphabétique';
+$s_plugin_Snippets_sort_global_first = 'Globales d\'abord, personnelles ensuite';
+$s_plugin_Snippets_sort_personal_first = 'Personnelles d\'abord, globales ensuite';
 
 $s_plugin_Snippets_action_create = 'Créer';
 $s_plugin_Snippets_action_edit = 'Editer';
