@@ -8,6 +8,29 @@ specification.
 
 --------------------------------------------------------------------------------
 
+## [Unreleased]
+
+### Added
+
+- Option to let users change the sort order in the Snippets selection list
+  [#76](https://github.com/mantisbt-plugins/snippets/issues/76)
+
+### Changed
+
+- Set maximum width of Snippets selection list
+  [#77](https://github.com/mantisbt-plugins/snippets/issues/77)
+- Code cleanup
+
+### Removed
+
+- Support for MantisBT < 2.13.0
+
+### Fixed
+
+- Database error when Snippet name is longer than 128 chars
+  [#81](https://github.com/mantisbt-plugins/snippets/issues/81)
+
+
 ## [2.5.0] - 2024-01-05
 
 ### Added
