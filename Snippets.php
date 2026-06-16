@@ -8,7 +8,7 @@ use Slim\App;
 
 class SnippetsPlugin extends MantisPlugin
 {
-	const VERSION = '2.5.0';
+	const VERSION = '2.6.0-dev';
 
 	/**
 	 * Sorting criteria for Snippets lists.
