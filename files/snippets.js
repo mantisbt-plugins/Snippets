@@ -40,7 +40,7 @@ jQuery(function($) {
 				if (Array.isArray(data.snippets) && data.snippets.length > 0) {
 					try {
 						// Create Snippets select
-						const select = $("<select></select>");
+						const select = $('<select class="snippet"></select>');
 
 						// Set the Tab index equal to the associated textareas
 						select.attr('tabindex', textarea.attr('tabindex'));
