@@ -8,7 +8,7 @@ use Slim\App;
 
 class SnippetsPlugin extends MantisPlugin
 {
-	const VERSION = '2.6.0-dev';
+	const VERSION = '2.6.0';
 
 	const DB_FIELD_SIZE_NAME = 128;
 
