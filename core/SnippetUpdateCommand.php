@@ -120,7 +120,8 @@ class SnippetUpdateCommand extends Command {
 				array(
 					'id' => $this->snippet->id,
 					'name' => $this->snippet->name,
-					'text' => $this->snippet->value
+					'text' => $this->snippet->value,
+					'global' => $this->snippet->user_id == NO_USER,
 				)
 			)
 		);

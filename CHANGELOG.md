@@ -19,6 +19,8 @@ specification.
 
 - Set maximum width of Snippets selection list
   [#77](https://github.com/mantisbt-plugins/snippets/issues/77)
+- Include *global* state in REST API endpoints responses
+  [#82](https://github.com/mantisbt-plugins/snippets/issues/82)
 - Code cleanup
 
 ### Removed

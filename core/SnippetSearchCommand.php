@@ -89,7 +89,8 @@ class SnippetSearchCommand extends Command {
 					$t_snippets_result[$t_snippet->id] = array(
 						'id'   => $t_snippet->id,
 						'name' => $t_snippet->name,
-						'text' => $t_snippet->value
+						'text' => $t_snippet->value,
+						'global' => $t_snippet->user_id == NO_USER,
 					);
 				}
 
