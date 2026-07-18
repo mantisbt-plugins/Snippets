@@ -78,18 +78,14 @@ class SnippetUpdateCommand extends Command {
 				array( 'text' ) );
 		}
 
-		$t_snippet = Snippet::load_by_id( $this->snippet_id, /* user_id */ null );
-		if( !$t_snippet ) {
-			# TODO: ideally we should have a generic ENTITY_NOT_FOUND error to trigger 404 http status code
-			# this error will trigger 500 http status code for now, it should trigge 404.
-			# low priority since this is not used by the UI.
+		$this->snippet = Snippet::load_by_id( $this->snippet_id, /* user_id */ null );
+		if( !$this->snippet ) {
 			throw new ClientException(
 			 	"Snippet '" . $this->snippet_id . "' does not exist.",
-			 	ERROR_GENERIC,
-			 	array( $this->snippet_id )
+				ERROR_PLUGIN_ENTITY_NOT_FOUND,
+				[ plugin_lang_get( 'list_value' ) ]
 			);
 		}
-		$this->snippet = $t_snippet;
 
 		$t_global = $this->snippet->user_id == NO_USER;
 

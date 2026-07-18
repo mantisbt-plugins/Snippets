@@ -28,7 +28,7 @@ class SnippetsPlugin extends MantisPlugin
 		$this->version = self::VERSION;
 
 		$this->requires = array(
-			"MantisCore" => "2.13.0",
+			"MantisCore" => "2.29.0",
 		);
 
 		$this->author = "Amethyst Reese, Damien Regad and MantisBT Team";
