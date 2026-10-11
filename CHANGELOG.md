@@ -8,6 +8,12 @@ specification.
 
 --------------------------------------------------------------------------------
 
+## [Unreleased]
+
+### Added
+
+- Server-wide REST API path configuration for classic UI Snippets data and help.
+
 ## [2.6.0] - 2024-06-27
 
 ### Added

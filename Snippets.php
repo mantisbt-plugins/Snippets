@@ -43,6 +43,7 @@ class SnippetsPlugin extends MantisPlugin
 			"edit_own_threshold" => REPORTER,
 			"textarea_names" => "bugnote_text",
 			"sort_order" => self::SORT_ALPHA,
+			"rest_api_path" => "api/rest/index.php/plugins/Snippets/",
 		);
 	}
 
@@ -160,10 +161,13 @@ class SnippetsPlugin extends MantisPlugin
 	 * @return string
 	 */
 	public function resources() {
+		$t_rest_api_path = rtrim( plugin_config_get( 'rest_api_path', null, true ), '/' ) . '/';
+
 		return '
 			<script src="' . plugin_file( "jquery-textrange.js" ) . '"></script>
 			<script src="' . plugin_file( "jquery.qtip.min.js" ) . '"></script>
-			<script src="' . plugin_file( "snippets.js" ) . '"></script>
+			<script id="snippets-script" src="' . plugin_file( "snippets.js" ) . '"
+				data-rest-api-path="' . string_html_specialchars( $t_rest_api_path ) . '"></script>
 			<link rel="stylesheet" type="text/css" href="' . plugin_file( "jquery.qtip.min.css" ) . '"/>
 			<link rel="stylesheet" type="text/css" href="' . plugin_file( "snippets.css" ) . '"/>';
 	}

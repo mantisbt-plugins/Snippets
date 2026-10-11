@@ -69,6 +69,29 @@ The following options are available from the plugin's Configuration page:
   the *My Snippets* page.
 
 
+#### REST API path
+
+By default, the classic UI requests Snippets data and pattern help through
+`api/rest/index.php/plugins/Snippets/`, which works without URL rewriting.
+
+On Apache with mod_php, the path after `index.php` can trigger an internal
+filesystem lookup while Apache prepares `PATH_TRANSLATED`. If direct access
+to the plugin directory is denied, this can log `AH01630` even when the REST
+request succeeds.
+
+When REST URL rewriting is enabled, use the rewritten path to avoid that lookup:
+
+```php
+$g_plugin_Snippets_rest_api_path = 'api/rest/plugins/Snippets/';
+```
+
+Set this server-wide option in `config/config_inc.php`. It applies to both data
+and pattern-help requests and is not read from user or project configuration.
+Paths are relative to the MantisBT page URL; an absolute installation path such
+as `/mantisbt/api/rest/plugins/Snippets/` is also supported. Keep the default
+when REST URL rewriting is unavailable. The plugin directory's access rules
+do not need to change.
+
 ### Managing Snippets
 
 Once the plugin is installed and configured, you need to define at least one
@@ -178,3 +201,11 @@ or have questions related to use and installation:
     [#mantisbt IRC channel](https://webchat.freenode.net/?channels=%23mantisbt)
     on Freenode (irc://freenode.net/mantisbt)
     but since hardly anyone goes there nowadays, you may not get any response.
+
+## Tests
+
+With PHP and Node.js 18 or later installed, run the REST path regression tests:
+
+```sh
+node --test tests/rest-api-path.test.js
+```
